@@ -516,7 +516,7 @@ var mouseover = function(d) {
 
 var mousemove = function(d) {
     tooltip
-      .html(d['Subject'] + "<br><br>Ratings: " + d['Ratings'] + "<br>Priority Score: " + d['Priority Score'] + "<br><br> ABS Correlation Coefficient (NPS) is: " + d['survey_question.abs_correlation_coefficient']['value'] + "<br> Average Rating is: " + d['survey_question.avg_rating']['value'])
+      .html(d['Subject'] + "<br><br>Ratings: " + d["survey_question.ratings"]['value'] + "<br>Priority Score: " + d['survey_question.priority_score']['value'] + "<br><br> ABS Correlation Coefficient (NPS) is: " + d['survey_question.abs_correlation_coefficient']['value'] + "<br> Average Rating is: " + d['survey_question.avg_rating']['value'])
       .style("left", (d3.mouse(this)[0]+90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
       .style("top", (d3.mouse(this)[1]) + "px")
 }
@@ -583,19 +583,16 @@ colorMatcher[0].color.map((color, i) => {
     .html(i+1)
 });
 
-// rankingId.append('div').attr("class","ranking-line")
 
 var textContainer = rankingId
   .append("div")
-//   .attr('class', 'text-container');
   .style('margin-left', '30px')
   .style('margin-top', '15px');
 
-data.map((data, i) => {
+newData.map((data, i) => {
     textContainer.append('p')
-    // .attr('class', 'text')
     .style('margin-top', '0px')
     .style('margin-bottom', '27px')
     .style('line-height', '13.5px')
-    .text(data['Subject'])
+    .text(data['survey_question.subject']['html'])
 });
