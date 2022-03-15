@@ -445,14 +445,14 @@ var divGroup = [
 
 var colorMatcher = [
     {
-        "color": data.map((d,i)=> {
-            if(d['ABS Correlation Coefficient (NPS)'] > 0.5 && d['Average Rating'] < 7.25) {
+        "color": newData.map((d)=> {
+            if(d['survey_question.abs_correlation_coefficient']['value'] > 0.5 && d['survey_question.avg_rating']['value'] < 7.25) {
                 return "#f29696"
             }
-            if(d['ABS Correlation Coefficient (NPS)'] < 0.5 && d['Average Rating'] < 7.25) {
+            if(d['survey_question.abs_correlation_coefficient']['value'] < 0.5 && d['survey_question.avg_rating']['value'] < 7.25) {
                 return "#f7e39c"
             }
-            if (d['ABS Correlation Coefficient (NPS)'] > 0.5 && d['Average Rating'] > 7.25) {
+            if (d['survey_question.abs_correlation_coefficient']['value'] > 0.5 && d['survey_question.avg_rating']['value'] > 7.25) {
                 return "#bddaa5"
             }
             return "#d5e8ff"
@@ -460,11 +460,11 @@ var colorMatcher = [
     }
 ];
 
-const minX = d3.min(data, d => d['Average Rating'])
-const maxX = d3.max(data, d => d['Average Rating'])
+const minX = d3.min(newData, d => d['survey_question.avg_rating']['value'])
+const maxX = d3.max(newData, d => d['survey_question.avg_rating']['value'])
 
-const minY = d3.min(data, d => d['ABS Correlation Coefficient (NPS)'])
-const maxY = d3.max(data, d => d['ABS Correlation Coefficient (NPS)'])
+const minY = d3.min(newData, d => d['survey_question.abs_correlation_coefficient']['value'])
+const maxY = d3.max(newData, d => d['survey_question.abs_correlation_coefficient']['value'])
 
 //   Add X axis
 var x = d3.scaleLinear()
@@ -496,7 +496,7 @@ svg.append('g')
     .html(d => d.text);
 
 var tooltip = d3.select("#chart")
-    .data(data)
+    .data(newData)
     .append("div")
     .style("visibility", "hidden")
     // .attr("class", "tooltip")
@@ -506,8 +506,8 @@ var tooltip = d3.select("#chart")
     .style('padding', '10px')
     .style('position', 'absolute')
     .style('z-index', '3')
-    .style("top", d => d['ABS Correlation Coefficient (NPS)'])
-    .style("bottom", d => d['Average Rating']);
+    .style("top", d => d['survey_question.abs_correlation_coefficient']['value'])
+    .style("bottom", d => d['survey_question.avg_rating']['value']);
 
 var mouseover = function(d) {
     tooltip
@@ -516,7 +516,7 @@ var mouseover = function(d) {
 
 var mousemove = function(d) {
     tooltip
-      .html(d['Subject'] + "<br><br>Ratings: " + d['Ratings'] + "<br>Priority Score: " + d['Priority Score'] + "<br><br> ABS Correlation Coefficient (NPS) is: " + d['ABS Correlation Coefficient (NPS)'] + "<br> Average Rating is: " + d['Average Rating'])
+      .html(d['Subject'] + "<br><br>Ratings: " + d['Ratings'] + "<br>Priority Score: " + d['Priority Score'] + "<br><br> ABS Correlation Coefficient (NPS) is: " + d['survey_question.abs_correlation_coefficient']['value'] + "<br> Average Rating is: " + d['survey_question.avg_rating']['value'])
       .style("left", (d3.mouse(this)[0]+90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
       .style("top", (d3.mouse(this)[1]) + "px")
 }
@@ -534,8 +534,8 @@ svg.append('g')
     .data(newData) // the .filter part is just to keep a few dots on the chart, not all of them
     .enter()
     .append("foreignObject")
-        .attr("x", d => { return x(d['survey_question.avg_rating']['rendered']); } )
-        .attr("y", d => { return y(d['survey_question.abs_correlation_coefficient']['rendered']); } )
+        .attr("x", d => { return x(d['survey_question.avg_rating']['value']); } )
+        .attr("y", d => { return y(d['survey_question.abs_correlation_coefficient']['value']); } )
         // .attr('class', 'blot')
         .style('border-radius', '100%')
         .style('background-color', 'rgb(255, 255, 255)')
