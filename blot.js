@@ -68,7 +68,7 @@ const visObject = {
               return "#d5e8ff"
           })
       }
-  ];
+   ];
 
     const minX = d3.min(data, (d) => d["survey_question.avg_rating"]["value"]);
     const maxX = d3.max(data, (d) => d["survey_question.avg_rating"]["value"]);

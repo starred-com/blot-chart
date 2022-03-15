@@ -516,7 +516,7 @@ var mouseover = function(d) {
 
 var mousemove = function(d) {
     tooltip
-      .html(d['Subject'] + "<br><br>Ratings: " + d["survey_question.ratings"]['value'] + "<br>Priority Score: " + d['survey_question.priority_score']['value'] + "<br><br> ABS Correlation Coefficient (NPS) is: " + d['survey_question.abs_correlation_coefficient']['value'] + "<br> Average Rating is: " + d['survey_question.avg_rating']['value'])
+      .html(d['survey_question.subject']['value'] + "<br><br>Ratings: " + d["survey_question.ratings"]['value'] + "<br>Priority Score: " + d['survey_question.priority_score']['value'] + "<br><br> ABS Correlation Coefficient (NPS) is: " + d['survey_question.abs_correlation_coefficient']['value'] + "<br> Average Rating is: " + d['survey_question.avg_rating']['value'])
       .style("left", (d3.mouse(this)[0]+90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
       .style("top", (d3.mouse(this)[1]) + "px")
 }
