@@ -12,6 +12,339 @@ var svg = d3.select("#vis").append('div').attr('id', 'chart').style('display', '
   .append("g")
     .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
+var newData = [
+    {
+        "survey_question.subject": {
+            "value": "Preparation of interview(s)",
+            "links": [
+                {
+                    "label": "by Response Comment",
+                    "label_prefix": "by",
+                    "label_value": "Response Comment",
+                    "url": "/explore/external_survey_questions/grid5x5_tutorial?fields=survey_question.comment,survey_question.ratings,survey_question.priority_score,survey_question.abs_correlation_coefficient,survey_question.avg_rating&f[survey_question.ratingdeleted]=no&f[survey_question.companyid]=27252&f[survey_question.language]=English&f[survey_question.rating]=%3E0&f[survey_question.formtitle]=Rejection+after+interview&f[survey_question.subject]=Preparation+of+interview%28s%29&sorts=survey_question.ratings desc&limit=500&column_limit=50",
+                    "type": "drill",
+                    "type_label": "Drill into Preparation of interview(s)",
+                    "type_label_prefix": "Drill into",
+                    "type_label_value": "Preparation of interview(s)"
+                }
+            ],
+            "html": "Preparation of interview(s) "
+        },
+        "survey_question.ratings": {
+            "value": 129
+        },
+        "survey_question.priority_score": {
+            "value": 54.26312316788588
+        },
+        "survey_question.abs_correlation_coefficient": {
+            "value": 0.5963624154949702,
+            "rendered": "0.60",
+            "html": "3. Preparation of interview(s) 0.60 "
+        },
+        "survey_question.avg_rating": {
+            "value": 6.387596899224806,
+            "rendered": "6.4"
+        }
+    },
+    {
+        "survey_question.subject": {
+            "value": "Proficiency interviewer",
+            "links": [
+                {
+                    "label": "by Response Comment",
+                    "label_prefix": "by",
+                    "label_value": "Response Comment",
+                    "url": "/explore/external_survey_questions/grid5x5_tutorial?fields=survey_question.comment,survey_question.ratings,survey_question.priority_score,survey_question.abs_correlation_coefficient,survey_question.avg_rating&f[survey_question.ratingdeleted]=no&f[survey_question.companyid]=27252&f[survey_question.language]=English&f[survey_question.rating]=%3E0&f[survey_question.formtitle]=Rejection+after+interview&f[survey_question.subject]=Proficiency+interviewer&sorts=survey_question.ratings desc&limit=500&column_limit=50",
+                    "type": "drill",
+                    "type_label": "Drill into Proficiency interviewer",
+                    "type_label_prefix": "Drill into",
+                    "type_label_value": "Proficiency interviewer"
+                }
+            ],
+            "html": "Proficiency interviewer "
+        },
+        "survey_question.ratings": {
+            "value": 124
+        },
+        "survey_question.priority_score": {
+            "value": 33.86156756442392
+        },
+        "survey_question.abs_correlation_coefficient": {
+            "value": 0.6561336884738872,
+            "rendered": "0.66",
+            "html": "1. Proficiency interviewer 0.66 "
+        },
+        "survey_question.avg_rating": {
+            "value": 7.362903225806452,
+            "rendered": "7.4"
+        }
+    },
+    {
+        "survey_question.subject": {
+            "value": "Proficiency recruiter",
+            "links": [
+                {
+                    "label": "by Response Comment",
+                    "label_prefix": "by",
+                    "label_value": "Response Comment",
+                    "url": "/explore/external_survey_questions/grid5x5_tutorial?fields=survey_question.comment,survey_question.ratings,survey_question.priority_score,survey_question.abs_correlation_coefficient,survey_question.avg_rating&f[survey_question.ratingdeleted]=no&f[survey_question.companyid]=27252&f[survey_question.language]=English&f[survey_question.rating]=%3E0&f[survey_question.formtitle]=Rejection+after+interview&f[survey_question.subject]=Proficiency+recruiter&sorts=survey_question.ratings desc&limit=500&column_limit=50",
+                    "type": "drill",
+                    "type_label": "Drill into Proficiency recruiter",
+                    "type_label_prefix": "Drill into",
+                    "type_label_value": "Proficiency recruiter"
+                }
+            ],
+            "html": "Proficiency recruiter "
+        },
+        "survey_question.ratings": {
+            "value": 123
+        },
+        "survey_question.priority_score": {
+            "value": 27.126708598970215
+        },
+        "survey_question.abs_correlation_coefficient": {
+            "value": 0.6133124715368126,
+            "rendered": "0.61",
+            "html": "2. Proficiency recruiter 0.61 "
+        },
+        "survey_question.avg_rating": {
+            "value": 7.504065040650406,
+            "rendered": "7.5"
+        }
+    },
+    {
+        "survey_question.subject": {
+            "value": "Quick response",
+            "links": [
+                {
+                    "label": "by Response Comment",
+                    "label_prefix": "by",
+                    "label_value": "Response Comment",
+                    "url": "/explore/external_survey_questions/grid5x5_tutorial?fields=survey_question.comment,survey_question.ratings,survey_question.priority_score,survey_question.abs_correlation_coefficient,survey_question.avg_rating&f[survey_question.ratingdeleted]=no&f[survey_question.companyid]=27252&f[survey_question.language]=English&f[survey_question.rating]=%3E0&f[survey_question.formtitle]=Rejection+after+interview&f[survey_question.subject]=Quick+response&sorts=survey_question.ratings desc&limit=500&column_limit=50",
+                    "type": "drill",
+                    "type_label": "Drill into Quick response",
+                    "type_label_prefix": "Drill into",
+                    "type_label_value": "Quick response"
+                }
+            ],
+            "html": "Quick response "
+        },
+        "survey_question.ratings": {
+            "value": 117
+        },
+        "survey_question.priority_score": {
+            "value": 17.398356024544675
+        },
+        "survey_question.abs_correlation_coefficient": {
+            "value": 0.3746599881966946,
+            "rendered": "0.37",
+            "html": "4. Quick response 0.37 "
+        },
+        "survey_question.avg_rating": {
+            "value": 7.042735042735043,
+            "rendered": "7.0"
+        }
+    },
+    {
+        "survey_question.subject": {
+            "value": "Quick and easy application form",
+            "links": [
+                {
+                    "label": "by Response Comment",
+                    "label_prefix": "by",
+                    "label_value": "Response Comment",
+                    "url": "/explore/external_survey_questions/grid5x5_tutorial?fields=survey_question.comment,survey_question.ratings,survey_question.priority_score,survey_question.abs_correlation_coefficient,survey_question.avg_rating&f[survey_question.ratingdeleted]=no&f[survey_question.companyid]=27252&f[survey_question.language]=English&f[survey_question.rating]=%3E0&f[survey_question.formtitle]=Rejection+after+interview&f[survey_question.subject]=Quick+and+easy+application+form&sorts=survey_question.ratings desc&limit=500&column_limit=50",
+                    "type": "drill",
+                    "type_label": "Drill into Quick and easy application form",
+                    "type_label_prefix": "Drill into",
+                    "type_label_value": "Quick and easy application form"
+                }
+            ],
+            "html": "Quick and easy application form "
+        },
+        "survey_question.ratings": {
+            "value": 104
+        },
+        "survey_question.priority_score": {
+            "value": 2.46613501750342
+        },
+        "survey_question.abs_correlation_coefficient": {
+            "value": 0.11903264488393805,
+            "rendered": "0.12",
+            "html": "10. Quick and easy application form 0.12 "
+        },
+        "survey_question.avg_rating": {
+            "value": 7.528846153846154,
+            "rendered": "7.5"
+        }
+    },
+    {
+        "survey_question.subject": {
+            "value": "Easy to find job online",
+            "links": [
+                {
+                    "label": "by Response Comment",
+                    "label_prefix": "by",
+                    "label_value": "Response Comment",
+                    "url": "/explore/external_survey_questions/grid5x5_tutorial?fields=survey_question.comment,survey_question.ratings,survey_question.priority_score,survey_question.abs_correlation_coefficient,survey_question.avg_rating&f[survey_question.ratingdeleted]=no&f[survey_question.companyid]=27252&f[survey_question.language]=English&f[survey_question.rating]=%3E0&f[survey_question.formtitle]=Rejection+after+interview&f[survey_question.subject]=Easy+to+find+job+online&sorts=survey_question.ratings desc&limit=500&column_limit=50",
+                    "type": "drill",
+                    "type_label": "Drill into Easy to find job online",
+                    "type_label_prefix": "Drill into",
+                    "type_label_value": "Easy to find job online"
+                }
+            ],
+            "html": "Easy to find job online "
+        },
+        "survey_question.ratings": {
+            "value": 103
+        },
+        "survey_question.priority_score": {
+            "value": 2.035884017394471
+        },
+        "survey_question.abs_correlation_coefficient": {
+            "value": 0.14920264636152908,
+            "rendered": "0.15",
+            "html": "8. Easy to find job online 0.15 "
+        },
+        "survey_question.avg_rating": {
+            "value": 8.058252427184467,
+            "rendered": "8.1"
+        }
+    },
+    {
+        "survey_question.subject": {
+            "value": "Speed of the process",
+            "links": [
+                {
+                    "label": "by Response Comment",
+                    "label_prefix": "by",
+                    "label_value": "Response Comment",
+                    "url": "/explore/external_survey_questions/grid5x5_tutorial?fields=survey_question.comment,survey_question.ratings,survey_question.priority_score,survey_question.abs_correlation_coefficient,survey_question.avg_rating&f[survey_question.ratingdeleted]=no&f[survey_question.companyid]=27252&f[survey_question.language]=English&f[survey_question.rating]=%3E0&f[survey_question.formtitle]=Rejection+after+interview&f[survey_question.subject]=Speed+of+the+process&sorts=survey_question.ratings desc&limit=500&column_limit=50",
+                    "type": "drill",
+                    "type_label": "Drill into Speed of the process",
+                    "type_label_prefix": "Drill into",
+                    "type_label_value": "Speed of the process"
+                }
+            ],
+            "html": "Speed of the process "
+        },
+        "survey_question.ratings": {
+            "value": 95
+        },
+        "survey_question.priority_score": {
+            "value": 13.663879946546723
+        },
+        "survey_question.abs_correlation_coefficient": {
+            "value": 0.267321995235979,
+            "rendered": "0.27",
+            "html": "6. Speed of the process 0.27 "
+        },
+        "survey_question.avg_rating": {
+            "value": 6.631578947368421,
+            "rendered": "6.6"
+        }
+    },
+    {
+        "survey_question.subject": {
+            "value": "Planning of interview(s)",
+            "links": [
+                {
+                    "label": "by Response Comment",
+                    "label_prefix": "by",
+                    "label_value": "Response Comment",
+                    "url": "/explore/external_survey_questions/grid5x5_tutorial?fields=survey_question.comment,survey_question.ratings,survey_question.priority_score,survey_question.abs_correlation_coefficient,survey_question.avg_rating&f[survey_question.ratingdeleted]=no&f[survey_question.companyid]=27252&f[survey_question.language]=English&f[survey_question.rating]=%3E0&f[survey_question.formtitle]=Rejection+after+interview&f[survey_question.subject]=Planning+of+interview%28s%29&sorts=survey_question.ratings desc&limit=500&column_limit=50",
+                    "type": "drill",
+                    "type_label": "Drill into Planning of interview(s)",
+                    "type_label_prefix": "Drill into",
+                    "type_label_value": "Planning of interview(s)"
+                }
+            ],
+            "html": "Planning of interview(s) "
+        },
+        "survey_question.ratings": {
+            "value": 95
+        },
+        "survey_question.priority_score": {
+            "value": 11.427383854772343
+        },
+        "survey_question.abs_correlation_coefficient": {
+            "value": 0.269410281963735,
+            "rendered": "0.27",
+            "html": "5. Planning of interview(s) 0.27 "
+        },
+        "survey_question.avg_rating": {
+            "value": 6.936842105263158,
+            "rendered": "6.9"
+        }
+    },
+    {
+        "survey_question.subject": {
+            "value": "Useful job advertisement",
+            "links": [
+                {
+                    "label": "by Response Comment",
+                    "label_prefix": "by",
+                    "label_value": "Response Comment",
+                    "url": "/explore/external_survey_questions/grid5x5_tutorial?fields=survey_question.comment,survey_question.ratings,survey_question.priority_score,survey_question.abs_correlation_coefficient,survey_question.avg_rating&f[survey_question.ratingdeleted]=no&f[survey_question.companyid]=27252&f[survey_question.language]=English&f[survey_question.rating]=%3E0&f[survey_question.formtitle]=Rejection+after+interview&f[survey_question.subject]=Useful+job+advertisement&sorts=survey_question.ratings desc&limit=500&column_limit=50",
+                    "type": "drill",
+                    "type_label": "Drill into Useful job advertisement",
+                    "type_label_prefix": "Drill into",
+                    "type_label_value": "Useful job advertisement"
+                }
+            ],
+            "html": "Useful job advertisement "
+        },
+        "survey_question.ratings": {
+            "value": 80
+        },
+        "survey_question.priority_score": {
+            "value": -1.5785995416691625
+        },
+        "survey_question.abs_correlation_coefficient": {
+            "value": 0.13615688467777493,
+            "rendered": "0.14",
+            "html": "9. Useful job advertisement 0.14 "
+        },
+        "survey_question.avg_rating": {
+            "value": 7.2,
+            "rendered": "7.2"
+        }
+    },
+    {
+        "survey_question.subject": {
+            "value": "Amount of communication",
+            "links": [
+                {
+                    "label": "by Response Comment",
+                    "label_prefix": "by",
+                    "label_value": "Response Comment",
+                    "url": "/explore/external_survey_questions/grid5x5_tutorial?fields=survey_question.comment,survey_question.ratings,survey_question.priority_score,survey_question.abs_correlation_coefficient,survey_question.avg_rating&f[survey_question.ratingdeleted]=no&f[survey_question.companyid]=27252&f[survey_question.language]=English&f[survey_question.rating]=%3E0&f[survey_question.formtitle]=Rejection+after+interview&f[survey_question.subject]=Amount+of+communication&sorts=survey_question.ratings desc&limit=500&column_limit=50",
+                    "type": "drill",
+                    "type_label": "Drill into Amount of communication",
+                    "type_label_prefix": "Drill into",
+                    "type_label_value": "Amount of communication"
+                }
+            ],
+            "html": "Amount of communication "
+        },
+        "survey_question.ratings": {
+            "value": 54
+        },
+        "survey_question.priority_score": {
+            "value": 6.112197150687439
+        },
+        "survey_question.abs_correlation_coefficient": {
+            "value": 0.17732293590418277,
+            "rendered": "0.18",
+            "html": "7. Amount of communication 0.18 "
+        },
+        "survey_question.avg_rating": {
+            "value": 7,
+            "rendered": "7.0",
+            "filterable_value": "7.0"
+        }
+    }
+];
 
 var data = [
   {
