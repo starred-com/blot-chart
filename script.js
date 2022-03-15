@@ -527,15 +527,15 @@ var mouseleave = function(d) {
       .duration(100)
       .style("visibility", "hidden")
 }
-
+console.log(newData)
 // Circles with text inside
 svg.append('g')
     .selectAll("foreignObject")
-    .data(data.filter(function(d,i){return i<50})) // the .filter part is just to keep a few dots on the chart, not all of them
+    .data(newData) // the .filter part is just to keep a few dots on the chart, not all of them
     .enter()
     .append("foreignObject")
-        .attr("x", d => { return x(d['Average Rating']); } )
-        .attr("y", d => { return y(d['ABS Correlation Coefficient (NPS)']); } )
+        .attr("x", d => { return x(d['survey_question.avg_rating']['rendered']); } )
+        .attr("y", d => { return y(d['survey_question.abs_correlation_coefficient']['rendered']); } )
         // .attr('class', 'blot')
         .style('border-radius', '100%')
         .style('background-color', 'rgb(255, 255, 255)')
