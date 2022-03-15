@@ -175,8 +175,8 @@ const visObject = {
 		.data(data) // the .filter part is just to keep a few dots on the chart, not all of them
 		.enter()
 		.append("foreignObject")
-        .attr("x", d => { return x(d['survey_question.avg_rating']['rendered']); } )
-        .attr("y", d => { return y(d['survey_question.abs_correlation_coefficient']['rendered']); } )
+        .attr("x", d => { return x(d['survey_question.avg_rating']['value']); } )
+        .attr("y", d => { return y(d['survey_question.abs_correlation_coefficient']['value']); } )
 			// .attr('class', 'blot')
 			.style('border-radius', '100%')
 			.style('background-color', 'rgb(255, 255, 255)')
