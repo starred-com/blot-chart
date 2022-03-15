@@ -236,8 +236,8 @@ const visObject = {
         .style("line-height", "13.5px")
         .text(data["survey_question.subject"]["html"]);
     });
+    doneRendering();
   },
-  doneRendering();
 };
 
 looker.plugins.visualizations.add(visObject);
