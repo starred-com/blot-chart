@@ -7,7 +7,8 @@ const visObject = {
     details,
     doneRendering
   ) {
-    console.log(data);
+    console.log(data, element, config, queryResponse, details);
+    element.innerHTML = ""
     // set the dimensions and margins of the graph
     var margin = { top: 10, right: 30, bottom: 30, left: 60 },
       width = 1013 - margin.left - margin.right,
@@ -19,12 +20,12 @@ const visObject = {
       .append("div")
       .attr("id", "chart")
       .style("display", "inline-block")
-      .style("margin-right", "40px")
+      .style("margin-right", "30px")
       .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      .attr("transform", "translate(" + '26px' + "," + '10px' + ")");
 
     var divGroup = [
       {
@@ -225,7 +226,8 @@ const visObject = {
       .append("div")
       //   .attr('class', 'text-container');
       .style("margin-left", "30px")
-      .style("margin-top", "15px");
+      .style("margin-top", "15px")
+      .style("width", "210px");
 
     data.map((d, i) => {
       textContainer
