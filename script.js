@@ -5,7 +5,7 @@ var margin = {top: 10, right: 30, bottom: 30, left: 60},
     height = 431 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3.select("#vis").append('div').attr('id', 'chart').style('display', 'inline-block').style('margin-right', '40px')
+var svg = d3.select("#vis").style('font-family', 'Open Sans, sans-serif').style('color', 'rgb(105, 105, 105)').append('div').attr('id', 'chart').style('display', 'inline-block').style('margin-right', '40px')
   .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
