@@ -488,11 +488,14 @@ svg.append('g')
     .enter()
     .append("foreignObject")
         .attr('class', function (d) {return d.class;})
+        .attr("fill", function (d) {return d.color})
         .style('background-color', function (d) {return d.color})
         .style('width', '50%')
         .style('height', '196.25px')
         .style("transform", function (d) {return d.transform})
-    .append("xhtml:body")
+    .append("xhtml:div")
+    .style('background-color', function (d) {return d.color})
+    .style("height", "100%")
     .html(d => d.text);
 
 var tooltip = d3.select("#chart")
@@ -553,7 +556,10 @@ svg.append('g')
         .html((d, i) => i + 1)
         .style('margin', 'auto')
         .style('text-align', 'center')
-        .style('padding-top', "3px");
+        .style('padding-top', "3px")
+        .style('background-color', 'rgb(255, 255, 255)')
+        .style('height', '100%')
+        .style('padding-top', '6px')
 
 // Ranking column
 var rankingId = d3.select("#vis").style('display', 'flex').append('div').attr('id', 'ranking').style('position', 'relative')
