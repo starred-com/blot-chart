@@ -198,7 +198,9 @@ const visObject = {
       .html((d, i) => i + 1)
       .style("margin", "auto")
       .style("text-align", "center")
-      .style("padding-top", "6px");
+      .style("display", "flex")
+      .style("justify-content", "center")
+      .style("align-items", "center");
 
     // Ranking column
     var rankingId = d3
