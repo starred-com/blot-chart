@@ -9,6 +9,7 @@ const visObject = {
   ) {
 
 console.log(data)
+console.log(queryResponse)
 
 element.innerHTML = ""
 
@@ -126,6 +127,7 @@ visual.append('g')
     .append("xhtml:div")
     .style('background-color', function (d) {return d.color})
     .style("height", "100%")
+    .style("padding", "5px")
     .style("text-align", function (d) {return d.alignment})
     .html(d => d.text);
 
@@ -179,13 +181,15 @@ visual.append('g')
       .attr("x", d => { return x(d['fact_table.avg_star_rating']['rendered']) - 10 } )
       .attr("y", d => { return y(d['fact_table.abs_correlation_coefficient']['rendered']) - 10 } )
       // .attr('class', 'blot')
+      .style('-moz-box-shadow', ' 1px 2px 4px 0px rgba(0,0,0,0.60)')
+      .style('-webkit-box-shadow', ' 1px 2px 4px 0px rgba(0,0,0,0.60)')
+      .style('box-shadow', ' 1px 2px 4px 0px rgba(0,0,0,0.60)')
       .style('border-radius', '100%')
       .style('background-color', 'rgb(255, 255, 255)')
       .style('border', '1px solid rgb(51, 51, 51)')
       .style('width', '25px')
       .style('height', '25px')
       .style('cursor', 'default')
-      
       // hover
       .on("mouseover", mouseover)
       .on("mousemove", mousemove)
@@ -196,7 +200,9 @@ visual.append('g')
       .style('margin', 'auto')
       .style('text-align', 'center')
       .style('background-color', 'rgb(255, 255, 255)')
-      .style('height', '100%')
+      .style('border', '1px solid rgb(51, 51, 51)')
+      .style('height', '90.5%')
+      .style('border-radius', '100%')
       .style('display', 'flex')
       .style('justify-content', 'center')
       .style('align-items', 'center');

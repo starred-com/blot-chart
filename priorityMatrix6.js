@@ -127,6 +127,7 @@ visual.append('g')
     .style('background-color', function (d) {return d.color})
     .style("height", "100%")
     .style("text-align", function (d) {return d.alignment})
+    .style("padding", "5px")
     .html(d => d.text);
 
 var tooltip = d3.select("#chart")
@@ -195,8 +196,9 @@ visual.append('g')
       .html((d, i) => i + 1)
       .style('margin', 'auto')
       .style('text-align', 'center')
+      .style('border-radius', '100%')
       .style('background-color', 'rgb(255, 255, 255)')
-      .style('height', '100%')
+      .style('border', '1px solid rgb(51, 51, 51)')
       .style('display', 'flex')
       .style('justify-content', 'center')
       .style('align-items', 'center');
