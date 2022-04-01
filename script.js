@@ -19,7 +19,7 @@ var svg = d3.select("#vis")
                 // .attr("height", height + margin.top + margin.bottom)
                 .attr("height", '100vh')
                 .attr("max-height", '950px')
-                .attr('viewBox', '0 0 815 800');
+                .attr('viewBox', '0 0 816 550');
 
 var visual = svg.append("g")
                 .attr("transform", "translate(" + 30 + "," + margin.top + ")");
@@ -534,7 +534,7 @@ var tooltip = d3.select("#chart")
     .style('padding', '10px')
     .style('position', 'absolute')
     .style('z-index', '3')
-    .style('width', 'fit-content');
+    .style('width', '160px');
 
 var mouseover = function(d) {
     tooltip.style("visibility", "visible")
@@ -593,7 +593,7 @@ visual.append('g')
         .style('height', '100%')
         .style('display', 'flex')
         .style('justify-content', 'center')
-        .style('align-item', 'center');
+        .style('align-items', 'center');
 
 // Legend section
 var legendCircle = legend.selectAll('foreignObject')
@@ -612,7 +612,8 @@ legendCircle.append('foreignObject')
     .style('height', '25px')
     .style('display', 'flex')
     .style('justify-content', 'center')
-    .style('align-content', 'center')
+    .style('align-items', 'center')
+    .style('background-color', function(d, i) {return d})
     .html(function(d, i) { return i + 1 });
 
 legendTypo.selectAll('foreignObject')
@@ -626,4 +627,4 @@ legendTypo.selectAll('foreignObject')
     .append("xhtml:div")
     .style('width', '300px')
     .style('height', '25px')
-    .html(function(d, i) { return d['survey_question.subject']['html'] });
+    .html(function(d, i) { return d['survey_question.subject']['value'] });
