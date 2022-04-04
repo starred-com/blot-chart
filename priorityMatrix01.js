@@ -19,13 +19,6 @@ const priorityScore = queryResponse.fields.measures[1].name //fact_table.priorit
 const absCorrelation = queryResponse.fields.measures[2].name //fact_table.abs_correlation_coefficient
 const averageRating = queryResponse.fields.measures[3].name //fact_table.avg_star_rating
 
-var newFormattedData = {}
-data.forEach(function(d) { 
-  newFormattedData[d[questionSubject]["value"]] = d[ratings]["value"], d[priorityScore]["value"], d[absCorrelation]["value"], d[averageRating]["value"] 
-})
-
-console.log(newFormattedData)
-
 // set the dimensions and margins of the graph
 var margin = { top: 10, right: 30, bottom: 30, left: 60 },
     width = 850 - margin.left - margin.right,
@@ -99,23 +92,23 @@ avgRating = middle(avgRating) + 0.1
 
 var colorMatcher = {
   color: data.map((d)=> {
-      if(d['fact_table.abs_correlation_coefficient']['value'] >= 0.5 && d['fact_table.avg_star_rating']['value'] <= avgRating) {
+      if(d[absCorrelation]['value'] >= 0.5 && d[averageRating]['value'] <= avgRating) {
           return "#f29696" // red
       }
-      if(d['fact_table.abs_correlation_coefficient']['value'] <= 0.5 && d['fact_table.avg_star_rating']['value'] <= avgRating) {
+      if(d[absCorrelation]['value'] <= 0.5 && d[averageRating]['value'] <= avgRating) {
           return "#f7e39c" // yellow
       }
-      if (d['fact_table.abs_correlation_coefficient']['value'] >= 0.5 && d['fact_table.avg_star_rating']['value'] >= avgRating) {
+      if (d[absCorrelation]['value'] >= 0.5 && d[averageRating]['value'] >= avgRating) {
           return "#bddaa5" // green
       }
-      if (d['fact_table.abs_correlation_coefficient']['value'] <= 0.5 && d['fact_table.avg_star_rating']['value'] >= avgRating) {
+      if (d[absCorrelation]['value'] <= 0.5 && d[averageRating]['value'] >= avgRating) {
         return "#d5e8ff" // blue
       }
   })
 };
 
-const minX = d3.min(data, d => d['fact_table.avg_star_rating']['rendered'])
-const maxX = d3.max(data, d => d['fact_table.avg_star_rating']['rendered'])
+const minX = d3.min(data, d => d[averageRating]['rendered'])
+const maxX = d3.max(data, d => d[averageRating]['rendered'])
 
 //   Add X axis
 var x = d3.scaleLinear()
@@ -175,15 +168,15 @@ var mouseover = function(d) {
 var mousemove = function(d) {
   tooltip
     .html(
-        `<strong style="font-size: 14px">${d['questions.subject']['value']}</strong>` + 
+        `<strong style="font-size: 14px">${d[questionSubject]['value']}</strong>` + 
         "<br><br>Ratings: " + 
-        `<strong style="font-size: 13px">${d["fact_table.ratings"]['value']}</strong>` + 
+        `<strong style="font-size: 13px">${d[ratings]['value']}</strong>` + 
         "<br>Priority Score: " + 
-        `<strong style="font-size: 13px">${Math.ceil(d['fact_table.priority_score']['value'])}</strong>` + 
+        `<strong style="font-size: 13px">${Math.ceil(d[priorityScore]['value'])}</strong>` + 
         "<br><br> Correlation (NPS): " + 
-        `<strong style="font-size: 13px">${d['fact_table.abs_correlation_coefficient']['rendered']}</strong>` + 
+        `<strong style="font-size: 13px">${d[absCorrelation]['rendered']}</strong>` + 
         "<br> Average Rating: " + 
-        `<strong style="font-size: 13px">${d['fact_table.avg_star_rating']['rendered']}</strong>`
+        `<strong style="font-size: 13px">${d[averageRating]['rendered']}</strong>`
         )
     .style("left", (d3.event.pageX) + "px")
     .style("top", (d3.event.pageY) + "px")
@@ -202,8 +195,8 @@ visual.append('g')
   .data(data) // the .filter part is just to keep a few dots on the chart, not all of them
   .enter()
   .append("foreignObject")
-      .attr("x", d => { return x(d['fact_table.avg_star_rating']['rendered']) - 10 } )
-      .attr("y", d => { return y(d['fact_table.abs_correlation_coefficient']['rendered']) - 10 } )
+      .attr("x", d => { return x(d[averageRating]['rendered']) - 10 } )
+      .attr("y", d => { return y(d[absCorrelation]['rendered']) - 10 } )
       // .attr('class', 'blot')
       .style('-moz-box-shadow', ' 1px 2px 4px 0px rgba(0,0,0,0.60)')
       .style('-webkit-box-shadow', ' 1px 2px 4px 0px rgba(0,0,0,0.60)')
@@ -261,7 +254,7 @@ legendTypo.selectAll('foreignObject')
     .append("xhtml:div")
     .style('width', '300px')
     .style('height', '25px')
-    .html(function(d, i) { return d['questions.subject']['value'] });
+    .html(function(d, i) { return d[questionSubject]['value'] });
 
     doneRendering();
   },
