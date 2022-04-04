@@ -11,7 +11,6 @@ var svg = d3.select("#vis")
             .append('div')
             .attr('id', 'chart')
             .style('display', 'inline-block')
-            .style('margin-right', '40px')
             .style('position', 'relative')
               .append("svg")
                 .attr('overflow', 'visible')
@@ -19,16 +18,17 @@ var svg = d3.select("#vis")
                 // .attr("height", height + margin.top + margin.bottom)
                 .attr("height", '100vh')
                 .attr("max-height", '950px')
-                .attr('viewBox', '0 0 816 550');
-
+                // .attr('viewBox', '0 0 816 550')
+                .attr('viewBox', '0 0 1110 600');
+                
 var visual = svg.append("g")
                 .attr("transform", "translate(" + 30 + "," + margin.top + ")");
 
 var legend = svg.append("g")
-                .attr("transform", "translate(" + 840 + "," + margin.top + ")");
+                .attr("transform", "translate(" + 820 + "," + margin.top + ")");
 
 var legendTypo = svg.append("g")
-.attr("transform", "translate(" + 880 + "," + margin.top + ")");
+                .attr("transform", "translate(" + 860 + "," + margin.top + ")");
 
 var newData = [
     {
@@ -441,67 +441,79 @@ var divGroup = [
     {
         "class": "topLeft",
         "transform": 'translate(0px, 0px)',
-        "color": "#f29696",
+        "color": "#f29696", // red
         "text": "Improve",
         "alignment": "left"
     }, {
         "class": "topRight",
-        "transform": 'translate(401px, 0px)',
-        "color": "#bddaa5",
+        "transform": 'translate(385px, 0px)',
+        "color": "#bddaa5", // green
         "text": "Leverage",
         "alignment": "end"
     }, {
         "class": "bottomLeft",
-        "transform": 'translate(0px, 261px)',
-        "color": "#f7e39c",
+        "transform": 'translate(0px, 260px)',
+        "color": "#f7e39c", // yellow
         "text": "Monitor",
         "alignment": "left"
     }, {
         "class": "bottomRight",
-        "transform": 'translate(401px, 261px)',
-        "color": "#d5e8ff",
+        "transform": 'translate(385px, 260px)',
+        "color": "#d5e8ff", // blue
         "text": "Maintain",
         "alignment": "end"
     },
 ];
-
-var colorMatcher = {
-    color: newData.map((d)=> {
-        if(d['survey_question.abs_correlation_coefficient']['value'] > 0.5 && d['survey_question.avg_rating']['value'] < 7.25) {
-            return "#f29696"
-        }
-        if(d['survey_question.abs_correlation_coefficient']['value'] < 0.5 && d['survey_question.avg_rating']['value'] < 7.25) {
-            return "#f7e39c"
-        }
-        if (d['survey_question.abs_correlation_coefficient']['value'] > 0.5 && d['survey_question.avg_rating']['value'] > 7.25) {
-            return "#bddaa5"
-        }
-        return "#d5e8ff"
-    })
-};
-
+console.log(newData)
 const minX = d3.min(newData, d => d['survey_question.avg_rating']['rendered'])
 const maxX = d3.max(newData, d => d['survey_question.avg_rating']['rendered'])
 
-const minY = d3.min(newData, d => d['survey_question.abs_correlation_coefficient']['rendered'])
-const maxY = d3.max(newData, d => d['survey_question.abs_correlation_coefficient']['rendered'])
+var avgRating = newData.map((d,i) => {
+    return parseFloat(d['survey_question.avg_rating']['rendered'])
+})
+
+avgRating = avgRating.sort()
+
+function middle(arr) {
+    if (arr.length === 0) return undefined;
+        return arr[Math.floor(arr.length / 2)];
+}
+// taking the middle value of an array and + 0.1 becaouse of the space and to be precizely in the mid
+avgRating = middle(avgRating) + 0.1
+
+var colorMatcher = {
+    color: newData.map((d)=> {
+        if(d['survey_question.abs_correlation_coefficient']['value'] >= 0.5 && d['survey_question.avg_rating']['value'] <= avgRating) {
+            return "#f29696" // red
+        }
+        if(d['survey_question.abs_correlation_coefficient']['value'] <= 0.5 && d['survey_question.avg_rating']['value'] <= avgRating) {
+            return "#f7e39c" // yellow
+        }
+        if (d['survey_question.abs_correlation_coefficient']['value'] >= 0.5 && d['survey_question.avg_rating']['value'] >= avgRating) {
+            return "#bddaa5" // green
+        }
+        if (d['survey_question.abs_correlation_coefficient']['value'] <= 0.5 && d['survey_question.avg_rating']['value'] >= avgRating) {
+            return "#d5e8ff" // blue
+        }
+    })
+};
 
 //   Add X axis
 var x = d3.scaleLinear()
     .domain([minX, maxX])
-    .range([ 0, width]);
-    visual.append("g")
-        .attr("transform", "translate(0," + (height+2) + ")")
-        .call(d3.axisBottom(x))
-        .call(g => g.select(".domain").remove());
+    .range([ 0, width]).nice();
+visual.append("g")
+    .attr("transform", "translate(0," + (height+2) + ")")
+    .call(d3.axisBottom(x))
+    .call(g => g.select(".domain").remove());
 
 // Add Y axis
 var y = d3.scaleLinear()
     .domain([0, 1])
     .range([height, 0]);
-    visual.append("g")
-        .call(d3.axisLeft(y))
-        .call(g => g.select(".domain").remove());
+visual.append("g")
+    .call(d3.axisLeft(y))
+    .call(g => g.select(".domain").remove());
 
 //colored boxes with text inside
 visual.append('g')
@@ -512,7 +524,7 @@ visual.append('g')
         .attr('class', function (d) {return d.class;})
         .attr("fill", function (d) {return d.color})
         .style('background-color', function (d) {return d.color})
-        .style('width', '47%')
+        .style('width', (width / 2) - 5 + 'px')
         .style('height', '250px')
         .style("padding", "5px")
         .style('border-radius', '10px')
@@ -564,7 +576,7 @@ var mouseleave = function(d) {
       .duration(100)
       .style("visibility", "hidden")
 }
-console.log(newData)
+
 // Circles with text inside
 visual.append('g')
     .selectAll("foreignObject")
@@ -580,6 +592,7 @@ visual.append('g')
         .style('-webkit-box-shadow', ' 1px 2px 4px 0px rgba(0,0,0,0.60)')
         .style('box-shadow', ' 1px 2px 4px 0px rgba(0,0,0,0.60)')
         .style('border-radius', '100%')
+        .style('border', '1px solid rgb(51, 51, 51)')
         // hover
         .on("mouseover", mouseover)
         .on("mousemove", mousemove)
@@ -588,11 +601,8 @@ visual.append('g')
     .append("xhtml:div")
         .html((d, i) => i + 1)
         .style('border-radius', '100%')
-        .style('margin', 'auto')
-        .style('text-align', 'center')
         .style('background-color', 'rgb(255, 255, 255)')
-        .style('border', '1px solid rgb(51, 51, 51)')
-        .style('height', '90.5%')
+        .style('height', '100%')
         .style('display', 'flex')
         .style('justify-content', 'center')
         .style('align-items', 'center');
