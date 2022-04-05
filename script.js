@@ -13,6 +13,7 @@ var svg = d3.select("#vis")
             .style('display', 'inline-block')
             .style('position', 'relative')
               .append("svg")
+                .style('position', 'fixed')
                 .attr('overflow', 'visible')
                 .attr("width", '100%' )
                 // .attr("height", height + margin.top + margin.bottom)
@@ -353,6 +354,7 @@ var avgRating = newData.map((d,i) => {
 })
 
 avgRating = avgRating.sort()
+
 avgRating = [...new Set(avgRating)]
 console.log(avgRating)
 
@@ -408,6 +410,8 @@ visual.append('g')
     .data(divGroup)
     .enter()
     .append("foreignObject")
+        .attr('width', (width / 2) - 5 + 'px')
+        .attr('height', '250px')
         .attr('class', function (d) {return d.class;})
         .attr("fill", function (d) {return d.color})
         .style('background-color', function (d) {return d.color})
@@ -434,7 +438,8 @@ var tooltip = d3.select("#chart")
     .style('padding', '10px')
     .style('position', 'absolute')
     .style('z-index', '3')
-    .style('width', '160px');
+    .style('width', '160px')
+    .attr('width', '160px');
 
 var mouseover = function(d) {
     tooltip.style("visibility", "visible")
@@ -465,48 +470,88 @@ var mouseleave = function(d) {
 }
 
 // Circles with text inside
-visual.append('g')
-    .selectAll("foreignObject")
-    .data(newData) // the .filter part is just to keep a few dots on the chart, not all of them
+// visual.append('g')
+//     .selectAll("foreignObject")
+    // .data(newData) // the .filter part is just to keep a few dots on the chart, not all of them
+    // .enter()
+    // .append("circle")
+    //     .attr("cx", d => { return x(d['fact_table.avg_star_rating']['rendered']) - 10 } )
+    //     .attr("cy", d => { return y(d['fact_table.abs_correlation_coefficient']['rendered']) - 10 } )
+    //     .attr('r', 15)
+        // .attr('width', '25px')
+        // .attr('height', '28px')
+        // .style('cursor', 'default')
+        // .attr('fill', 'rgb(255, 255, 255)')
+        // .style('-moz-box-shadow', ' 1px 2px 4px 0px rgba(0,0,0,0.60)')
+        // .style('-webkit-box-shadow', ' 1px 2px 4px 0px rgba(0,0,0,0.60)')
+        // .style('box-shadow', ' 1px 2px 4px 0px rgba(0,0,0,0.60)')
+        // .style('border-radius', '100%')
+        // .style('border', '1px solid rgb(51, 51, 51)')
+        // .attr("stroke-width", 2)
+        // .style("filter", "url(#drop-shadow)")
+        // hover
+        // .on("mouseover", mouseover)
+        // .on("mousemove", mousemove)
+        // .on("mouseleave", mouseleave)
+     // add text inside the circle    
+    // .append("xhtml:div")
+    //     .html((d, i) => i + 1)
+    //     .style('border-radius', '100%')
+    //     .style('background-color', 'rgb(255, 255, 255)')
+    //     .style('height', '100%')
+    //     .style('display', 'flex')
+    //     .style('justify-content', 'center')
+    //     .style('align-items', 'center');
+
+    
+
+
+var elemEnter = visual.append('g').selectAll('g myCircleText')
+    .data(newData)
     .enter()
-    .append("foreignObject")
-        .attr("x", d => { return x(d['fact_table.avg_star_rating']['rendered']) - 10 } )
-        .attr("y", d => { return y(d['fact_table.abs_correlation_coefficient']['rendered']) - 10 } )
-        .style('width', '25px')
-        .style('height', '25px')
+	.append("g")
+    .style('cursor', 'default')
+	.attr("transform", function(d){return "translate("+ (x(d['fact_table.avg_star_rating']['rendered']) - 10) +","+ (y(d['fact_table.abs_correlation_coefficient']['rendered']) - 10) +")"})
+    .on("mouseover", mouseover)
+    .on("mousemove", mousemove)
+    .on("mouseleave", mouseleave);
+    /*Create the circle for each block */
+    var circle = elemEnter.append("circle")
+	    .attr("r", 15 )
+	    // .attr("stroke","black")
+	    .attr("fill", "white")
+        // .attr("cx", d => { return x(d['fact_table.avg_star_rating']['rendered']) - 10 } )
+        // .attr("cy", d => { return y(d['fact_table.abs_correlation_coefficient']['rendered']) - 10 } )
         .style('cursor', 'default')
-        .style('-moz-box-shadow', ' 1px 2px 4px 0px rgba(0,0,0,0.60)')
-        .style('-webkit-box-shadow', ' 1px 2px 4px 0px rgba(0,0,0,0.60)')
-        .style('box-shadow', ' 1px 2px 4px 0px rgba(0,0,0,0.60)')
         .style('border-radius', '100%')
         .style('border', '1px solid rgb(51, 51, 51)')
-        // hover
-        .on("mouseover", mouseover)
-        .on("mousemove", mousemove)
-        .on("mouseleave", mouseleave)
-    // add text inside the circle    
-    .append("xhtml:div")
-        .html((d, i) => i + 1)
-        .style('border-radius', '100%')
-        .style('background-color', 'rgb(255, 255, 255)')
-        .style('height', '100%')
-        .style('display', 'flex')
-        .style('justify-content', 'center')
-        .style('align-items', 'center');
+        .attr("stroke-width", 2)
+        .style("filter", "url(#drop-shadow)")
+ 
+    /* Create the text for each block */
+    elemEnter.append("text")
+	    .attr("dx", function(d, i){return i === 9 ? -7 : -4})
+	    .attr("dy", function(d){return 5})
+        .style("font-size", "14px")
+	    .text(function(d, i){return i + 1})
+        // .attr("x", d => { return x(d['fact_table.avg_star_rating']['rendered']) - 10 } )
+        // .attr("y", d => { return y(d['fact_table.abs_correlation_coefficient']['rendered']) - 10 } )
+
 
 // Legend section
 var legendCircle = legend.selectAll('foreignObject')
-    .data(colorMatcher.color)
+    .data(colorMatcher.color.slice(0, 10))
     .enter();
 
 legendCircle.append('foreignObject')
     .attr('x', 0 )
     .attr('y', function(d, i) { return i*40; })
     .style('background-color', function(d, i) {return d})
-    .style('width', '25px')
-    .style('height', '25px')
+    .attr('width', '25px')
+    .attr('height', '25px')
     .style('border-radius', '100%')
     .append("xhtml:div")
+    .style('border-radius', '100%')
     .style('width', '25px')
     .style('height', '25px')
     .style('display', 'flex')
@@ -516,14 +561,58 @@ legendCircle.append('foreignObject')
     .html(function(d, i) { return i + 1 });
 
 legendTypo.selectAll('foreignObject')
-    .data(newData)
+    .data(newData.slice(0, 10))
     .enter()
     .append('foreignObject')
     .attr('x', 0 )
     .attr('y', function(d, i) { return i*40 })
-    .style('width', '300px')
-    .style('height', '25px')
+    .attr('width', '300px')
+    .attr('height', '25px')
     .append("xhtml:div")
     .style('width', '300px')
     .style('height', '25px')
     .html(function(d, i) { return d['questions.subject']['value'] });
+
+
+// filters go in defs element
+var defs = svg.append("defs");
+
+var filter = defs.append("filter")
+    .attr("id", "drop-shadow")
+    .attr("height", "130%");
+
+// SourceAlpha refers to opacity of graphic that this filter will be applied to
+// convolve that with a Gaussian with standard deviation 3 and store result
+// in blur
+filter.append("feGaussianBlur")
+    .attr("in", "SourceAlpha")
+    .attr("stdDeviation", 2)
+    .attr("result", "blur");
+
+// translate output of Gaussian blur to the right and downwards with 2px
+// store result in offsetBlur
+filter.append("feOffset")
+    .attr("in", "blur")
+    .attr("dx", 1)
+    .attr("dy", 2)
+    .attr("result", "offsetBlur");
+
+// overlay original SourceGraphic over translated blurred opacity by using
+// feMerge filter. Order of specifying inputs is important!
+var feMerge = filter.append("feMerge");
+
+feMerge.append("feMergeNode")
+    .attr("in", "offsetBlur")
+feMerge.append("feMergeNode")
+    .attr("in", "SourceGraphic");
+
+// for each rendered node, apply #drop-shadow filter
+// var item = svg.selectAll("rect")
+//   .data(newData)
+//   .enter().append("rect")
+//     .attr("width", 170)
+//     .attr("height", 100)
+//     .attr("fill", "steelblue")
+//     .attr("stroke-width", 2)
+//     .style("filter", "url(#drop-shadow)")
+//     .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
