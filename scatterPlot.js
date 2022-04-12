@@ -19,13 +19,6 @@ const priorityScore = queryResponse.fields.measures[1].name //fact_table.priorit
 const absCorrelation = queryResponse.fields.measures[2].name //fact_table.abs_correlation_coefficient
 const averageRating = queryResponse.fields.measures[3].name //fact_table.avg_star_rating
 
-var newFormattedData = {}
-data.forEach(function(d) { 
-  newFormattedData[d[questionSubject]["value"]] = d[ratings]["value"], d[priorityScore]["value"], d[absCorrelation]["value"], d[averageRating]["value"] 
-})
-
-console.log(newFormattedData)
-
 // set the dimensions and margins of the graph
 var margin = { top: 10, right: 30, bottom: 30, left: 60 },
     width = 850 - margin.left - margin.right,
@@ -40,12 +33,13 @@ var svg = d3.select("#vis")
             .style('display', 'inline-block')
             .style('position', 'relative')
               .append("svg")
+                .style('position', 'fixed')
                 .attr('overflow', 'visible')
                 .attr("width", '100%' )
                 // .attr("height", height + margin.top + margin.bottom)
                 .attr("height", '100vh')
                 .attr("max-height", '950px')
-                .attr('viewBox', '0 0 1110 600');
+                .attr('viewBox', '0 0 1100 600');
 
 var visual = svg.append("g")
                 .attr("transform", "translate(" + 30 + "," + margin.top + ")");
@@ -65,7 +59,7 @@ var divGroup = [
       "alignment": "left"
   }, {
       "class": "topRight",
-      "transform": 'translate(401px, 0px)',
+      "transform": 'translate(386px, 0px)',
       "color": "#bddaa5", // green
       "text": "Leverage",
       "alignment": "end"
@@ -77,53 +71,27 @@ var divGroup = [
       "alignment": "left"
   }, {
       "class": "bottomRight",
-      "transform": 'translate(401px, 261px)',
+      "transform": 'translate(386px, 261px)',
       "color": "#d5e8ff", // blue
       "text": "Maintain",
       "alignment": "end"
   },
 ];
 
-var avgRating = newData.map((d,i) => {
-  return parseFloat(d['survey_question.avg_rating']['rendered'])
-})
-
-avgRating = avgRating.sort()
-
-function middle(arr) {
-  if (arr.length === 0) return undefined;
-      return arr[Math.floor(arr.length / 2)];
-}
-// taking the middle value of an array and + 0.1 becaouse of the space and to be precizely in the mid
-avgRating = middle(avgRating) + 0.1
-
-var colorMatcher = {
-  color: data.map((d)=> {
-      if(d['fact_table.abs_correlation_coefficient']['value'] >= 0.5 && d['fact_table.avg_star_rating']['value'] <= avgRating) {
-          return "#f29696" // red
-      }
-      if(d['fact_table.abs_correlation_coefficient']['value'] <= 0.5 && d['fact_table.avg_star_rating']['value'] <= avgRating) {
-          return "#f7e39c" // yellow
-      }
-      if (d['fact_table.abs_correlation_coefficient']['value'] >= 0.5 && d['fact_table.avg_star_rating']['value'] >= avgRating) {
-          return "#bddaa5" // green
-      }
-      if (d['fact_table.abs_correlation_coefficient']['value'] <= 0.5 && d['fact_table.avg_star_rating']['value'] >= avgRating) {
-        return "#d5e8ff" // blue
-      }
-  })
-};
-
-const minX = d3.min(data, d => d['fact_table.avg_star_rating']['rendered'])
-const maxX = d3.max(data, d => d['fact_table.avg_star_rating']['rendered'])
+const minX = d3.min(data, d => d[averageRating]['rendered'])
+const maxX = d3.max(data, d => d[averageRating]['rendered'])
 
 //   Add X axis
 var x = d3.scaleLinear()
     .domain([minX, maxX])
-    .range([ 0, width]).nice();
+    .range([ 0, width])
+    .nice();
+
+var xAxis = d3.axisBottom(x)
+
 visual.append("g")
     .attr("transform", "translate(0," + (height+2) + ")")
-    .call(d3.axisBottom(x))
+    .call(d3.axisBottom(xAxis))
     .call(g => g.select(".domain").remove());
 
 // Add Y axis
@@ -134,20 +102,47 @@ visual.append("g")
     .call(d3.axisLeft(y))
     .call(g => g.select(".domain").remove());
 
+var arryOfAvg = xAxis.scale().ticks()
+
+console.log(arryOfAvg)
+
+var midItem = ( (arryOfAvg[arryOfAvg.length -1] - arryOfAvg[0]) / 2 ) + arryOfAvg[0]
+
+console.log( midItem )
+
+var colorMatcher = {
+  color: data.map((d)=> {
+      if(d[absCorrelation]['value'] >= 0.5 && d[averageRating]['value'] <= midItem) {
+          return "#f29696" // red
+      }
+      if(d[absCorrelation]['value'] <= 0.5 && d[averageRating]['value'] <= midItem) {
+          return "#f7e39c" // yellow
+      }
+      if (d[absCorrelation]['value'] >= 0.5 && d[averageRating]['value'] >= midItem) {
+          return "#bddaa5" // green
+      }
+      if (d[absCorrelation]['value'] <= 0.5 && d[averageRating]['value'] >= midItem) {
+        return "#d5e8ff" // blue
+      }
+  })
+};
+
 //colored boxes with text inside
 visual.append('g')
     .selectAll("foreignObject")
     .data(divGroup)
     .enter()
     .append("foreignObject")
-        .attr('class', function (d) {return d.class;})
-        .attr("fill", function (d) {return d.color})
-        .style('background-color', function (d) {return d.color})
-        .style('width', (width / 2) - 5 + 'px')
-        .style('height', '250px')
-        .style("padding", "5px")
-        .style('border-radius', '10px')
-        .style("transform", function (d) {return d.transform})
+      .attr('width', (width / 2) - 5 + 'px')
+      .attr('height', '250px')
+      .attr('class', function (d) {return d.class;})
+      .attr("fill", function (d) {return d.color})
+      .style('background-color', function (d) {return d.color})
+      .style('width', (width / 2) - 5 + 'px')
+      .style('height', '250px')
+      .style("padding", "5px")
+      .style('border-radius', '10px')
+      .style("transform", function (d) {return d.transform})
     .append("xhtml:div")
     .style('background-color', function (d) {return d.color})
     .style("height", "100%")
@@ -156,7 +151,7 @@ visual.append('g')
     .html(d => d.text);
 
 var tooltip = d3.select("#chart")
-  .data(data)
+  .data(data.slice(0, 25))
   .append("foreignObject")
   .style("visibility", "hidden")
   .style("font-size", '12px')
@@ -166,7 +161,8 @@ var tooltip = d3.select("#chart")
   .style('padding', '10px')
   .style('position', 'absolute')
   .style('z-index', '3')
-  .style('width', '160px');
+  .style('width', '160px')
+  .attr('width', '160px');
 
 var mouseover = function(d) {
   tooltip.style("visibility", "visible")
@@ -175,15 +171,15 @@ var mouseover = function(d) {
 var mousemove = function(d) {
   tooltip
     .html(
-        `<strong style="font-size: 14px">${d['questions.subject']['value']}</strong>` + 
+        `<strong style="font-size: 14px">${d[questionSubject]['value']}</strong>` + 
         "<br><br>Ratings: " + 
-        `<strong style="font-size: 13px">${d["fact_table.ratings"]['value']}</strong>` + 
+        `<strong style="font-size: 13px">${d[ratings]['value']}</strong>` + 
         "<br>Priority Score: " + 
-        `<strong style="font-size: 13px">${Math.ceil(d['fact_table.priority_score']['value'])}</strong>` + 
+        `<strong style="font-size: 13px">${Math.ceil(d[priorityScore]['value'])}</strong>` + 
         "<br><br> Correlation (NPS): " + 
-        `<strong style="font-size: 13px">${d['fact_table.abs_correlation_coefficient']['rendered']}</strong>` + 
+        `<strong style="font-size: 13px">${d[absCorrelation]['rendered']}</strong>` + 
         "<br> Average Rating: " + 
-        `<strong style="font-size: 13px">${d['fact_table.avg_star_rating']['rendered']}</strong>`
+        `<strong style="font-size: 13px">${d[averageRating]['rendered']}</strong>`
         )
     .style("left", (d3.event.pageX) + "px")
     .style("top", (d3.event.pageY) + "px")
@@ -197,40 +193,36 @@ var mouseleave = function(d) {
 }
 
 // Circles with text inside
-visual.append('g')
-  .selectAll("foreignObject")
-  .data(data) // the .filter part is just to keep a few dots on the chart, not all of them
-  .enter()
-  .append("foreignObject")
-      .attr("x", d => { return x(d['fact_table.avg_star_rating']['rendered']) - 10 } )
-      .attr("y", d => { return y(d['fact_table.abs_correlation_coefficient']['rendered']) - 10 } )
-      // .attr('class', 'blot')
-      .style('-moz-box-shadow', ' 1px 2px 4px 0px rgba(0,0,0,0.60)')
-      .style('-webkit-box-shadow', ' 1px 2px 4px 0px rgba(0,0,0,0.60)')
-      .style('box-shadow', ' 1px 2px 4px 0px rgba(0,0,0,0.60)')
-      .style('border-radius', '100%')
-      .style('background-color', 'rgb(255, 255, 255)')
-      .style('border', '1px solid rgb(51, 51, 51)')
-      .style('width', '25px')
-      .style('height', '25px')
-      .style('cursor', 'default')
-      // hover
-      .on("mouseover", mouseover)
-      .on("mousemove", mousemove)
-      .on("mouseleave", mouseleave)
-  // add text inside the circle    
-  .append("xhtml:div")
-      .html((d, i) => i + 1)
-      .style('background-color', 'rgb(255, 255, 255)')
-      .style('border', '1px solid rgb(51, 51, 51)')
-      .style('height', '100%')
-      .style('border-radius', '100%')
-      .style('display', 'flex')
-      .style('justify-content', 'center')
-      .style('align-items', 'center');
+var elemEnter = visual.append('g').selectAll('g myCircleText')
+    .data(data.slice(0, 25))
+    .enter()
+	.append("g")
+    .style('cursor', 'default')
+	.attr("transform", function(d){return "translate("+ (x(d[averageRating]['rendered'])) +","+ (y(d[absCorrelation]['rendered'])) +")"})
+    .on("mouseover", mouseover)
+    .on("mousemove", mousemove)
+    .on("mouseleave", mouseleave);
+    /*Create the circle for each block */
+var circle = elemEnter.append("circle")
+    .attr("r", 12 )
+    .attr("fill", "white")
+    .attr("stroke", "rgb(51, 51, 51)")
+    .attr("stroke-width", 1)
+    .style('cursor', 'default')
+    .style('border-radius', '100%')
+    .style('border', '1px solid rgb(51, 51, 51)')
+    .attr("stroke-width", 2)
+    .style("filter", "url(#drop-shadow)")
+ 
+    /* Create the text for each block */
+    elemEnter.append("text")
+	    .attr("dx", function(d, i){return i >= 9 ? -7 : -4})
+	    .attr("dy", function(d){return 5})
+        .style("font-size", "12px")
+	    .text(function(d, i){return i + 1})
 
 var legendCircle = legend.selectAll('foreignObject')
-    .data(colorMatcher.color)
+    .data(colorMatcher.color.slice(0, 10))
       .enter();
   
 // Legend section
@@ -238,10 +230,11 @@ legendCircle.append('foreignObject')
     .attr('x', 0 )
     .attr('y', function(d, i) { return i*40; })
     .style('background-color', function(d, i) {return d})
-    .style('width', '25px')
-    .style('height', '25px')
+    .attr('width', '25px')
+    .attr('height', '25px')
     .style('border-radius', '100%')
     .append("xhtml:div")
+    .style('border-radius', '100%')
     .style('width', '25px')
     .style('height', '25px')
     .style('display', 'flex')
@@ -251,17 +244,43 @@ legendCircle.append('foreignObject')
     .html(function(d, i) { return i + 1 });
 
 legendTypo.selectAll('foreignObject')
-    .data(data)
+    .data(data.slice(0, 10))
     .enter()
     .append('foreignObject')
     .attr('x', 0 )
     .attr('y', function(d, i) { return i*40 })
-    .style('width', '300px')
-    .style('height', '25px')
+    .attr('width', '300px')
+    .attr('height', '25px')
     .append("xhtml:div")
     .style('width', '300px')
     .style('height', '25px')
-    .html(function(d, i) { return d['questions.subject']['value'] });
+    .html(function(d, i) { return d[questionSubject]['value'] });
+
+
+// filters section, shadow circle
+var defs = svg.append("defs");
+
+var filter = defs.append("filter")
+    .attr("id", "drop-shadow")
+    .attr("height", "130%");
+
+filter.append("feGaussianBlur")
+    .attr("in", "SourceAlpha")
+    .attr("stdDeviation", 1.8)
+    .attr("result", "blur");
+
+filter.append("feOffset")
+    .attr("in", "blur")
+    .attr("dx", 1)
+    .attr("dy", 2)
+    .attr("result", "offsetBlur");
+
+var feMerge = filter.append("feMerge");
+
+feMerge.append("feMergeNode")
+    .attr("in", "offsetBlur")
+feMerge.append("feMergeNode")
+    .attr("in", "SourceGraphic");
 
     doneRendering();
   },

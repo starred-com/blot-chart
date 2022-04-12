@@ -32,185 +32,336 @@ var legendTypo = svg.append("g")
                 .attr("transform", "translate(" + 860 + "," + margin.top + ")");
 
 var newData = [
-    {
-        "questions.subject": {
-            "value": "Amount of communication"
+        {
+            "questions.subject": {
+                "value": "Communication & Managing Expectations",
+                "filterable_value": "\"Communication & Managing Expectations\""
+            },
+            "fact_table.ratings": {
+                "value": 804
+            },
+            "fact_table.priority_score": {
+                "value": 1.6753841032626702,
+                "rendered": "1.68"
+            },
+            "fact_table.abs_correlation_coefficient": {
+                "value": 0.7277001708129568,
+                "rendered": "0.73",
+                "html": "1.  Communication &amp; Managing Expectations  0.73 "
+            },
+            "fact_table.avg_star_rating": {
+                "value": 7.6977,
+                "rendered": "7.7"
+            }
         },
-        "fact_table.ratings": {
-            "value": 43
+        {
+            "questions.subject": {
+                "value": "Belongingness"
+            },
+            "fact_table.ratings": {
+                "value": 481
+            },
+            "fact_table.priority_score": {
+                "value": 1.641980524651498,
+                "rendered": "1.64"
+            },
+            "fact_table.abs_correlation_coefficient": {
+                "value": 0.7667789878824591,
+                "rendered": "0.77",
+                "html": "2.  Belongingness  0.77 "
+            },
+            "fact_table.avg_star_rating": {
+                "value": 7.8586,
+                "rendered": "7.9"
+            }
         },
-        "fact_table.priority_score": {
-            "value": 6.712057923247663,
-            "rendered": "6.71"
+        {
+            "questions.subject": {
+                "value": "Interview Preparation"
+            },
+            "fact_table.ratings": {
+                "value": 783
+            },
+            "fact_table.priority_score": {
+                "value": 1.3845934823584911,
+                "rendered": "1.38"
+            },
+            "fact_table.abs_correlation_coefficient": {
+                "value": 0.7003153519591782,
+                "rendered": "0.70",
+                "html": "3.  Interview Preparation  0.70 "
+            },
+            "fact_table.avg_star_rating": {
+                "value": 8.0229,
+                "rendered": "8.0"
+            }
         },
-        "fact_table.abs_correlation_coefficient": {
-            "value": 0.19000639502569383,
-            "rendered": "0.19",
-            "html": "7.  Amount of communication  0.19 "
+        {
+            "questions.subject": {
+                "value": "Team Overview"
+            },
+            "fact_table.ratings": {
+                "value": 789
+            },
+            "fact_table.priority_score": {
+                "value": 1.3425283379255983,
+                "rendered": "1.34"
+            },
+            "fact_table.abs_correlation_coefficient": {
+                "value": 0.6927748273520813,
+                "rendered": "0.69",
+                "html": "4.  Team Overview  0.69 "
+            },
+            "fact_table.avg_star_rating": {
+                "value": 8.0621,
+                "rendered": "8.1"
+            }
         },
-        "fact_table.avg_star_rating": {
-            "value": 7,
-            "rendered": "7.0",
-            "filterable_value": "7.0"
+        {
+            "questions.subject": {
+                "value": "Respectful Hiring"
+            },
+            "fact_table.ratings": {
+                "value": 483
+            },
+            "fact_table.priority_score": {
+                "value": 1.3181688177517794,
+                "rendered": "1.32"
+            },
+            "fact_table.abs_correlation_coefficient": {
+                "value": 0.7153464035121178,
+                "rendered": "0.72",
+                "html": "5.  Respectful Hiring  0.72 "
+            },
+            "fact_table.avg_star_rating": {
+                "value": 8.1573,
+                "rendered": "8.2"
+            }
+        },
+        {
+            "questions.subject": {
+                "value": "Interview"
+            },
+            "fact_table.ratings": {
+                "value": 798
+            },
+            "fact_table.priority_score": {
+                "value": 1.3092572449771571,
+                "rendered": "1.31"
+            },
+            "fact_table.abs_correlation_coefficient": {
+                "value": 0.6533871868335948,
+                "rendered": "0.65",
+                "html": "6.  Interview  0.65 "
+            },
+            "fact_table.avg_star_rating": {
+                "value": 7.9962,
+                "rendered": "8.0"
+            }
+        },
+        {
+            "questions.subject": {
+                "value": "Preparation for Interview(s)"
+            },
+            "fact_table.ratings": {
+                "value": 796
+            },
+            "fact_table.priority_score": {
+                "value": 1.306116825093133,
+                "rendered": "1.31"
+            },
+            "fact_table.abs_correlation_coefficient": {
+                "value": 0.6362611190048387,
+                "rendered": "0.64",
+                "html": "7.  Preparation for Interview(s)  0.64 "
+            },
+            "fact_table.avg_star_rating": {
+                "value": 7.9472,
+                "rendered": "7.9"
+            }
+        },
+        {
+            "questions.subject": {
+                "value": "Interview Atmosphere"
+            },
+            "fact_table.ratings": {
+                "value": 784
+            },
+            "fact_table.priority_score": {
+                "value": 1.290910266757768,
+                "rendered": "1.29"
+            },
+            "fact_table.abs_correlation_coefficient": {
+                "value": 0.6706724162290981,
+                "rendered": "0.67",
+                "html": "8.  Interview Atmosphere  0.67 "
+            },
+            "fact_table.avg_star_rating": {
+                "value": 8.0752,
+                "rendered": "8.1"
+            }
+        },
+        {
+            "questions.subject": {
+                "value": "Engagement"
+            },
+            "fact_table.ratings": {
+                "value": 787
+            },
+            "fact_table.priority_score": {
+                "value": 1.280152057749692,
+                "rendered": "1.28"
+            },
+            "fact_table.abs_correlation_coefficient": {
+                "value": 0.684426891440169,
+                "rendered": "0.68",
+                "html": "9.  Engagement  0.68 "
+            },
+            "fact_table.avg_star_rating": {
+                "value": 8.1296,
+                "rendered": "8.1"
+            }
+        },
+        {
+            "questions.subject": {
+                "value": "Responsiveness"
+            },
+            "fact_table.ratings": {
+                "value": 793
+            },
+            "fact_table.priority_score": {
+                "value": 1.2638603116429,
+                "rendered": "1.26"
+            },
+            "fact_table.abs_correlation_coefficient": {
+                "value": 0.6347229367431196,
+                "rendered": "0.63",
+                "html": "10.  Responsiveness  0.63 "
+            },
+            "fact_table.avg_star_rating": {
+                "value": 8.0088,
+                "rendered": "8.0"
+            }
+        },
+        {
+            "questions.subject": {
+                "value": "Scheduling of Interview(s)"
+            },
+            "fact_table.ratings": {
+                "value": 802
+            },
+            "fact_table.priority_score": {
+                "value": 1.1230153905564209,
+                "rendered": "1.12"
+            },
+            "fact_table.abs_correlation_coefficient": {
+                "value": 0.576230381526205,
+                "rendered": "0.58",
+                "html": "11.  Scheduling of Interview(s)  0.58 "
+            },
+            "fact_table.avg_star_rating": {
+                "value": 8.0511,
+                "rendered": "8.1"
+            }
+        },
+        {
+            "questions.subject": {
+                "value": "Preparation Materials"
+            },
+            "fact_table.ratings": {
+                "value": 798
+            },
+            "fact_table.priority_score": {
+                "value": 1.059649736676234,
+                "rendered": "1.06"
+            },
+            "fact_table.abs_correlation_coefficient": {
+                "value": 0.6001301108207703,
+                "rendered": "0.60",
+                "html": "12.  Preparation Materials  0.60 "
+            },
+            "fact_table.avg_star_rating": {
+                "value": 8.2343,
+                "rendered": "8.2"
+            }
+        },
+        {
+            "questions.subject": {
+                "value": "Asking Questions"
+            },
+            "fact_table.ratings": {
+                "value": 790
+            },
+            "fact_table.priority_score": {
+                "value": 1.0521646266877305,
+                "rendered": "1.05"
+            },
+            "fact_table.abs_correlation_coefficient": {
+                "value": 0.6458167362433898,
+                "rendered": "0.65",
+                "html": "13.  Asking Questions  0.65 "
+            },
+            "fact_table.avg_star_rating": {
+                "value": 8.3708,
+                "rendered": "8.4"
+            }
+        },
+        {
+            "questions.subject": {
+                "value": "Job Description"
+            },
+            "fact_table.ratings": {
+                "value": 792
+            },
+            "fact_table.priority_score": {
+                "value": 0.9279414869433581,
+                "rendered": "0.93"
+            },
+            "fact_table.abs_correlation_coefficient": {
+                "value": 0.5226955933889247,
+                "rendered": "0.52",
+                "html": "14.  Job Description  0.52 "
+            },
+            "fact_table.avg_star_rating": {
+                "value": 8.2247,
+                "rendered": "8.2"
+            }
+        },
+        {
+            "questions.subject": {
+                "value": "Careers Site"
+            },
+            "fact_table.ratings": {
+                "value": 767
+            },
+            "fact_table.priority_score": {
+                "value": 0.5692001932824088,
+                "rendered": "0.57"
+            },
+            "fact_table.abs_correlation_coefficient": {
+                "value": 0.44639651265187735,
+                "rendered": "0.45",
+                "html": "15.  Careers Site  0.45 "
+            },
+            "fact_table.avg_star_rating": {
+                "value": 8.7249,
+                "rendered": "8.7"
+            }
         }
-    },
-    {
-        "questions.subject": {
-            "value": "Useful job advertisement"
-        },
-        "fact_table.ratings": {
-            "value": 59
-        },
-        "fact_table.priority_score": {
-            "value": -1.366201208276908,
-            "rendered": "-1.37"
-        },
-        "fact_table.abs_correlation_coefficient": {
-            "value": 0.2081682751059653,
-            "rendered": "0.21",
-            "html": "10.  Useful job advertisement  0.21 "
-        },
-        "fact_table.avg_star_rating": {
-            "value": 7.3559,
-            "rendered": "7.4"
-        }
-    },
-    {
-        "questions.subject": {
-            "value": "Easy to find job online"
-        },
-        "fact_table.ratings": {
-            "value": 64
-        },
-        "fact_table.priority_score": {
-            "value": -1.0118138317309624,
-            "rendered": "-1.01"
-        },
-        "fact_table.abs_correlation_coefficient": {
-            "value": 0.1391752692520603,
-            "rendered": "0.14",
-            "html": "9.  Easy to find job online  0.14 "
-        },
-        "fact_table.avg_star_rating": {
-            "value": 7.7656,
-            "rendered": "7.8"
-        }
-    },
-    {
-        "questions.subject": {
-            "value": "Speed of the process"
-        },
-        "fact_table.ratings": {
-            "value": 82
-        },
-        "fact_table.priority_score": {
-            "value": 12.381535356196053,
-            "rendered": "12.38"
-        },
-        "fact_table.abs_correlation_coefficient": {
-            "value": 0.23304307359793325,
-            "rendered": "0.23",
-            "html": "4.  Speed of the process  0.23 "
-        },
-        "fact_table.avg_star_rating": {
-            "value": 6.4634,
-            "rendered": "6.5"
-        }
-    },
-    {
-        "questions.subject": {
-            "value": "Quick and easy application form"
-        },
-        "fact_table.ratings": {
-            "value": 84
-        },
-        "fact_table.priority_score": {
-            "value": 2.340889266279141,
-            "rendered": "2.34"
-        },
-        "fact_table.abs_correlation_coefficient": {
-            "value": 0.10403280136555446,
-            "rendered": "0.10",
-            "html": "8.  Quick and easy application form  0.10 "
-        },
-        "fact_table.avg_star_rating": {
-            "value": 7.3809,
-            "rendered": "7.4"
-        }
-    },
-    {
-        "questions.subject": {
-            "value": "Planning of interview(s)"
-        },
-        "fact_table.ratings": {
-            "value": 85
-        },
-        "fact_table.priority_score": {
-            "value": 8.342587778597474,
-            "rendered": "8.34"
-        },
-        "fact_table.abs_correlation_coefficient": {
-            "value": 0.20593908309547998,
-            "rendered": "0.21",
-            "html": "6.  Planning of interview(s)  0.21 "
-        },
-        "fact_table.avg_star_rating": {
-            "value": 6.8352,
-            "rendered": "6.8"
-        }
-    },
-    {
-        "questions.subject": {
-            "value": "Quick response"
-        },
-        "fact_table.ratings": {
-            "value": 89
-        },
-        "fact_table.priority_score": {
-            "value": 9.100605785983744,
-            "rendered": "9.10"
-        },
-        "fact_table.abs_correlation_coefficient": {
-            "value": 0.20612435956900377,
-            "rendered": "0.21",
-            "html": "5.  Quick response  0.21 "
-        },
-        "fact_table.avg_star_rating": {
-            "value": 6.6966,
-            "rendered": "6.7"
-        }
-    },
-    {
-        "questions.subject": {
-            "value": "Preparation of interview(s)"
-        },
-        "fact_table.ratings": {
-            "value": 100
-        },
-        "fact_table.priority_score": {
-            "value": 57.84213974953537,
-            "rendered": "57.84"
-        },
-        "fact_table.abs_correlation_coefficient": {
-            "value": 0.49887840821524326,
-            "rendered": "0.50",
-            "html": "1.  Preparation of interview(s)  0.50 "
-        },
-        "fact_table.avg_star_rating": {
-            "value": 5.69,
-            "rendered": "5.7"
-        }
-    },
+    ];
+
+var newData2 = [
     {
         "questions.subject": {
             "value": "Proficiency interviewer"
         },
         "fact_table.ratings": {
-            "value": 107
+            "value": 1391,
+            "rendered": "1,391"
         },
         "fact_table.priority_score": {
-            "value": 36.59113894130051,
-            "rendered": "36.59"
+            "value": 1.7732079665480414,
+            "rendered": "1.77"
         },
         "fact_table.abs_correlation_coefficient": {
             "value": 0.6042417932760994,
@@ -227,11 +378,12 @@ var newData = [
             "value": "Proficiency recruiter"
         },
         "fact_table.ratings": {
-            "value": 107
+            "value": 1391,
+            "rendered": "1,391"
         },
         "fact_table.priority_score": {
-            "value": 25.35122501167678,
-            "rendered": "25.35"
+            "value": 1.4367482708046782,
+            "rendered": "1.44"
         },
         "fact_table.abs_correlation_coefficient": {
             "value": 0.5228912438783995,
@@ -242,7 +394,181 @@ var newData = [
             "value": 7.2523,
             "rendered": "7.3"
         }
-    }
+    },
+    {
+        "questions.subject": {
+            "value": "Preparation of interview(s)"
+        },
+        "fact_table.ratings": {
+            "value": 1300,
+            "rendered": "1,300"
+        },
+        "fact_table.priority_score": {
+            "value": 2.150165939407698,
+            "rendered": "2.15"
+        },
+        "fact_table.abs_correlation_coefficient": {
+            "value": 0.49887840821524326,
+            "rendered": "0.50",
+            "html": "1.  Preparation of interview(s)  0.50 "
+        },
+        "fact_table.avg_star_rating": {
+            "value": 5.69,
+            "rendered": "5.7"
+        }
+    },
+    {
+        "questions.subject": {
+            "value": "Quick response"
+        },
+        "fact_table.ratings": {
+            "value": 1157,
+            "rendered": "1,157"
+        },
+        "fact_table.priority_score": {
+            "value": 0.6809112094002471,
+            "rendered": "0.68"
+        },
+        "fact_table.abs_correlation_coefficient": {
+            "value": 0.20612435956900377,
+            "rendered": "0.21",
+            "html": "5.  Quick response  0.21 "
+        },
+        "fact_table.avg_star_rating": {
+            "value": 6.6966,
+            "rendered": "6.7"
+        }
+    },
+    {
+        "questions.subject": {
+            "value": "Planning of interview(s)"
+        },
+        "fact_table.ratings": {
+            "value": 1105,
+            "rendered": "1,105"
+        },
+        "fact_table.priority_score": {
+            "value": 0.651756010180575,
+            "rendered": "0.65"
+        },
+        "fact_table.abs_correlation_coefficient": {
+            "value": 0.20593908309547998,
+            "rendered": "0.21",
+            "html": "6.  Planning of interview(s)  0.21 "
+        },
+        "fact_table.avg_star_rating": {
+            "value": 6.8352,
+            "rendered": "6.8"
+        }
+    },
+    {
+        "questions.subject": {
+            "value": "Quick and easy application form"
+        },
+        "fact_table.ratings": {
+            "value": 1092,
+            "rendered": "1,092"
+        },
+        "fact_table.priority_score": {
+            "value": 0.27247231005652367,
+            "rendered": "0.27"
+        },
+        "fact_table.abs_correlation_coefficient": {
+            "value": 0.10403280136555446,
+            "rendered": "0.10",
+            "html": "8.  Quick and easy application form  0.10 "
+        },
+        "fact_table.avg_star_rating": {
+            "value": 7.3809,
+            "rendered": "7.4"
+        }
+    },
+    {
+        "questions.subject": {
+            "value": "Speed of the process"
+        },
+        "fact_table.ratings": {
+            "value": 1066,
+            "rendered": "1,066"
+        },
+        "fact_table.priority_score": {
+            "value": 0.8241801340864509,
+            "rendered": "0.82"
+        },
+        "fact_table.abs_correlation_coefficient": {
+            "value": 0.23304307359793328,
+            "rendered": "0.23",
+            "html": "4.  Speed of the process  0.23 "
+        },
+        "fact_table.avg_star_rating": {
+            "value": 6.4634,
+            "rendered": "6.5"
+        }
+    },
+    {
+        "questions.subject": {
+            "value": "Easy to find job online"
+        },
+        "fact_table.ratings": {
+            "value": 832
+        },
+        "fact_table.priority_score": {
+            "value": -0.3109732216168035,
+            "rendered": "-0.31"
+        },
+        "fact_table.abs_correlation_coefficient": {
+            "value": 0.1391752692520603,
+            "rendered": "0.14",
+            "html": "9.  Easy to find job online  0.14 "
+        },
+        "fact_table.avg_star_rating": {
+            "value": 7.7656,
+            "rendered": "7.8"
+        }
+    },
+    {
+        "questions.subject": {
+            "value": "Useful job advertisement"
+        },
+        "fact_table.ratings": {
+            "value": 767
+        },
+        "fact_table.priority_score": {
+            "value": -0.5504177362076829,
+            "rendered": "-0.55"
+        },
+        "fact_table.abs_correlation_coefficient": {
+            "value": 0.20816827510596533,
+            "rendered": "0.21",
+            "html": "10.  Useful job advertisement  0.21 "
+        },
+        "fact_table.avg_star_rating": {
+            "value": 7.3559,
+            "rendered": "7.4"
+        }
+    },
+    {
+        "questions.subject": {
+            "value": "Amount of communication"
+        },
+        "fact_table.ratings": {
+            "value": 559
+        },
+        "fact_table.priority_score": {
+            "value": 0.5700191850770815,
+            "rendered": "0.57"
+        },
+        "fact_table.abs_correlation_coefficient": {
+            "value": 0.19000639502569383,
+            "rendered": "0.19",
+            "html": "7.  Amount of communication  0.19 "
+        },
+        "fact_table.avg_star_rating": {
+            "value": 7,
+            "rendered": "7.0",
+            "filterable_value": "7.0"
+        }
+    },
 ];
 
 var data = [
@@ -346,53 +672,19 @@ var divGroup = [
     },
 ];
 
-const minX = d3.min(newData, d => d['fact_table.avg_star_rating']['rendered'])
-const maxX = d3.max(newData, d => d['fact_table.avg_star_rating']['rendered'])
-
-var avgRating = newData.map((d,i) => {
-    return d['fact_table.avg_star_rating']['rendered']
-})
-
-avgRating = avgRating.sort()
-
-avgRating = [...new Set(avgRating)]
-console.log(avgRating)
-
-function middle(arr) {
-    if (arr.length === 0) return undefined;
-        return arr[Math.floor(arr.length / 2)];
-}
-// taking the middle value of an array and - 0.3 because of scaleLinear function adds extra 3 ticks
-avgRating = middle(avgRating) - 0.3;
-
-console.log(avgRating);
-
-var colorMatcher = {
-    color: newData.map((d)=> {
-        if(d['fact_table.abs_correlation_coefficient']['value'] >= 0.5 && d['fact_table.avg_star_rating']['value'] <= avgRating) {
-            return "#f29696" // red
-        }
-        if(d['fact_table.abs_correlation_coefficient']['value'] <= 0.5 && d['fact_table.avg_star_rating']['value'] <= avgRating) {
-            return "#f7e39c" // yellow
-        }
-        if (d['fact_table.abs_correlation_coefficient']['value'] >= 0.5 && d['fact_table.avg_star_rating']['value'] >= avgRating) {
-            return "#bddaa5" // green
-        }
-        if (d['fact_table.abs_correlation_coefficient']['value'] <= 0.5 && d['fact_table.avg_star_rating']['value'] >= avgRating) {
-            return "#d5e8ff" // blue
-        }
-    })
-};
+const minX = d3.min(newData2, d => d['fact_table.avg_star_rating']['rendered'])
+const maxX = d3.max(newData2, d => d['fact_table.avg_star_rating']['rendered'])
 
 //   Add X axis
 var x = d3.scaleLinear()
     .domain([ minX, maxX ])
-    .range([ 0, width ])
-    .nice();
+    .range([ 0, width ]).nice();
+
+var xAxis = d3.axisBottom(x)
 
 visual.append("g")
     .attr("transform", "translate(0," + (height+2) + ")")
-    .call(d3.axisBottom(x))
+    .call(xAxis)
     .call(g => g.select(".domain").remove());
 
 // Add Y axis
@@ -403,6 +695,31 @@ var y = d3.scaleLinear()
 visual.append("g")
     .call(d3.axisLeft(y))
     .call(g => g.select(".domain").remove());
+
+var arryOfAvg = xAxis.scale().ticks()
+
+console.log(arryOfAvg)
+
+var midItem = ( (arryOfAvg[arryOfAvg.length -1] - arryOfAvg[0]) / 2 ) + arryOfAvg[0]
+
+console.log( midItem )
+
+var colorMatcher = {
+    color: newData2.map((d)=> {
+        if(d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['value'] <= midItem) {
+            return "#f29696" // red
+        }
+        if(d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['value'] <= midItem) {
+            return "#f7e39c" // yellow
+        }
+        if (d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['value'] >= midItem) {
+            return "#bddaa5" // green
+        }
+        if (d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['value'] >= midItem) {
+            return "#d5e8ff" // blue
+        }
+    })
+};
 
 //colored boxes with text inside
 visual.append('g')
@@ -427,8 +744,9 @@ visual.append('g')
     .style("padding", "5px")
     .html(d => d.text);
 
+//Tooltips
 var tooltip = d3.select("#chart")
-    .data(newData)
+    .data(newData2.slice(0, 25))
     .append("foreignObject")
     .style("visibility", "hidden")
     .style("font-size", '12px')
@@ -467,76 +785,35 @@ var mouseleave = function(d) {
       .transition()
       .duration(100)
       .style("visibility", "hidden")
-}
+} 
 
 // Circles with text inside
-// visual.append('g')
-//     .selectAll("foreignObject")
-    // .data(newData) // the .filter part is just to keep a few dots on the chart, not all of them
-    // .enter()
-    // .append("circle")
-    //     .attr("cx", d => { return x(d['fact_table.avg_star_rating']['rendered']) - 10 } )
-    //     .attr("cy", d => { return y(d['fact_table.abs_correlation_coefficient']['rendered']) - 10 } )
-    //     .attr('r', 15)
-        // .attr('width', '25px')
-        // .attr('height', '28px')
-        // .style('cursor', 'default')
-        // .attr('fill', 'rgb(255, 255, 255)')
-        // .style('-moz-box-shadow', ' 1px 2px 4px 0px rgba(0,0,0,0.60)')
-        // .style('-webkit-box-shadow', ' 1px 2px 4px 0px rgba(0,0,0,0.60)')
-        // .style('box-shadow', ' 1px 2px 4px 0px rgba(0,0,0,0.60)')
-        // .style('border-radius', '100%')
-        // .style('border', '1px solid rgb(51, 51, 51)')
-        // .attr("stroke-width", 2)
-        // .style("filter", "url(#drop-shadow)")
-        // hover
-        // .on("mouseover", mouseover)
-        // .on("mousemove", mousemove)
-        // .on("mouseleave", mouseleave)
-     // add text inside the circle    
-    // .append("xhtml:div")
-    //     .html((d, i) => i + 1)
-    //     .style('border-radius', '100%')
-    //     .style('background-color', 'rgb(255, 255, 255)')
-    //     .style('height', '100%')
-    //     .style('display', 'flex')
-    //     .style('justify-content', 'center')
-    //     .style('align-items', 'center');
-
-    
-
-
 var elemEnter = visual.append('g').selectAll('g myCircleText')
-    .data(newData)
+    .data(newData2.slice(0, 25))
     .enter()
 	.append("g")
     .style('cursor', 'default')
-	.attr("transform", function(d){return "translate("+ (x(d['fact_table.avg_star_rating']['rendered']) - 10) +","+ (y(d['fact_table.abs_correlation_coefficient']['rendered']) - 10) +")"})
+	.attr("transform", function(d){return "translate("+ (x(d['fact_table.avg_star_rating']['rendered'])) +","+ (y(d['fact_table.abs_correlation_coefficient']['rendered'])) +")"})
     .on("mouseover", mouseover)
     .on("mousemove", mousemove)
     .on("mouseleave", mouseleave);
     /*Create the circle for each block */
     var circle = elemEnter.append("circle")
-	    .attr("r", 15 )
-	    // .attr("stroke","black")
+	    .attr("r", 12 )
 	    .attr("fill", "white")
-        // .attr("cx", d => { return x(d['fact_table.avg_star_rating']['rendered']) - 10 } )
-        // .attr("cy", d => { return y(d['fact_table.abs_correlation_coefficient']['rendered']) - 10 } )
+	    .attr("stroke", "rgb(51, 51, 51)")
+        .attr("stroke-width", 1)
         .style('cursor', 'default')
         .style('border-radius', '100%')
         .style('border', '1px solid rgb(51, 51, 51)')
-        .attr("stroke-width", 2)
         .style("filter", "url(#drop-shadow)")
  
     /* Create the text for each block */
     elemEnter.append("text")
-	    .attr("dx", function(d, i){return i === 9 ? -7 : -4})
+	    .attr("dx", function(d, i){return i >= 9 ? -7 : -4})
 	    .attr("dy", function(d){return 5})
-        .style("font-size", "14px")
+        .style("font-size", "12px")
 	    .text(function(d, i){return i + 1})
-        // .attr("x", d => { return x(d['fact_table.avg_star_rating']['rendered']) - 10 } )
-        // .attr("y", d => { return y(d['fact_table.abs_correlation_coefficient']['rendered']) - 10 } )
-
 
 // Legend section
 var legendCircle = legend.selectAll('foreignObject')
@@ -561,7 +838,7 @@ legendCircle.append('foreignObject')
     .html(function(d, i) { return i + 1 });
 
 legendTypo.selectAll('foreignObject')
-    .data(newData.slice(0, 10))
+    .data(newData2.slice(0, 10))
     .enter()
     .append('foreignObject')
     .attr('x', 0 )
@@ -573,46 +850,27 @@ legendTypo.selectAll('foreignObject')
     .style('height', '25px')
     .html(function(d, i) { return d['questions.subject']['value'] });
 
-
-// filters go in defs element
+// filters section, shadow circle
 var defs = svg.append("defs");
 
 var filter = defs.append("filter")
     .attr("id", "drop-shadow")
     .attr("height", "130%");
 
-// SourceAlpha refers to opacity of graphic that this filter will be applied to
-// convolve that with a Gaussian with standard deviation 3 and store result
-// in blur
 filter.append("feGaussianBlur")
     .attr("in", "SourceAlpha")
-    .attr("stdDeviation", 2)
+    .attr("stdDeviation", 1.8)
     .attr("result", "blur");
 
-// translate output of Gaussian blur to the right and downwards with 2px
-// store result in offsetBlur
 filter.append("feOffset")
     .attr("in", "blur")
     .attr("dx", 1)
     .attr("dy", 2)
     .attr("result", "offsetBlur");
 
-// overlay original SourceGraphic over translated blurred opacity by using
-// feMerge filter. Order of specifying inputs is important!
 var feMerge = filter.append("feMerge");
 
 feMerge.append("feMergeNode")
     .attr("in", "offsetBlur")
 feMerge.append("feMergeNode")
     .attr("in", "SourceGraphic");
-
-// for each rendered node, apply #drop-shadow filter
-// var item = svg.selectAll("rect")
-//   .data(newData)
-//   .enter().append("rect")
-//     .attr("width", 170)
-//     .attr("height", 100)
-//     .attr("fill", "steelblue")
-//     .attr("stroke-width", 2)
-//     .style("filter", "url(#drop-shadow)")
-//     .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });

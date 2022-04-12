@@ -78,48 +78,25 @@ var divGroup = [
   },
 ];
 
-var avgRating = data.map((d,i) => {
-  return d[averageRating]['rendered']
-})
-avgRating = avgRating.sort()
-avgRating = [...new Set(avgRating)]
+const minX = d3.min(data, d => d[averageRating]['rendered'])
+const maxX = d3.max(data, d => d[averageRating]['rendered'])
+
 function middle(arr) {
   if (arr.length === 0) return undefined;
       return arr[Math.floor(arr.length / 2)];
 }
-// taking the middle value of an array and - 0.3 because of scaleLinear function adds extra 3 ticks
-avgRating = middle(avgRating) - 0.3;
-
-console.log(avgRating)
-
-var colorMatcher = {
-  color: data.map((d)=> {
-      if(d[absCorrelation]['value'] >= 0.5 && d[averageRating]['value'] <= avgRating) {
-          return "#f29696" // red
-      }
-      if(d[absCorrelation]['value'] <= 0.5 && d[averageRating]['value'] <= avgRating) {
-          return "#f7e39c" // yellow
-      }
-      if (d[absCorrelation]['value'] >= 0.5 && d[averageRating]['value'] >= avgRating) {
-          return "#bddaa5" // green
-      }
-      if (d[absCorrelation]['value'] <= 0.5 && d[averageRating]['value'] >= avgRating) {
-        return "#d5e8ff" // blue
-      }
-  })
-};
-
-const minX = d3.min(data, d => d[averageRating]['rendered'])
-const maxX = d3.max(data, d => d[averageRating]['rendered'])
 
 //   Add X axis
 var x = d3.scaleLinear()
     .domain([minX, maxX])
     .range([ 0, width])
     .nice();
+
+var xAxis = d3.axisBottom(x)
+
 visual.append("g")
     .attr("transform", "translate(0," + (height+2) + ")")
-    .call(d3.axisBottom(x))
+    .call(d3.axisBottom(xAxis))
     .call(g => g.select(".domain").remove());
 
 // Add Y axis
@@ -129,6 +106,31 @@ var y = d3.scaleLinear()
 visual.append("g")
     .call(d3.axisLeft(y))
     .call(g => g.select(".domain").remove());
+
+var arryOfAvg = xAxis.scale().ticks()
+
+console.log(arryOfAvg)
+
+var midItem = ( (arryOfAvg[arryOfAvg.length -1] - arryOfAvg[0]) / 2 ) + arryOfAvg[0]
+
+console.log( midItem )
+
+var colorMatcher = {
+  color: data.map((d)=> {
+      if(d[absCorrelation]['value'] >= 0.5 && d[averageRating]['value'] <= midItem) {
+          return "#f29696" // red
+      }
+      if(d[absCorrelation]['value'] <= 0.5 && d[averageRating]['value'] <= midItem) {
+          return "#f7e39c" // yellow
+      }
+      if (d[absCorrelation]['value'] >= 0.5 && d[averageRating]['value'] >= midItem) {
+          return "#bddaa5" // green
+      }
+      if (d[absCorrelation]['value'] <= 0.5 && d[averageRating]['value'] >= midItem) {
+        return "#d5e8ff" // blue
+      }
+  })
+};
 
 //colored boxes with text inside
 visual.append('g')
@@ -154,7 +156,7 @@ visual.append('g')
     .html(d => d.text);
 
 var tooltip = d3.select("#chart")
-  .data(data)
+  .data(data.slice(0, 25))
   .append("foreignObject")
   .style("visibility", "hidden")
   .style("font-size", '12px')
@@ -197,29 +199,31 @@ var mouseleave = function(d) {
 
 // Circles with text inside
 var elemEnter = visual.append('g').selectAll('g myCircleText')
-    .data(data)
+    .data(data.slice(0, 25))
     .enter()
 	.append("g")
     .style('cursor', 'default')
-	.attr("transform", function(d){return "translate("+ (x(d[averageRating]['rendered']) - 10) +","+ (y(d[absCorrelation]['rendered']) - 10) +")"})
+	.attr("transform", function(d){return "translate("+ (x(d[averageRating]['rendered'])) +","+ (y(d[absCorrelation]['rendered'])) +")"})
     .on("mouseover", mouseover)
     .on("mousemove", mousemove)
     .on("mouseleave", mouseleave);
     /*Create the circle for each block */
-    var circle = elemEnter.append("circle")
-	    .attr("r", 15 )
-	    .attr("fill", "white")
-        .style('cursor', 'default')
-        .style('border-radius', '100%')
-        .style('border', '1px solid rgb(51, 51, 51)')
-        .attr("stroke-width", 2)
-        .style("filter", "url(#drop-shadow)")
+var circle = elemEnter.append("circle")
+    .attr("r", 12 )
+    .attr("fill", "white")
+    .attr("stroke", "rgb(51, 51, 51)")
+    .attr("stroke-width", 1)
+    .style('cursor', 'default')
+    .style('border-radius', '100%')
+    .style('border', '1px solid rgb(51, 51, 51)')
+    .attr("stroke-width", 2)
+    .style("filter", "url(#drop-shadow)")
  
     /* Create the text for each block */
     elemEnter.append("text")
-	    .attr("dx", function(d, i){return i === 9 ? -7 : -4})
+	    .attr("dx", function(d, i){return i >= 9 ? -7 : -4})
 	    .attr("dy", function(d){return 5})
-        .style("font-size", "14px")
+        .style("font-size", "12px")
 	    .text(function(d, i){return i + 1})
 
 var legendCircle = legend.selectAll('foreignObject')
@@ -267,7 +271,7 @@ var filter = defs.append("filter")
 
 filter.append("feGaussianBlur")
     .attr("in", "SourceAlpha")
-    .attr("stdDeviation", 2)
+    .attr("stdDeviation", 1.8)
     .attr("result", "blur");
 
 filter.append("feOffset")
