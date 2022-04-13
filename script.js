@@ -804,8 +804,8 @@ var elemEnter = visual.append('g').selectAll('g myCircleText')
 	    .attr("stroke", "rgb(51, 51, 51)")
         .attr("stroke-width", 1)
         .style('cursor', 'default')
-        .style('border-radius', '100%')
-        .style('border', '1px solid rgb(51, 51, 51)')
+        // .style('border-radius', '100%')
+        // .style('border', '1px solid rgb(51, 51, 51)')
         .style("filter", "url(#drop-shadow)")
  
     /* Create the text for each block */

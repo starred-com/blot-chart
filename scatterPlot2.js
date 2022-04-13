@@ -209,8 +209,6 @@ var circle = elemEnter.append("circle")
     .attr("stroke", "rgb(51, 51, 51)")
     .attr("stroke-width", 1)
     .style('cursor', 'default')
-    .style('border-radius', '100%')
-    .style('border', '1px solid rgb(51, 51, 51)')
     .attr("stroke-width", 2)
     .style("filter", "url(#drop-shadow)")
  
