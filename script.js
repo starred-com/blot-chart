@@ -31,195 +31,94 @@ var legend = svg.append("g")
 var legendTypo = svg.append("g")
                 .attr("transform", "translate(" + 860 + "," + margin.top + ")");
 
-var newData = [
+var newData =
+    [
         {
             "questions.subject": {
-                "value": "Communication & Managing Expectations",
-                "filterable_value": "\"Communication & Managing Expectations\""
+                "value": "."
             },
             "fact_table.ratings": {
-                "value": 804
+                "value": 1378,
+                "rendered": "1,378"
             },
-            "fact_table.priority_score": {
-                "value": 1.6753841032626702,
-                "rendered": "1.68"
+            "fact_table.priority_score_ces2": {
+                "value": 0.8117045277445296,
+                "rendered": "0.81"
             },
-            "fact_table.abs_correlation_coefficient": {
-                "value": 0.7277001708129568,
-                "rendered": "0.73",
-                "html": "1.  Communication &amp; Managing Expectations  0.73 "
+            "fact_table.abs_correlation_coefficient_ces2": {
+                "value": 0.6165624973372804,
+                "rendered": "0.62",
+                "html": "1.  .  0.62 "
             },
             "fact_table.avg_star_rating": {
-                "value": 7.6977,
-                "rendered": "7.7"
+                "value": 8.6835,
+                "rendered": "8.7"
             }
         },
         {
             "questions.subject": {
-                "value": "Belongingness"
+                "value": "Understanding your communication with evryone"
             },
             "fact_table.ratings": {
-                "value": 481
+                "value": 1394,
+                "rendered": "1,394"
             },
-            "fact_table.priority_score": {
-                "value": 1.641980524651498,
-                "rendered": "1.64"
+            "fact_table.priority_score_ces2": {
+                "value": 0.6404911775440555,
+                "rendered": "0.64"
             },
-            "fact_table.abs_correlation_coefficient": {
-                "value": 0.7667789878824591,
-                "rendered": "0.77",
-                "html": "2.  Belongingness  0.77 "
+            "fact_table.abs_correlation_coefficient_ces2": {
+                "value": 0.5629207044683209,
+                "rendered": "0.56",
+                "html": "5.  Understanding you  0.56 "
             },
             "fact_table.avg_star_rating": {
-                "value": 7.8586,
-                "rendered": "7.9"
+                "value": 8.8622,
+                "rendered": "8.9"
             }
         },
         {
             "questions.subject": {
-                "value": "Interview Preparation"
+                "value": "Reporting"
             },
             "fact_table.ratings": {
-                "value": 783
+                "value": 1392,
+                "rendered": "1,392"
             },
-            "fact_table.priority_score": {
-                "value": 1.3845934823584911,
-                "rendered": "1.38"
+            "fact_table.priority_score_ces2": {
+                "value": 0.6821301625390864,
+                "rendered": "0.68"
             },
-            "fact_table.abs_correlation_coefficient": {
-                "value": 0.7003153519591782,
-                "rendered": "0.70",
-                "html": "3.  Interview Preparation  0.70 "
+            "fact_table.abs_correlation_coefficient_ces2": {
+                "value": 0.5488214357865367,
+                "rendered": "0.55",
+                "html": "3.  Reporting  0.55 "
             },
             "fact_table.avg_star_rating": {
-                "value": 8.0229,
-                "rendered": "8.0"
+                "value": 8.7571,
+                "rendered": "8.8"
             }
         },
         {
             "questions.subject": {
-                "value": "Team Overview"
+                "value": "Proactivity"
             },
             "fact_table.ratings": {
-                "value": 789
+                "value": 1362,
+                "rendered": "1,362"
             },
-            "fact_table.priority_score": {
-                "value": 1.3425283379255983,
-                "rendered": "1.34"
+            "fact_table.priority_score_ces2": {
+                "value": 0.6971842884511105,
+                "rendered": "0.70"
             },
-            "fact_table.abs_correlation_coefficient": {
-                "value": 0.6927748273520813,
-                "rendered": "0.69",
-                "html": "4.  Team Overview  0.69 "
-            },
-            "fact_table.avg_star_rating": {
-                "value": 8.0621,
-                "rendered": "8.1"
-            }
-        },
-        {
-            "questions.subject": {
-                "value": "Respectful Hiring"
-            },
-            "fact_table.ratings": {
-                "value": 483
-            },
-            "fact_table.priority_score": {
-                "value": 1.3181688177517794,
-                "rendered": "1.32"
-            },
-            "fact_table.abs_correlation_coefficient": {
-                "value": 0.7153464035121178,
-                "rendered": "0.72",
-                "html": "5.  Respectful Hiring  0.72 "
+            "fact_table.abs_correlation_coefficient_ces2": {
+                "value": 0.5364606713227996,
+                "rendered": "0.54",
+                "html": "2.  Proactivity  0.54 "
             },
             "fact_table.avg_star_rating": {
-                "value": 8.1573,
-                "rendered": "8.2"
-            }
-        },
-        {
-            "questions.subject": {
-                "value": "Interview"
-            },
-            "fact_table.ratings": {
-                "value": 798
-            },
-            "fact_table.priority_score": {
-                "value": 1.3092572449771571,
-                "rendered": "1.31"
-            },
-            "fact_table.abs_correlation_coefficient": {
-                "value": 0.6533871868335948,
-                "rendered": "0.65",
-                "html": "6.  Interview  0.65 "
-            },
-            "fact_table.avg_star_rating": {
-                "value": 7.9962,
-                "rendered": "8.0"
-            }
-        },
-        {
-            "questions.subject": {
-                "value": "Preparation for Interview(s)"
-            },
-            "fact_table.ratings": {
-                "value": 796
-            },
-            "fact_table.priority_score": {
-                "value": 1.306116825093133,
-                "rendered": "1.31"
-            },
-            "fact_table.abs_correlation_coefficient": {
-                "value": 0.6362611190048387,
-                "rendered": "0.64",
-                "html": "7.  Preparation for Interview(s)  0.64 "
-            },
-            "fact_table.avg_star_rating": {
-                "value": 7.9472,
-                "rendered": "7.9"
-            }
-        },
-        {
-            "questions.subject": {
-                "value": "Interview Atmosphere"
-            },
-            "fact_table.ratings": {
-                "value": 784
-            },
-            "fact_table.priority_score": {
-                "value": 1.290910266757768,
-                "rendered": "1.29"
-            },
-            "fact_table.abs_correlation_coefficient": {
-                "value": 0.6706724162290981,
-                "rendered": "0.67",
-                "html": "8.  Interview Atmosphere  0.67 "
-            },
-            "fact_table.avg_star_rating": {
-                "value": 8.0752,
-                "rendered": "8.1"
-            }
-        },
-        {
-            "questions.subject": {
-                "value": "Engagement"
-            },
-            "fact_table.ratings": {
-                "value": 787
-            },
-            "fact_table.priority_score": {
-                "value": 1.280152057749692,
-                "rendered": "1.28"
-            },
-            "fact_table.abs_correlation_coefficient": {
-                "value": 0.684426891440169,
-                "rendered": "0.68",
-                "html": "9.  Engagement  0.68 "
-            },
-            "fact_table.avg_star_rating": {
-                "value": 8.1296,
-                "rendered": "8.1"
+                "value": 8.7004,
+                "rendered": "8.7"
             }
         },
         {
@@ -227,124 +126,42 @@ var newData = [
                 "value": "Responsiveness"
             },
             "fact_table.ratings": {
-                "value": 793
+                "value": 1342,
+                "rendered": "1,342"
             },
-            "fact_table.priority_score": {
-                "value": 1.2638603116429,
-                "rendered": "1.26"
+            "fact_table.priority_score_ces2": {
+                "value": 0.5442621030449055,
+                "rendered": "0.54"
             },
-            "fact_table.abs_correlation_coefficient": {
-                "value": 0.6347229367431196,
-                "rendered": "0.63",
-                "html": "10.  Responsiveness  0.63 "
+            "fact_table.abs_correlation_coefficient_ces2": {
+                "value": 0.4955044638063597,
+                "rendered": "0.50",
+                "html": "6.  Responsiveness  0.50 "
             },
             "fact_table.avg_star_rating": {
-                "value": 8.0088,
-                "rendered": "8.0"
+                "value": 8.9016,
+                "rendered": "8.9"
             }
         },
         {
             "questions.subject": {
-                "value": "Scheduling of Interview(s)"
+                "value": "Updates"
             },
             "fact_table.ratings": {
-                "value": 802
+                "value": 1384,
+                "rendered": "1,384"
             },
-            "fact_table.priority_score": {
-                "value": 1.1230153905564209,
-                "rendered": "1.12"
+            "fact_table.priority_score_ces2": {
+                "value": 0.6591440239890781,
+                "rendered": "0.66"
             },
-            "fact_table.abs_correlation_coefficient": {
-                "value": 0.576230381526205,
-                "rendered": "0.58",
-                "html": "11.  Scheduling of Interview(s)  0.58 "
-            },
-            "fact_table.avg_star_rating": {
-                "value": 8.0511,
-                "rendered": "8.1"
-            }
-        },
-        {
-            "questions.subject": {
-                "value": "Preparation Materials"
-            },
-            "fact_table.ratings": {
-                "value": 798
-            },
-            "fact_table.priority_score": {
-                "value": 1.059649736676234,
-                "rendered": "1.06"
-            },
-            "fact_table.abs_correlation_coefficient": {
-                "value": 0.6001301108207703,
-                "rendered": "0.60",
-                "html": "12.  Preparation Materials  0.60 "
+            "fact_table.abs_correlation_coefficient_ces2": {
+                "value": 0.490982513213466,
+                "rendered": "0.49",
+                "html": "4.  Updates  0.49 "
             },
             "fact_table.avg_star_rating": {
-                "value": 8.2343,
-                "rendered": "8.2"
-            }
-        },
-        {
-            "questions.subject": {
-                "value": "Asking Questions"
-            },
-            "fact_table.ratings": {
-                "value": 790
-            },
-            "fact_table.priority_score": {
-                "value": 1.0521646266877305,
-                "rendered": "1.05"
-            },
-            "fact_table.abs_correlation_coefficient": {
-                "value": 0.6458167362433898,
-                "rendered": "0.65",
-                "html": "13.  Asking Questions  0.65 "
-            },
-            "fact_table.avg_star_rating": {
-                "value": 8.3708,
-                "rendered": "8.4"
-            }
-        },
-        {
-            "questions.subject": {
-                "value": "Job Description"
-            },
-            "fact_table.ratings": {
-                "value": 792
-            },
-            "fact_table.priority_score": {
-                "value": 0.9279414869433581,
-                "rendered": "0.93"
-            },
-            "fact_table.abs_correlation_coefficient": {
-                "value": 0.5226955933889247,
-                "rendered": "0.52",
-                "html": "14.  Job Description  0.52 "
-            },
-            "fact_table.avg_star_rating": {
-                "value": 8.2247,
-                "rendered": "8.2"
-            }
-        },
-        {
-            "questions.subject": {
-                "value": "Careers Site"
-            },
-            "fact_table.ratings": {
-                "value": 767
-            },
-            "fact_table.priority_score": {
-                "value": 0.5692001932824088,
-                "rendered": "0.57"
-            },
-            "fact_table.abs_correlation_coefficient": {
-                "value": 0.44639651265187735,
-                "rendered": "0.45",
-                "html": "15.  Careers Site  0.45 "
-            },
-            "fact_table.avg_star_rating": {
-                "value": 8.7249,
+                "value": 8.6575,
                 "rendered": "8.7"
             }
         }
@@ -706,16 +523,16 @@ console.log( midItem )
 
 var colorMatcher = {
     color: newData2.map((d)=> {
-        if(d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['value'] <= midItem) {
+        if(d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['rendered'] <= midItem) {
             return "#f29696" // red
         }
-        if(d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['value'] <= midItem) {
+        if(d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['rendered'] <= midItem) {
             return "#f7e39c" // yellow
         }
-        if (d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['value'] >= midItem) {
+        if (d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['rendered'] >= midItem) {
             return "#bddaa5" // green
         }
-        if (d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['value'] >= midItem) {
+        if (d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['rendered'] >= midItem) {
             return "#d5e8ff" // blue
         }
     })
@@ -822,7 +639,7 @@ var legendCircle = legend.selectAll('foreignObject')
 
 legendCircle.append('foreignObject')
     .attr('x', 0 )
-    .attr('y', function(d, i) { return i*40; })
+    .attr('y', function(d, i) { return i*50; })
     .style('background-color', function(d, i) {return d})
     .attr('width', '25px')
     .attr('height', '25px')
@@ -842,12 +659,15 @@ legendTypo.selectAll('foreignObject')
     .enter()
     .append('foreignObject')
     .attr('x', 0 )
-    .attr('y', function(d, i) { return i*40 })
+    .attr('y', function(d, i) { return i*50 })
     .attr('width', '300px')
-    .attr('height', '25px')
+    .attr('height', '40px')
+    .style('line-height', '20px')
+
     .append("xhtml:div")
     .style('width', '300px')
-    .style('height', '25px')
+    .style('height', '40px')
+    .style('line-height', '20px')
     .html(function(d, i) { return d['questions.subject']['value'] });
 
 // filters section, shadow circle
