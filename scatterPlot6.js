@@ -304,7 +304,7 @@ const visObject = {
       .append("foreignObject")
       .attr("x", 0)
       .attr("y", function (d, i) {
-        return i * 40;
+        return i * 50;
       })
       .attr("width", "300px")
       .attr("height", "25px")
