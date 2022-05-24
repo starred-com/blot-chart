@@ -9,9 +9,6 @@ const visObject = {
   ) {
     element.innerHTML = "";
 
-    console.log(data);
-    console.log(queryResponse);
-
     const questionSubject = queryResponse.fields.dimensions[0].name; //questions.subject
     const ratings = queryResponse.fields.measures[0].name; //fact_table.ratings
     const priorityScore = queryResponse.fields.measures[1].name; //fact_table.priority_score
@@ -107,12 +104,8 @@ const visObject = {
 
     var arryOfAvg = xAxis.scale().ticks();
 
-    console.log(arryOfAvg);
-
     var midItem =
       (arryOfAvg[arryOfAvg.length - 1] - arryOfAvg[0]) / 2 + arryOfAvg[0];
-
-    console.log(midItem);
 
     var colorMatcher = {
       color: data.map((d) => {
