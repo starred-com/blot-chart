@@ -515,11 +515,7 @@ visual.append("g")
 
 var arryOfAvg = xAxis.scale().ticks()
 
-console.log(arryOfAvg)
-
 var midItem = ( (arryOfAvg[arryOfAvg.length -1] - arryOfAvg[0]) / 2 ) + arryOfAvg[0]
-
-console.log( midItem )
 
 var colorMatcher = {
     color: newData2.map((d)=> {
@@ -560,7 +556,7 @@ visual.append('g')
     .style("text-align", function (d) {return d.alignment})
     .style("padding", "5px")
     .html(d => d.text);
-
+console.log(newData2)
 //Tooltips
 var tooltip = d3.select("#chart")
     .data(newData2.slice(0, 25))
