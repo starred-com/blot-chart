@@ -8,14 +8,14 @@ const visObject = {
     doneRendering
   ) {
     element.innerHTML = "";
-    console.log(queryResponse);
-    console.log(data);
+
     const questionSubject = queryResponse.fields.dimensions[0].name; //questions.subject
+    const questionQuestion = queryResponse.fields.dimension_like[0].name; //questions.question
     const ratings = queryResponse.fields.measures[0].name; //fact_table.ratings
     const priorityScore = queryResponse.fields.measures[1].name; //fact_table.priority_score
     const absCorrelation = queryResponse.fields.measures[2].name; //fact_table.abs_correlation_coefficient
     const averageRating = queryResponse.fields.measures[3].name; //fact_table.avg_star_rating
-    const totalResponse = queryResponse.totals_data.ratings.value;
+    const totalResponse = queryResponse.totals_data[ratings].value; //total_response
 
     var meas = queryResponse["fields"]["measure_like"];
     var mesID = meas[0]["name"];
@@ -198,12 +198,12 @@ const visObject = {
         tooltip.style("visibility", "visible")
         tooltip.html(
             `<strong style="font-size: 13px; line-height: 18px">${d[questionSubject]["value"]}</strong>` + 
-            "<br>" + `<strong style="font-size: 13px; display: block; margin: 5px 0;">What do you think about ${d[questionSubject]["value"]} ?</strong>` +
+            "<br>" + `<strong style="font-size: 11px; display: block; margin: 5px 0;">${d[questionQuestion]["value"]} ?</strong>` +
             `<span style="line-height: 26px">Ratings: </span>` + 
             `<strong style="font-size: 13px; font-family: Arial, Helvetica, sans-serif;">${d[ratings]["value"]}</strong>` + 
             `<br> <span style="line-height: 26px">Satisfaction: </span>` + 
             `<strong style="font-size: 13px; font-family: Arial, Helvetica, sans-serif">${d[averageRating]["rendered"]}</strong>` +
-            "<br>Correlation (NPS): " + 
+            `<br> <span style="line-height: 26px">Correlation (NPS): </span>` + 
             `<strong style="font-size: 13px; font-family: Arial, Helvetica, sans-serif;">${d[absCorrelation]["rendered"]}</strong><br><br>` 
         )
         .style("left", (d3.event.pageX) + "px")
