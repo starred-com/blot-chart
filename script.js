@@ -850,13 +850,17 @@ function visual() {
         .append("g")
         .style('cursor', 'pointer')
         .attr("transform", function(d){return "translate("+ (x(d['survey_question.avg_rating']['rendered'])) +","+ (y(d['survey_question.abs_correlation_coefficient']['rendered'])) +")"});
-    
-    // Circles click functionalities
-    elemEnter.on("click", function(d) {
+        
+        // Circles click functionalities
+        elemEnter.on("click", function(d) {
+        const subject = d['survey_question.subject'] ? d['survey_question.subject']['value'] : '';
+        const subjectElement = subject ? `<strong style="font-size: 13px; line-height: 24px">${subject}</strong> <br>` : '';
+        const question = d['survey_question.question'] ? d['survey_question.question']['value'] + '?' : '';
+        const questionElement = question ? `<strong style="font-size: 11px; display: block; margin: 5px 0;">${question}</strong>` : '';
         tooltip.style("visibility", "visible")
         tooltip.html(
-            `<strong style="font-size: 13px; line-height: 24px">${d['survey_question.subject']['value']}</strong>` + 
-            "<br>" + `<strong style="font-size: 11px; display: block; margin: 5px 0;">${d['survey_question.question']['value']} ?</strong>` +
+            subjectElement + 
+            questionElement +
             `<span style="line-height: 26px">Ratings: </span>` + 
             `<strong style="font-size: 13px; font-family: Arial, Helvetica, sans-serif;">${d["survey_question.ratings"]['value']}</strong>` + 
             `<br> <span style="line-height: 26px">Satisfaction: </span>` + 
