@@ -9,7 +9,6 @@ const visObject = {
   ) {
     element.innerHTML = "";
     console.log('queryResponse', queryResponse);
-    console.log('data', data);
     
     const questionSubject = queryResponse.fields.dimensions[0] ? queryResponse.fields.dimensions[0].name : ''; //questions.subject
     const questionQuestion = queryResponse.fields.dimension_like[1] ? queryResponse.fields.dimension_like[1].name : ''; //questions.question
@@ -17,7 +16,7 @@ const visObject = {
     const priorityScore = queryResponse.fields.measures[1].name; //fact_table.priority_score
     const absCorrelation = queryResponse.fields.measures[2].name; //fact_table.abs_correlation_coefficient
     const averageRating = queryResponse.fields.measures[3].name; //fact_table.avg_star_rating
-    const totalResponse = queryResponse.totals_data ? queryResponse.totals_data[averageRating].html : null; //total_response
+    const totalResponse = queryResponse.totals_data ? queryResponse.totals_data[ratings].value : null; //total_response
 
     var meas = queryResponse["fields"]["measure_like"];
     var mesID = meas[0] ? meas[0]["name"] : null;
