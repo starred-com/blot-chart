@@ -212,25 +212,27 @@ const visObject = {
         .style("left", (d3.event.pageX) + "px")
         .style("top", (d3.event.pageY) + "px")
         
-        var cta = tooltip.append('a')
-            .style('cursor', 'pointer')
-            .html(`<strong 
-                style="
-                width: 140px;
-                background-color: blue; 
-                padding: 5px 10px; 
-                border-radius: 10px;
-                margin: auto;
-                display: block;
-                text-align: center;
-                font-family: Arial, Helvetica, sans-serif;
-                ">Inspect item</strong>`)
-            .on("click", function (d, i) {
-              LookerCharts.Utils.openDrillMenu({
-                  links: mesLink,
-                  event: event,
-              })
-            });
+        if (mesLink && mesLink !== null) {
+          var cta = tooltip.append('a')
+              .style('cursor', 'pointer')
+              .html(`<strong 
+                  style="
+                  width: 140px;
+                  background-color: blue; 
+                  padding: 5px 10px; 
+                  border-radius: 10px;
+                  margin: auto;
+                  display: block;
+                  text-align: center;
+                  font-family: Arial, Helvetica, sans-serif;
+                  ">Inspect item</strong>`)
+              .on("click", function (d, i) {
+                LookerCharts.Utils.openDrillMenu({
+                    links: mesLink,
+                    event: event,
+                })
+              });
+        }
       });
         
       /*Create the circle for each block */
