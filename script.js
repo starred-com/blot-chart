@@ -958,7 +958,7 @@ function message() {
     .attr("max-height", '950px').attr('viewBox', '0 0 1110 600');
 
     svg.append("image")
-    .attr('xlink:href', './priority-matrix-screenshot.png')
+    .attr('xlink:href', 'https://cdn.starred.com/downloads/looker/priority-matrix-screenshot.png')
     .attr("width", "100%")
     .attr("height", "100%");
 
