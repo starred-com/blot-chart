@@ -958,7 +958,7 @@ function message() {
     .attr("max-height", '950px').attr('viewBox', '0 0 1110 600');
 
     svg.append("image")
-    .attr('xlink:href', 'https://cdn.starred.com/static/images/looker/priority-matrix-screenshot.png')
+    .attr('xlink:href', './priority-matrix-screenshot.png')
     .attr("width", "100%")
     .attr("height", "100%");
 
@@ -1025,7 +1025,7 @@ function message() {
         <span style="line-height: 46px">Please invite more clients.</span>
     `);
 }
-var responses = 20;
+var responses = 2;
 if (responses > 19) {
     visual();
 } else {
