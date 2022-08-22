@@ -1136,7 +1136,7 @@ function visual() {
     .data(divGroup)
     .enter()
     .append("foreignObject")
-      .attr('width', d => (d.width) + 'px')
+      .attr('width', function (d) { return d.width + 'px' })
       .attr('height', '250px')
       .attr('class', function (d) {return d.class;})
       .attr("fill", function (d) {return d.color})
