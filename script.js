@@ -1098,25 +1098,22 @@ function visual() {
   }
   const boxwidthObject = new boxWidthCalc()
 
-//   const containerWidth = width - 15
-//   console.log(boxwidthObject)
-//   var widthCalcolator = {
-//     seqWidth: arryOfAvg.map((element, i) => {
-//       if (avg_satisfaction === element) {
-//         return {
-//           leftWidth: ((containerWidth / arryOfAvg.length) * i) + 40,
-//           rightWidth: containerWidth - ((containerWidth / arryOfAvg.length) * i) - 40,
-//         }
-//       } else { 
-//         return null
-//       }
-//       // if (typeof seqWidth !== 'undefined') {
-//       //   return seqWidth
-//       // }
+  const containerWidth = width - 15
 
-//     })
-//   }
-// console.log(widthCalcolator)
+  var widthCalcolator = {
+    seqWidth: arryOfAvg.map((element, i) => {
+      if (avg_satisfaction === element) {
+        return {
+          leftWidth: ((containerWidth / arryOfAvg.length) * i) + 40,
+          rightWidth: containerWidth - ((containerWidth / arryOfAvg.length) * i) - 40,
+        }
+      } else { 
+        return null
+      }
+    })
+  }
+  widthCalcolator = widthCalcolator.seqWidth.filter(d => d !== null && d)[0]
+console.log(widthCalcolator)
   var divGroup = [
     {
       "class": "topLeft",
