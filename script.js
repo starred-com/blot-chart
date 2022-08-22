@@ -1062,7 +1062,7 @@ function visual() {
   
   var arryOfAvg = xAxis.scale().ticks()
 
-  const avg_satisfaction = 7.0
+  const avg_satisfaction = "7.5 "
 
   var midItem = ( (arryOfAvg[arryOfAvg.length -1] - arryOfAvg[0]) / 2 ) + arryOfAvg[0]
 
@@ -1083,27 +1083,22 @@ function visual() {
     })
   };
 
-  // function boxWidthCalc() {
-  //   var seqWidth = []
-  //   const containerWidth = width - 15
-  //   arryOfAvg.map((element, i) => {
-  //     if (avg_satisfaction === element) {
-  //       seqWidth = {
-  //         leftWidth: ((containerWidth / arryOfAvg.length) * i) + 40,
-  //         rightWidth: containerWidth - ((containerWidth / arryOfAvg.length) * i) - 40,
-  //       }
-  //     }
-  //   });
-  //   return seqWidth
-  // }
-  // const boxwidthObject = new boxWidthCalc()
+  for (let i = 0; i < arryOfAvg.length; i++) {
+    const element = arryOfAvg[i];
+    console.log('element is here:', element)
+    // if (totalAvgStarRating === element) {
+    //   seqWidth.leftWidth =+ ((containerWidth / arryOfAvg.length) * i) + 40
+    //   seqWidth.rightWidth =+ containerWidth - ((containerWidth / arryOfAvg.length) * i) - 40
+    //   return seqWidth
+    // }
+  }
 
   var seqWidth = []
   function widthCalc() {
     const containerWidth = width - 15
     for (let i = 0; i < arryOfAvg.length; i++) {
       const element = arryOfAvg[i];
-      if (avg_satisfaction === element) {
+      if (parseInt(avg_satisfaction) === element) {
         seqWidth.leftWidth =+ ((containerWidth / arryOfAvg.length) * i) + 40
         seqWidth.rightWidth =+ containerWidth - ((containerWidth / arryOfAvg.length) * i) - 40
         return seqWidth
@@ -1113,10 +1108,11 @@ function visual() {
 
   console.log('widthCalc', widthCalc())
   const containerWidth = width - 15
-
   var widthCalcolator = {
     seqWidth: arryOfAvg.map((element, i) => {
-      if (avg_satisfaction === element) {
+  console.log('compare', parseInt(avg_satisfaction) === element)
+
+      if (parseInt(avg_satisfaction) === element) {
         return {
           leftWidth: ((containerWidth / arryOfAvg.length) * i) + 40,
           rightWidth: containerWidth - ((containerWidth / arryOfAvg.length) * i) - 40,
