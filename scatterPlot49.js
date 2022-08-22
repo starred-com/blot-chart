@@ -84,46 +84,48 @@ const visObject = {
         color: data.map((d) => {
           if (
             d[absCorrelation]["rendered"] >= 0.5 &&
-            d[averageRating]["rendered"] <= midItem
+            d[averageRating]["rendered"] <= parseInt(totalAvgStarRating)
           ) {
             return "#f29696"; // red
           }
           if (
             d[absCorrelation]["rendered"] <= 0.5 &&
-            d[averageRating]["rendered"] <= midItem
+            d[averageRating]["rendered"] <= parseInt(totalAvgStarRating)
           ) {
             return "#f7e39c"; // yellow
           }
           if (
             d[absCorrelation]["rendered"] >= 0.5 &&
-            d[averageRating]["rendered"] >= midItem
+            d[averageRating]["rendered"] >= parseInt(totalAvgStarRating)
           ) {
             return "#bddaa5"; // green
           }
           if (
             d[absCorrelation]["rendered"] <= 0.5 &&
-            d[averageRating]["rendered"] >= midItem
+            d[averageRating]["rendered"] >= parseInt(totalAvgStarRating)
           ) {
             return "#d5e8ff"; // blue
           }
         }),
       };
-///Playground
 
       var seqWidth = []
       function widthCalc() {
-        const containerWidth = width - 15
+        const containerWidth = width
+        const widthEachSequence = containerWidth / arryOfAvg.length
+
         for (let i = 0; i < arryOfAvg.length; i++) {
           const element = arryOfAvg[i];
           if (parseInt(totalAvgStarRating) === element) {
-            seqWidth.leftWidth =+ ((containerWidth / arryOfAvg.length) * i) + 40
-            seqWidth.rightWidth =+ containerWidth - ((containerWidth / arryOfAvg.length) * i) - 40
+            seqWidth = {
+              leftWidth: (widthEachSequence * i) + 100,
+              rightWidth: (containerWidth - (widthEachSequence * i)) - 100
+            }
             return seqWidth
           }
         }
       }
-
-      const widthCalculator = widthCalc()
+      const widthCalculator = widthCalc();
 
       console.log('constracted :', widthCalculator)
 
@@ -138,11 +140,11 @@ const visObject = {
         },
         {
           class: "topRight",
-          transform: "translate("+ (widthCalculator.leftWidth + 15 + 'px') +", 0px)",
+          transform: "translate("+ (widthCalculator.leftWidth + 10 + 'px') +", 0px)",
           color: "#bddaa5", // green
           text: "Leverage",
           alignment: "end",
-          width: widthCalculator.rightWidth
+          width: widthCalculator.rightWidth - 10
         },
         {
           class: "bottomLeft",
@@ -154,11 +156,11 @@ const visObject = {
         },
         {
           class: "bottomRight",
-          transform: "translate("+ (widthCalculator.leftWidth + 15 + 'px') +", 261px)",
+          transform: "translate("+ (widthCalculator.leftWidth + 10 + 'px') +", 261px)",
           color: "#d5e8ff", // blue
           text: "Maintain",
           alignment: "end",
-          width: widthCalculator.rightWidth
+          width: widthCalculator.rightWidth - 10
         },
       ];
 

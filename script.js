@@ -1062,69 +1062,46 @@ function visual() {
   
   var arryOfAvg = xAxis.scale().ticks()
 
-  const avg_satisfaction = "7.5 "
-
+  console.log('arryOfAvg :', arryOfAvg)
+  
   var midItem = ( (arryOfAvg[arryOfAvg.length -1] - arryOfAvg[0]) / 2 ) + arryOfAvg[0]
+  const avg_satisfaction = "7.0"
 
   var colorMatcher = {
     color: dataJson.map((d)=> {
-      if(d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['rendered'] <= midItem) {
+      if(d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['rendered'] <= parseInt(avg_satisfaction)) {
           return "#f29696" // red
       }
-      if(d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['rendered'] <= midItem) {
+      if(d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['rendered'] <= parseInt(avg_satisfaction)) {
           return "#f7e39c" // yellow
       }
-      if (d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['rendered'] >= midItem) {
+      if (d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['rendered'] >= parseInt(avg_satisfaction)) {
           return "#bddaa5" // green
       }
-      if (d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['rendered'] >= midItem) {
+      if (d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['rendered'] >= parseInt(avg_satisfaction)) {
           return "#d5e8ff" // blue
       }
     })
   };
 
-  for (let i = 0; i < arryOfAvg.length; i++) {
-    const element = arryOfAvg[i];
-    console.log('element is here:', element)
-    // if (totalAvgStarRating === element) {
-    //   seqWidth.leftWidth =+ ((containerWidth / arryOfAvg.length) * i) + 40
-    //   seqWidth.rightWidth =+ containerWidth - ((containerWidth / arryOfAvg.length) * i) - 40
-    //   return seqWidth
-    // }
-  }
-
   var seqWidth = []
   function widthCalc() {
-    const containerWidth = width - 15
+    const containerWidth = width
+    const widthEachSequence = containerWidth / arryOfAvg.length
+
     for (let i = 0; i < arryOfAvg.length; i++) {
       const element = arryOfAvg[i];
       if (parseInt(avg_satisfaction) === element) {
-        seqWidth.leftWidth =+ ((containerWidth / arryOfAvg.length) * i) + 40
-        seqWidth.rightWidth =+ containerWidth - ((containerWidth / arryOfAvg.length) * i) - 40
+        seqWidth = {
+          leftWidth: (widthEachSequence * i) + 100,
+          rightWidth: (containerWidth - (widthEachSequence * i)) - 100
+        }
         return seqWidth
       }
     }
   }
+  const widthCalculator = widthCalc();
 
-  console.log('widthCalc', widthCalc())
-  const containerWidth = width - 15
-  var widthCalcolator = {
-    seqWidth: arryOfAvg.map((element, i) => {
-  console.log('compare', parseInt(avg_satisfaction) === element)
-
-      if (parseInt(avg_satisfaction) === element) {
-        return {
-          leftWidth: ((containerWidth / arryOfAvg.length) * i) + 40,
-          rightWidth: containerWidth - ((containerWidth / arryOfAvg.length) * i) - 40,
-        }
-      } else { 
-        return null
-      }
-    })
-  }
-  widthCalcolator = widthCalcolator.seqWidth.filter(d => d !== null && d)[0]
-
-console.log(widthCalcolator)
   var divGroup = [
     {
       "class": "topLeft",
@@ -1132,28 +1109,28 @@ console.log(widthCalcolator)
       "color": "#f29696", // red
       "text": "Improve",
       "alignment": "left",
-      'width': widthCalcolator.leftWidth
+      'width': widthCalculator.leftWidth
     }, {
       "class": "topRight",
-      "transform": "translate("+ (widthCalcolator.leftWidth + 15 + 'px') +", 0px)",
+      "transform": "translate("+ (widthCalculator.leftWidth + 10 + 'px') +", 0px)",
       "color": "#bddaa5", // green
       "text": "Leverage",
       "alignment": "end",
-      'width': widthCalcolator.rightWidth
+      'width': widthCalculator.rightWidth - 10
     }, {
       "class": "bottomLeft",
       "transform": 'translate(0px, 260px)',
       "color": "#f7e39c", // yellow
       "text": "Monitor",
       "alignment": "left",
-      'width': widthCalcolator.leftWidth
+      'width': widthCalculator.leftWidth
     }, {
       "class": "bottomRight",
-      "transform": "translate("+ (widthCalcolator.leftWidth + 15 + 'px') +", 260px)",
+      "transform": "translate("+ (widthCalculator.leftWidth + 10 + 'px') +", 260px)",
       "color": "#d5e8ff", // blue
       "text": "Maintain",
       "alignment": "end",
-      'width': widthCalcolator.rightWidth
+      'width': widthCalculator.rightWidth - 10
     }
   ];
 

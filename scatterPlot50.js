@@ -17,6 +17,7 @@ const visObject = {
     const absCorrelation = queryResponse.fields.measures[2].name; //fact_table.abs_correlation_coefficient
     const averageRating = queryResponse.fields.measures[3].name; //fact_table.avg_star_rating
     const totalResponse = queryResponse.totals_data[ratings] !== null ? queryResponse.totals_data[ratings].value : null; //total_response
+    const totalAvgStarRating = queryResponse.totals_data[averageRating] !== null ? queryResponse.totals_data[averageRating].html : null; //total_data_avg_star_rating
 
     var meas = queryResponse["fields"]["measure_like"];
     var mesID = meas[3] ? meas[3]["name"] : null;
@@ -27,7 +28,6 @@ const visObject = {
     var margin = { top: 10, right: 30, bottom: 30, left: 60 },
       width = 850 - margin.left - margin.right,
       height = 550 - margin.top - margin.bottom;
-
       
     function visual() {
       // append the svg object to the body of the page
@@ -59,37 +59,6 @@ const visObject = {
         .append("g")
         .attr("transform", "translate(" + 860 + "," + margin.top + ")");
   
-      var divGroup = [
-        {
-          class: "topLeft",
-          transform: "translate(0px, 0px)",
-          color: "#f29696", // red
-          text: "Improve",
-          alignment: "left",
-        },
-        {
-          class: "topRight",
-          transform: "translate(386px, 0px)",
-          color: "#bddaa5", // green
-          text: "Leverage",
-          alignment: "end",
-        },
-        {
-          class: "bottomLeft",
-          transform: "translate(0px, 261px)",
-          color: "#f7e39c", // yellow
-          text: "Monitor",
-          alignment: "left",
-        },
-        {
-          class: "bottomRight",
-          transform: "translate(386px, 261px)",
-          color: "#d5e8ff", // blue
-          text: "Maintain",
-          alignment: "end",
-        },
-      ];
-  
       const minX = d3.min(data, (d) => d[averageRating]["rendered"]);
       const maxX = d3.max(data, (d) => d[averageRating]["rendered"]);
   
@@ -98,79 +67,128 @@ const visObject = {
   
       var xAxis = d3.axisBottom(x);
   
-      visual
-        .append("g")
+      visual.append("g")
         .attr("transform", "translate(0," + (height + 2) + ")")
         .call(xAxis)
         .call((g) => g.select(".domain").remove());
   
       // Add Y axis
       var y = d3.scaleLinear().domain([0, 1]).range([height, 0]);
-      visual.append("g")
-        .call(d3.axisLeft(y))
-        .call((g) => g.select(".domain").remove());
+      visual.append("g").call(d3.axisLeft(y)).call((g) => g.select(".domain").remove());
   
       var arryOfAvg = xAxis.scale().ticks();
   
-      var midItem =
-        (arryOfAvg[arryOfAvg.length - 1] - arryOfAvg[0]) / 2 + arryOfAvg[0];
+      var midItem = (arryOfAvg[arryOfAvg.length - 1] - arryOfAvg[0]) / 2 + arryOfAvg[0];
   
       var colorMatcher = {
         color: data.map((d) => {
           if (
             d[absCorrelation]["rendered"] >= 0.5 &&
-            d[averageRating]["rendered"] <= midItem
+            d[averageRating]["rendered"] <= parseInt(totalAvgStarRating)
           ) {
             return "#f29696"; // red
           }
           if (
             d[absCorrelation]["rendered"] <= 0.5 &&
-            d[averageRating]["rendered"] <= midItem
+            d[averageRating]["rendered"] <= parseInt(totalAvgStarRating)
           ) {
             return "#f7e39c"; // yellow
           }
           if (
             d[absCorrelation]["rendered"] >= 0.5 &&
-            d[averageRating]["rendered"] >= midItem
+            d[averageRating]["rendered"] >= parseInt(totalAvgStarRating)
           ) {
             return "#bddaa5"; // green
           }
           if (
             d[absCorrelation]["rendered"] <= 0.5 &&
-            d[averageRating]["rendered"] >= midItem
+            d[averageRating]["rendered"] >= parseInt(totalAvgStarRating)
           ) {
             return "#d5e8ff"; // blue
           }
         }),
       };
-  
+
+      var seqWidth = []
+      function widthCalc() {
+        const containerWidth = width
+        const widthEachSequence = containerWidth / arryOfAvg.length
+
+        for (let i = 0; i < arryOfAvg.length; i++) {
+          const element = arryOfAvg[i];
+          if (parseInt(totalAvgStarRating) === element) {
+            seqWidth = {
+              leftWidth: (widthEachSequence * i) + 100,
+              rightWidth: (containerWidth - (widthEachSequence * i)) - 100
+            }
+            return seqWidth
+          }
+        }
+      }
+      const widthCalculator = widthCalc();
+
+      console.log('constracted :', widthCalculator)
+
+      var divGroup = [
+        {
+          class: "topLeft",
+          transform: "translate(0px, 0px)",
+          color: "#f29696", // red
+          text: "Improve",
+          alignment: "left",
+          width: widthCalculator.leftWidth
+        },
+        {
+          class: "topRight",
+          transform: "translate("+ (widthCalculator.leftWidth + 10 + 'px') +", 0px)",
+          color: "#bddaa5", // green
+          text: "Leverage",
+          alignment: "end",
+          width: widthCalculator.rightWidth - 10
+        },
+        {
+          class: "bottomLeft",
+          transform: "translate(0px, 261px)",
+          color: "#f7e39c", // yellow
+          text: "Monitor",
+          alignment: "left",
+          width: widthCalculator.leftWidth
+        },
+        {
+          class: "bottomRight",
+          transform: "translate("+ (widthCalculator.leftWidth + 10 + 'px') +", 261px)",
+          color: "#d5e8ff", // blue
+          text: "Maintain",
+          alignment: "end",
+          width: widthCalculator.rightWidth - 10
+        },
+      ];
+
       //colored boxes with text inside
-      visual
-        .append("g")
+      visual.append("g")
         .selectAll("foreignObject")
         .data(divGroup)
         .enter()
         .append("foreignObject")
-        .attr("width", width / 2 - 5 + "px")
-        .attr("height", "250px")
-        .attr("class", function (d) { return d.class; })
-        .attr("fill", function (d) { return d.color; })
-        .style("background-color", function (d) { return d.color; })
-        .style("width", width / 2 - 5 + "px")
-        .style("height", "250px")
-        .style("padding", "5px")
-        .style("border-radius", "10px")
-        .style("transform", function (d) { return d.transform; })
+          .attr("width", function (d) { return d.width + 'px' })
+          .attr("height", "250px")
+          .attr("class", function (d) { return d.class; })
+          .attr("fill", function (d) { return d.color; })
+          .style("background-color", function (d) { return d.color; })
+          .style("height", "250px")
+          .style("padding", "5px")
+          .style("border-radius", "10px")
+          .style("transform", function (d) { return d.transform; })
         .append("xhtml:div")
-        .style("background-color", function (d) { return d.color; })
-        .style("height", "100%")
-        .style("padding", "5px")
-        .style("text-align", function (d) { return d.alignment; })
-        .on('click', function() {
-          tooltip.style("visibility", "hidden");
-        })
-        .html((d) => d.text);
-  
+          .style("background-color", function (d) { return d.color; })
+          .style("height", "100%")
+          .style("padding", "5px")
+          .style("text-align", function (d) { return d.alignment; })
+          .on('click', function() {
+            tooltip.style("visibility", "hidden");
+          })
+          .html((d) => d.text);
+
       var tooltip = d3
         .select("#chart")
         .data(data.slice(0, 25))
@@ -317,7 +335,7 @@ const visObject = {
       .attr("max-height", '950px').attr('viewBox', '0 0 1110 600');
 
       svg.append("image")
-      .attr('xlink:href', 'https://cdn.starred.com/static/images/looker/priority-matrix-screenshot.png')
+      .attr('xlink:href', 'https://cdn.starred.com/downloads/looker/priority-matrix-screenshot.png')
       .attr("width", "100%")
       .attr("height", "100%");
 
