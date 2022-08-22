@@ -1127,6 +1127,7 @@ function visual() {
     })
   }
   widthCalcolator = widthCalcolator.seqWidth.filter(d => d !== null && d)[0]
+
 console.log(widthCalcolator)
   var divGroup = [
     {

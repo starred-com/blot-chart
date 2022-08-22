@@ -109,21 +109,6 @@ const visObject = {
           }
         }),
       };
-
-      boxWidthCalc = () => {
-        var seqWidth = []
-        const containerWidth = width - 15
-        arryOfAvg.forEach((element, i) => {
-          if (avg_satisfaction === element) {
-            seqWidth = {
-              leftWidth: ((containerWidth / arryOfAvg.length) * i) + 40,
-              rightWidth: containerWidth - ((containerWidth / arryOfAvg.length) * i) - 40,
-            }
-          }
-        });
-        return seqWidth
-      }
-      const boxwidthObject = boxWidthCalc()
   
       var divGroup = [
         {
@@ -132,15 +117,13 @@ const visObject = {
           color: "#f29696", // red
           text: "Improve",
           alignment: "left",
-          width: boxwidthObject.leftWidth
         },
         {
           class: "topRight",
-          transform: "translate("+ (boxwidthObject.leftWidth + 15 + 'px') +", 0px)",
+          transform: "translate(386px, 0px)",
           color: "#bddaa5", // green
           text: "Leverage",
           alignment: "end",
-          width: boxwidthObject.rightWidth
         },
         {
           class: "bottomLeft",
@@ -148,42 +131,42 @@ const visObject = {
           color: "#f7e39c", // yellow
           text: "Monitor",
           alignment: "left",
-          width: boxwidthObject.leftWidth
         },
         {
           class: "bottomRight",
-          transform: "translate("+ (boxwidthObject.leftWidth + 15 + 'px') +", 261px)",
+          transform: "translate(386px, 261px)",
           color: "#d5e8ff", // blue
           text: "Maintain",
           alignment: "end",
-          width: boxwidthObject.rightWidth
         },
       ];
   
       //colored boxes with text inside
-      visual.append("g")
+      visual
+        .append("g")
         .selectAll("foreignObject")
         .data(divGroup)
         .enter()
         .append("foreignObject")
-          .attr("width", d => (d.width) + "px")
-          .attr("height", "250px")
-          .attr("class", function (d) { return d.class; })
-          .attr("fill", function (d) { return d.color; })
-          .style("background-color", function (d) { return d.color; })
-          .style("height", "250px")
-          .style("padding", "5px")
-          .style("border-radius", "10px")
-          .style("transform", function (d) { return d.transform; })
+        .attr("width", width / 2 - 5 + "px")
+        .attr("height", "250px")
+        .attr("class", function (d) { return d.class; })
+        .attr("fill", function (d) { return d.color; })
+        .style("background-color", function (d) { return d.color; })
+        .style("width", width / 2 - 5 + "px")
+        .style("height", "250px")
+        .style("padding", "5px")
+        .style("border-radius", "10px")
+        .style("transform", function (d) { return d.transform; })
         .append("xhtml:div")
-          .style("background-color", function (d) { return d.color; })
-          .style("height", "100%")
-          .style("padding", "5px")
-          .style("text-align", function (d) { return d.alignment; })
-          .on('click', function() {
-            tooltip.style("visibility", "hidden");
-          })
-          .html((d) => d.text);
+        .style("background-color", function (d) { return d.color; })
+        .style("height", "100%")
+        .style("padding", "5px")
+        .style("text-align", function (d) { return d.alignment; })
+        .on('click', function() {
+          tooltip.style("visibility", "hidden");
+        })
+        .html((d) => d.text);
   
       var tooltip = d3
         .select("#chart")
