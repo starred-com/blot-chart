@@ -29,6 +29,19 @@ const visObject = {
       width = 850 - margin.left - margin.right,
       height = 550 - margin.top - margin.bottom;
 
+    function boxWidthCalc(arryOfAvg) {
+      var seqWidth = []
+      const containerWidth = width - 15
+      arryOfAvg.map((element, i) => {
+        if (totalAvgStarRating === element) {
+          seqWidth = {
+            leftWidth: ((containerWidth / arryOfAvg.length) * i) + 40,
+            rightWidth: containerWidth - ((containerWidth / arryOfAvg.length) * i) - 40,
+          }
+        }
+      });
+      return seqWidth
+    }
       
     function visual() {
       // append the svg object to the body of the page
@@ -85,47 +98,33 @@ const visObject = {
         color: data.map((d) => {
           if (
             d[absCorrelation]["rendered"] >= 0.5 &&
-            d[averageRating]["rendered"] <= totalAvgStarRating
+            d[averageRating]["rendered"] <= midItem
           ) {
             return "#f29696"; // red
           }
           if (
             d[absCorrelation]["rendered"] <= 0.5 &&
-            d[averageRating]["rendered"] <= totalAvgStarRating
+            d[averageRating]["rendered"] <= midItem
           ) {
             return "#f7e39c"; // yellow
           }
           if (
             d[absCorrelation]["rendered"] >= 0.5 &&
-            d[averageRating]["rendered"] >= totalAvgStarRating
+            d[averageRating]["rendered"] >= midItem
           ) {
             return "#bddaa5"; // green
           }
           if (
             d[absCorrelation]["rendered"] <= 0.5 &&
-            d[averageRating]["rendered"] >= totalAvgStarRating
+            d[averageRating]["rendered"] >= midItem
           ) {
             return "#d5e8ff"; // blue
           }
         }),
       };
 
-      // function boxWidthCalc() {
-      //   var seqWidth = []
-      //   const containerWidth = width - 15
-      //   arryOfAvg.map((element, i) => {
-      //     if (totalAvgStarRating === element) {
-      //       seqWidth = {
-      //         leftWidth: ((containerWidth / arryOfAvg.length) * i) + 40,
-      //         rightWidth: containerWidth - ((containerWidth / arryOfAvg.length) * i) - 40,
-      //       }
-      //     }
-      //   });
-      //   return seqWidth
-      // }
-      // const boxwidthObject = new boxWidthCalc()
       var widthCalcolator = {
-        seqWidth: arryOfAvg.map((element, i) => {
+        seqWidth: arryOfAvg && arryOfAvg.map((element, i) => {
           if (totalAvgStarRating === element) {
             return {
               leftWidth: ((containerWidth / arryOfAvg.length) * i) + 40,
@@ -137,7 +136,9 @@ const visObject = {
         })
       }
       widthCalcolator = widthCalcolator.seqWidth.filter(d => d !== null && d)[0]
+      
       console.log('widthCalcolator', widthCalcolator)
+      console.log('boxWidthCalc', boxWidthCalc(arryOfAvg))
 
       var divGroup = [
         {

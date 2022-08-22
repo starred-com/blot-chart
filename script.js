@@ -1083,21 +1083,22 @@ function visual() {
     })
   };
 
-  function boxWidthCalc() {
-    var seqWidth = []
-    const containerWidth = width - 15
-    arryOfAvg.map((element, i) => {
-      if (avg_satisfaction === element) {
-        seqWidth = {
-          leftWidth: ((containerWidth / arryOfAvg.length) * i) + 40,
-          rightWidth: containerWidth - ((containerWidth / arryOfAvg.length) * i) - 40,
-        }
-      }
-    });
-    return seqWidth
-  }
-  const boxwidthObject = new boxWidthCalc()
+  // function boxWidthCalc() {
+  //   var seqWidth = []
+  //   const containerWidth = width - 15
+  //   arryOfAvg.map((element, i) => {
+  //     if (avg_satisfaction === element) {
+  //       seqWidth = {
+  //         leftWidth: ((containerWidth / arryOfAvg.length) * i) + 40,
+  //         rightWidth: containerWidth - ((containerWidth / arryOfAvg.length) * i) - 40,
+  //       }
+  //     }
+  //   });
+  //   return seqWidth
+  // }
+  // const boxwidthObject = new boxWidthCalc()
 
+  console.log(arryOfAvg)
   const containerWidth = width - 15
 
   var widthCalcolator = {
@@ -1121,28 +1122,28 @@ console.log(widthCalcolator)
       "color": "#f29696", // red
       "text": "Improve",
       "alignment": "left",
-      'width': boxwidthObject.leftWidth
+      'width': widthCalcolator.leftWidth
     }, {
       "class": "topRight",
-      "transform": "translate("+ (boxwidthObject.leftWidth + 15 + 'px') +", 0px)",
+      "transform": "translate("+ (widthCalcolator.leftWidth + 15 + 'px') +", 0px)",
       "color": "#bddaa5", // green
       "text": "Leverage",
       "alignment": "end",
-      'width': boxwidthObject.rightWidth
+      'width': widthCalcolator.rightWidth
     }, {
       "class": "bottomLeft",
       "transform": 'translate(0px, 260px)',
       "color": "#f7e39c", // yellow
       "text": "Monitor",
       "alignment": "left",
-      'width': boxwidthObject.leftWidth
+      'width': widthCalcolator.leftWidth
     }, {
       "class": "bottomRight",
-      "transform": "translate("+ (boxwidthObject.leftWidth + 15 + 'px') +", 260px)",
+      "transform": "translate("+ (widthCalcolator.leftWidth + 15 + 'px') +", 260px)",
       "color": "#d5e8ff", // blue
       "text": "Maintain",
       "alignment": "end",
-      'width': boxwidthObject.rightWidth
+      'width': widthCalcolator.rightWidth
     }
   ];
 
