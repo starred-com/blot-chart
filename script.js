@@ -1098,7 +1098,22 @@ function visual() {
   // }
   // const boxwidthObject = new boxWidthCalc()
 
-  console.log(arryOfAvg)
+  function widthCalc() {
+    var seqWidth = []
+    const containerWidth = width - 15
+    for (let i = 0; i < arryOfAvg.length; i++) {
+      const element = arryOfAvg[i];
+      if (avg_satisfaction === element) {
+        seqWidth = {
+          leftWidth: ((containerWidth / arryOfAvg.length) * i) + 40,
+          rightWidth: containerWidth - ((containerWidth / arryOfAvg.length) * i) - 40,
+        }
+        return seqWidth
+      }
+    }
+  }
+
+  console.log('widthCalc', widthCalc())
   const containerWidth = width - 15
 
   var widthCalcolator = {
