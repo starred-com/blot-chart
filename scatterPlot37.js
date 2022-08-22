@@ -110,7 +110,7 @@ const visObject = {
         }),
       };
       console.log('totalAvgStarRating', totalAvgStarRating)
-      boxWidthCalc = () => {
+      function boxWidthCalc() {
         var seqWidth = []
         const containerWidth = width - 15
         arryOfAvg.forEach((element, i) => {
@@ -123,9 +123,10 @@ const visObject = {
         });
         return seqWidth
       }
-      const boxwidthObject = boxWidthCalc()
-      console.log('boxwidthObject', boxWidthCalc())
-      console.log('boxwidthObject', boxWidthCalc().leftWidth)
+      const boxwidthObject = new boxWidthCalc()
+      console.log('boxwidthObject', boxwidthObject)
+      console.log('boxwidthObject', boxwidthObject.leftWidth)
+
       var divGroup = [
         {
           class: "topLeft",
@@ -133,15 +134,15 @@ const visObject = {
           color: "#f29696", // red
           text: "Improve",
           alignment: "left",
-          width: boxWidthCalc().leftWidth
+          width: boxwidthObject.leftWidth
         },
         {
           class: "topRight",
-          transform: "translate("+ (boxWidthCalc().leftWidth + 15 + 'px') +", 0px)",
+          transform: "translate("+ (boxwidthObject.leftWidth + 15 + 'px') +", 0px)",
           color: "#bddaa5", // green
           text: "Leverage",
           alignment: "end",
-          width: boxWidthCalc().rightWidth
+          width: boxwidthObject.rightWidth
         },
         {
           class: "bottomLeft",
@@ -149,15 +150,15 @@ const visObject = {
           color: "#f7e39c", // yellow
           text: "Monitor",
           alignment: "left",
-          width: boxWidthCalc().leftWidth
+          width: boxwidthObject.leftWidth
         },
         {
           class: "bottomRight",
-          transform: "translate("+ (boxWidthCalc().leftWidth + 15 + 'px') +", 261px)",
+          transform: "translate("+ (boxwidthObject.leftWidth + 15 + 'px') +", 261px)",
           color: "#d5e8ff", // blue
           text: "Maintain",
           alignment: "end",
-          width: boxWidthCalc().rightWidth
+          width: boxwidthObject.rightWidth
         },
       ];
       console.log('divGroup', divGroup)

@@ -1083,7 +1083,7 @@ function visual() {
     })
   };
 
-  boxWidthCalc = () => {
+  function boxWidthCalc() {
     var seqWidth = []
     const containerWidth = width - 15
     arryOfAvg.forEach((element, i) => {
@@ -1096,8 +1096,27 @@ function visual() {
     });
     return seqWidth
   }
-  const boxwidthObject = boxWidthCalc()
+  const boxwidthObject = new boxWidthCalc()
 
+//   const containerWidth = width - 15
+//   console.log(boxwidthObject)
+//   var widthCalcolator = {
+//     seqWidth: arryOfAvg.map((element, i) => {
+//       if (avg_satisfaction === element) {
+//         return {
+//           leftWidth: ((containerWidth / arryOfAvg.length) * i) + 40,
+//           rightWidth: containerWidth - ((containerWidth / arryOfAvg.length) * i) - 40,
+//         }
+//       } else { 
+//         return null
+//       }
+//       // if (typeof seqWidth !== 'undefined') {
+//       //   return seqWidth
+//       // }
+
+//     })
+//   }
+// console.log(widthCalcolator)
   var divGroup = [
     {
       "class": "topLeft",
