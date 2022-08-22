@@ -1086,7 +1086,7 @@ function visual() {
   function boxWidthCalc() {
     var seqWidth = []
     const containerWidth = width - 15
-    arryOfAvg.forEach((element, i) => {
+    arryOfAvg.map((element, i) => {
       if (avg_satisfaction === element) {
         seqWidth = {
           leftWidth: ((containerWidth / arryOfAvg.length) * i) + 40,
