@@ -104,7 +104,7 @@ const visObject = {
         const containerWidth = width
         const leftWidthCont = (totalAvgStarRating - arryOfAvg[0]) / (arryOfAvg[arryOfAvg.length -1] - arryOfAvg[0]) * containerWidth
 
-        arryOfAvg.map((element, i) => {
+        arryOfAvg.map(element => {
           if (parseInt(totalAvgStarRating) === element) {
             seqWidth = {
               leftWidth: leftWidthCont,
@@ -112,6 +112,7 @@ const visObject = {
             }
           } 
         })
+        return seqWidth
       }
       const widthCalculator = widthCalc();
 
