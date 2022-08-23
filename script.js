@@ -1064,42 +1064,44 @@ function visual() {
 
   console.log('arryOfAvg :', arryOfAvg)
   
-  var midItem = ( (arryOfAvg[arryOfAvg.length -1] - arryOfAvg[0]) / 2 ) + arryOfAvg[0]
-  const avg_satisfaction = "7.0"
+  // var midItem = ( (arryOfAvg[arryOfAvg.length -1] - arryOfAvg[0]) / 2 ) + arryOfAvg[0]
+
+  const avg_satisfaction = "6.5"
 
   var colorMatcher = {
     color: dataJson.map((d)=> {
-      if(d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['rendered'] <= parseInt(avg_satisfaction)) {
+      if(d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['rendered'] <= avg_satisfaction) {
           return "#f29696" // red
       }
-      if(d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['rendered'] <= parseInt(avg_satisfaction)) {
+      if(d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['rendered'] <= avg_satisfaction) {
           return "#f7e39c" // yellow
       }
-      if (d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['rendered'] >= parseInt(avg_satisfaction)) {
+      if (d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['rendered'] >= avg_satisfaction) {
           return "#bddaa5" // green
       }
-      if (d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['rendered'] >= parseInt(avg_satisfaction)) {
+      if (d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['rendered'] >= avg_satisfaction) {
           return "#d5e8ff" // blue
       }
     })
   };
 
-  var seqWidth = []
+  var seqWidth = [];
   function widthCalc() {
     const containerWidth = width
-    const widthEachSequence = containerWidth / arryOfAvg.length
+    const leftWidthCont = (avg_satisfaction - arryOfAvg[0]) / (arryOfAvg[arryOfAvg.length -1] - arryOfAvg[0]) * containerWidth
 
-    for (let i = 0; i < arryOfAvg.length; i++) {
-      const element = arryOfAvg[i];
+    arryOfAvg.map((element, i) => {
       if (parseInt(avg_satisfaction) === element) {
         seqWidth = {
-          leftWidth: (widthEachSequence * i) + 100,
-          rightWidth: (containerWidth - (widthEachSequence * i)) - 100
+          leftWidth: leftWidthCont,
+          rightWidth: containerWidth - leftWidthCont
         }
-        return seqWidth
-      }
-    }
+      } 
+    })
+    return seqWidth
   }
+  console.log('widthCalc', widthCalc())
+
   const widthCalculator = widthCalc();
 
   var divGroup = [
