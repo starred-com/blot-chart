@@ -1066,7 +1066,7 @@ function visual() {
   
   // var midItem = ( (arryOfAvg[arryOfAvg.length -1] - arryOfAvg[0]) / 2 ) + arryOfAvg[0]
 
-  const avg_satisfaction = "6.5"
+  const avg_satisfaction = "8.5"
 
   var colorMatcher = {
     color: dataJson.map((d)=> {
@@ -1085,8 +1085,8 @@ function visual() {
     })
   };
 
-  var seqWidth = [];
   function widthCalc() {
+    var seqWidth = [];
     const containerWidth = width
     const leftWidthCont = (avg_satisfaction - arryOfAvg[0]) / (arryOfAvg[arryOfAvg.length -1] - arryOfAvg[0]) * containerWidth
 
