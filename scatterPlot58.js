@@ -73,7 +73,7 @@ const visObject = {
 
       var colors = []
       function colorMatcher() {
-        dataJson.map(d => {
+        data.map(d => {
           if(d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['rendered'] <= avg_satisfaction) {
             return colors.push("#f29696") // red
           }
