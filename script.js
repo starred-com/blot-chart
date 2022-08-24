@@ -1103,8 +1103,6 @@ function visual() {
   
   const widthCalculator = widthCalc();
 
-  console.log('widthCalc', widthCalculator)
-
   var divGroup = [
     {
       "class": "topLeft",
@@ -1269,15 +1267,35 @@ function visual() {
     .append('foreignObject')
     .attr('x', 0 )
     .attr('y', function(d, i) { return i*50 })
-    .attr('width', '300px')
+    .attr('width', '200px')
     .attr('height', '40px')
     .style('line-height', '20px')
-
     .append("xhtml:div")
-    .style('width', '300px')
+    .style('width', '200px')
     .style('height', '40px')
     .style('line-height', '20px')
+    .style('-webkit-box-orient', 'vertical')
+    .style('-webkit-line-clamp', '2')
+    .style('display', '-webkit-box')
     .html(function(d, i) { return d['questions.subject']['value'] });
+
+    //Learn more
+    svg.append("svg:a")
+    .attr("xlink:href", 'https://support.starred.com/docs/starred-matrix-1')
+    .attr("target", "_blank")
+    .append("svg:text")
+    .attr('width', '200px')
+    .attr('height', '40px')
+    .attr('fill', '#0000EE')
+    .attr('font-size', 12)
+    .attr("transform", "translate(" + 10 + "," + (height + 60) + ")")
+    .html(`Learn more`)
+
+    svg.append("svg:text")
+    .attr("fill", 'rgb(105, 105, 105)')
+    .attr('font-size', 12)
+    .html(`about how to interpret the priority matrix.`)
+    .attr("transform", "translate(" + 80 + "," + (height + 60) + ")");
 }
 //=== Visual end here ===//
 
