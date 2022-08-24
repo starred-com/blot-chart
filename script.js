@@ -1068,22 +1068,26 @@ function visual() {
 
   const avg_satisfaction = "6.5"
 
-  var colorMatcher = {
-    color: dataJson.map((d)=> {
+  var colors = []
+  function colorMatcher() {
+    dataJson.map(d => {
       if(d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['rendered'] <= avg_satisfaction) {
-          return "#f29696" // red
+        return colors.push("#f29696") // red
       }
       if(d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['rendered'] <= avg_satisfaction) {
-          return "#f7e39c" // yellow
+          return colors.push("#f7e39c") // yellow
       }
       if (d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['rendered'] >= avg_satisfaction) {
-          return "#bddaa5" // green
+          return colors.push("#bddaa5") // green
       }
       if (d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['rendered'] >= avg_satisfaction) {
-          return "#d5e8ff" // blue
+          return colors.push("#d5e8ff") // blue
       }
     })
-  };
+    return colors
+  }
+  const colorMatchs = colorMatcher();
+  console.log('Colors :', colorMatchs)
 
   var seqWidth = [];
   function widthCalc() {
@@ -1241,7 +1245,7 @@ function visual() {
     
   // Legend section
   var legendCircle = legend.selectAll('foreignObject')
-    .data(colorMatcher.color.slice(0, 10))
+    .data(colorMatchs.slice(0, 10))
     .enter();
     
   legendCircle.append('foreignObject')

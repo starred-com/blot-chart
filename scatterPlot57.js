@@ -70,41 +70,33 @@ const visObject = {
       var arryOfAvg = xAxis.scale().ticks();
   
       // var midItem = (arryOfAvg[arryOfAvg.length - 1] - arryOfAvg[0]) / 2 + arryOfAvg[0];
-  
-      var colorMatcher = {
-        color: data.map((d) => {
-          if (d[absCorrelation]["rendered"] >= 0.5 &&
-            d[averageRating]["rendered"] <= totalAvgStarRating
-          ) {
-            return "#f29696"; // red
-          }
-          if (
-            d[absCorrelation]["rendered"] <= 0.5 &&
-            d[averageRating]["rendered"] <= totalAvgStarRating
-          ) {
-            return "#f7e39c"; // yellow
-          }
-          if (
-            d[absCorrelation]["rendered"] >= 0.5 &&
-            d[averageRating]["rendered"] >= totalAvgStarRating
-          ) {
-            return "#bddaa5"; // green
-          }
-          if (
-            d[absCorrelation]["rendered"] <= 0.5 &&
-            d[averageRating]["rendered"] >= totalAvgStarRating
-          ) {
-            return "#d5e8ff"; // blue
-          }
-        }),
-      };
 
+      var colors = []
+      function colorMatcher() {
+        dataJson.map(d => {
+          if(d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['rendered'] <= avg_satisfaction) {
+            return colors.push("#f29696") // red
+          }
+          if(d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['rendered'] <= avg_satisfaction) {
+              return colors.push("#f7e39c") // yellow
+          }
+          if (d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['rendered'] >= avg_satisfaction) {
+              return colors.push("#bddaa5") // green
+          }
+          if (d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['rendered'] >= avg_satisfaction) {
+              return colors.push("#d5e8ff") // blue
+          }
+        })
+        return colors
+      }
+      const colorMatchs = colorMatcher();
+      console.log('Colors :', colorMatchs)
+
+      var seqWidth = []
       function widthCalc() {
-        var seqWidth = []
         const containerWidth = width
         const leftWidthCont = (totalAvgStarRating - arryOfAvg[0]) / (arryOfAvg[arryOfAvg.length -1] - arryOfAvg[0]) * containerWidth
-
-        arryOfAvg.map((element, i) => {
+        arryOfAvg.map(element => {
           if (parseInt(totalAvgStarRating) === element) {
             seqWidth = {
               leftWidth: leftWidthCont,
@@ -112,10 +104,9 @@ const visObject = {
             }
           } 
         })
+        return seqWidth
       }
       const widthCalculator = widthCalc();
-
-      console.log('constracted :', widthCalculator)
 
       var divGroup = [
         {
@@ -259,7 +250,7 @@ const visObject = {
   
       var legendCircle = legend
         .selectAll("foreignObject")
-        .data(colorMatcher.color.slice(0, 10))
+        .data(colorMatchs.slice(0, 10))
         .enter();
   
       // Legend section
@@ -298,18 +289,39 @@ const visObject = {
         .attr("y", function (d, i) {
           return i * 50;
         })
-        .attr("width", "300px")
+        .attr("width", "200px")
         .attr("height", "25px")
         .attr('height', '40px')
         .style('line-height', '20px')
+        .style('-webkit-box-orient', 'vertical')
+        .style('-webkit-line-clamp', '2')
+        .style('display', '-webkit-box')
   
         .append("xhtml:div")
-        .style("width", "300px")
+        .style("width", "200px")
         .style('height', '40px')
         .style('line-height', '20px')
         .html(function (d, i) {
           return d[questionSubject]["value"];
         });
+      
+      //Learn more
+      svg.append("svg:a")
+      .attr("xlink:href", 'https://support.starred.com/docs/starred-matrix-1')
+      .attr("target", "_blank")
+      .append("svg:text")
+      .attr('width', '200px')
+      .attr('height', '40px')
+      .attr('fill', '#0000EE')
+      .attr('font-size', 12)
+      .attr("transform", "translate(" + 10 + "," + (height + 60) + ")")
+      .html(`Learn more`)
+
+      svg.append("svg:text")
+      .attr("fill", 'rgb(105, 105, 105)')
+      .attr('font-size', 12)
+      .html(`about how to interpret the priority matrix.`)
+      .attr("transform", "translate(" + 80 + "," + (height + 60) + ")");
     }
 
     function message() {

@@ -70,34 +70,27 @@ const visObject = {
       var arryOfAvg = xAxis.scale().ticks();
   
       // var midItem = (arryOfAvg[arryOfAvg.length - 1] - arryOfAvg[0]) / 2 + arryOfAvg[0];
-  
-      var colorMatcher = {
-        color: data.map((d) => {
-          if (d[absCorrelation]["rendered"] >= 0.5 &&
-            d[averageRating]["rendered"] <= totalAvgStarRating
-          ) {
-            return "#f29696"; // red
+
+      var colors = []
+      function colorMatcher() {
+        dataJson.map(d => {
+          if(d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['rendered'] <= avg_satisfaction) {
+            return colors.push("#f29696") // red
           }
-          if (
-            d[absCorrelation]["rendered"] <= 0.5 &&
-            d[averageRating]["rendered"] <= totalAvgStarRating
-          ) {
-            return "#f7e39c"; // yellow
+          if(d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['rendered'] <= avg_satisfaction) {
+              return colors.push("#f7e39c") // yellow
           }
-          if (
-            d[absCorrelation]["rendered"] >= 0.5 &&
-            d[averageRating]["rendered"] >= totalAvgStarRating
-          ) {
-            return "#bddaa5"; // green
+          if (d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['rendered'] >= avg_satisfaction) {
+              return colors.push("#bddaa5") // green
           }
-          if (
-            d[absCorrelation]["rendered"] <= 0.5 &&
-            d[averageRating]["rendered"] >= totalAvgStarRating
-          ) {
-            return "#d5e8ff"; // blue
+          if (d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['rendered'] >= avg_satisfaction) {
+              return colors.push("#d5e8ff") // blue
           }
-        }),
-      };
+        })
+        return colors
+      }
+      const colorMatchs = colorMatcher();
+      console.log('Colors :', colorMatchs)
 
       var seqWidth = []
       function widthCalc() {
@@ -257,7 +250,7 @@ const visObject = {
   
       var legendCircle = legend
         .selectAll("foreignObject")
-        .data(colorMatcher.color.slice(0, 10))
+        .data(colorMatchs.slice(0, 10))
         .enter();
   
       // Legend section
