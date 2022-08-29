@@ -1036,9 +1036,23 @@ function visual() {
     },
   ];
 
-  const minX = d3.min(dataJson, d => d['fact_table.avg_star_rating']['rendered'])
-  const maxX = d3.max(dataJson, d => d['fact_table.avg_star_rating']['rendered'])
-  
+  var data_ready = d3.entries(dataJson)
+
+  const minX = d3.min(data_ready, d => d.value['fact_table.avg_star_rating']['rendered'])
+  const maxX = d3.max(data_ready, d => d.value['fact_table.avg_star_rating']['rendered'])
+  // var sum = 0
+  // function sumTotalRate() {
+  //   for (var i = 0, n = data_ready.length-1; n >= i; n--) { 
+  //     sum += data_ready[n].value['fact_table.ratings']['value']; 
+  //   }
+  //   return sum
+  // }
+  // console.log('Sum :', sumTotalRate())
+  const totlaRatingResponses = data_ready.reduce((acc, d) => acc + d.value['fact_table.ratings']['value'], 0)
+  console.log('totlaRatingResponses', totlaRatingResponses)
+
+  console.log('data_ready', data_ready)
+
   //   Add X axis
   var x = d3.scaleLinear()
     .domain([ minX, maxX ])
@@ -1061,33 +1075,30 @@ function visual() {
     .call(g => g.select(".domain").remove());
   
   var arryOfAvg = xAxis.scale().ticks()
-
-  console.log('arryOfAvg :', arryOfAvg)
   
   // var midItem = ( (arryOfAvg[arryOfAvg.length -1] - arryOfAvg[0]) / 2 ) + arryOfAvg[0]
 
-  const avg_satisfaction = "6.5"
+  const avg_satisfaction = "8"
 
   var colors = []
   function colorMatcher() {
-    dataJson.map(d => {
-      if(d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['rendered'] <= avg_satisfaction) {
+    data_ready.map(d => {
+      if(d.value['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d.value['fact_table.avg_star_rating']['rendered'] <= avg_satisfaction) {
         return colors.push("#f29696") // red
       }
-      if(d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['rendered'] <= avg_satisfaction) {
+      if(d.value['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d.value['fact_table.avg_star_rating']['rendered'] <= avg_satisfaction) {
           return colors.push("#f7e39c") // yellow
       }
-      if (d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['rendered'] >= avg_satisfaction) {
+      if (d.value['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d.value['fact_table.avg_star_rating']['rendered'] >= avg_satisfaction) {
           return colors.push("#bddaa5") // green
       }
-      if (d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['rendered'] >= avg_satisfaction) {
+      if (d.value['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d.value['fact_table.avg_star_rating']['rendered'] >= avg_satisfaction) {
           return colors.push("#d5e8ff") // blue
       }
     })
     return colors
   }
   const colorMatchs = colorMatcher();
-  console.log('Colors :', colorMatchs)
 
   var seqWidth = [];
   function widthCalc() {
@@ -1166,7 +1177,7 @@ function visual() {
 
   //Tooltips
   var tooltip = d3.select("#chart")
-    .data(dataJson.slice(0, 25))
+    .data(data_ready.slice(0, 25))
     .append("foreignObject")
     .style("visibility", "hidden")
     .style("font-size", '12px')
@@ -1180,34 +1191,34 @@ function visual() {
   
   // Circles with text inside
   var elemEnter = visual.append('g').selectAll('g myCircleText')
-    .data(dataJson.slice(0, 25))
+    .data(data_ready.slice(0, 25))
     .enter()
     .append("g")
     .style('cursor', 'pointer')
-    .attr("transform", function(d){return "translate("+ (x(d['fact_table.avg_star_rating']['rendered'])) +","+ (y(d['fact_table.abs_correlation_coefficient']['rendered'])) +")"});
+    .attr("transform", function(d){return "translate("+ (x(d.value['fact_table.avg_star_rating']['rendered'])) +","+ (y(d.value['fact_table.abs_correlation_coefficient']['rendered'])) +")"});
     
   // Circles click functionalities
   elemEnter.on("click", function(d) {
-    const subject = d['questions.subject'] ? d['questions.subject']['value'] : '';
+    const subject = d.value['questions.subject'] ? d.value['questions.subject']['value'] : '';
     const subjectElement = subject ? `<strong style="font-size: 13px; line-height: 24px">${subject}</strong> <br>` : '';
-    const question = d['survey_question.question'] ? d['survey_question.question']['value'] + '?' : '';
+    const question = d.value['survey_question.question'] ? d.value['survey_question.question']['value'] + '?' : '';
     const questionElement = question ? `<strong style="font-size: 11px; display: block; margin: 5px 0;">${question}</strong>` : '';
     tooltip.style("visibility", "visible")
     tooltip.html(
         subjectElement + 
         questionElement +
         `<span style="line-height: 26px">Ratings: </span>` + 
-        `<strong style="font-size: 13px; font-family: Arial, Helvetica, sans-serif;">${d["questions.subject"]['value']}</strong>` + 
+        `<strong style="font-size: 13px; font-family: Arial, Helvetica, sans-serif;">${d.value["questions.subject"]['value']}</strong>` + 
         `<br> <span style="line-height: 26px">Satisfaction: </span>` + 
-        `<strong style="font-size: 13px; font-family: Arial, Helvetica, sans-serif">${d['fact_table.avg_star_rating']['rendered']}</strong>` +
+        `<strong style="font-size: 13px; font-family: Arial, Helvetica, sans-serif">${d.value['fact_table.avg_star_rating']['rendered']}</strong>` +
         `<br> <span style="line-height: 26px">Correlation (NPS): </span>` + 
-        `<strong style="font-size: 13px; font-family: Arial, Helvetica, sans-serif;">${d['fact_table.abs_correlation_coefficient']['rendered']}</strong><br><br>` 
+        `<strong style="font-size: 13px; font-family: Arial, Helvetica, sans-serif;">${d.value['fact_table.abs_correlation_coefficient']['rendered']}</strong><br><br>` 
     )
     .style("left", (d3.event.pageX) + "px")
     .style("top", (d3.event.pageY) + "px");
 
     // urls is been commited in the newData in order to check the argument validity
-    if (d["questions.subject"].links) {
+    if (d.value["questions.subject"].links) {
       var cta = tooltip.append('a')
           .style('cursor', 'pointer')
           .html(`<strong 
@@ -1222,7 +1233,7 @@ function visual() {
               font-family: Arial, Helvetica, sans-serif;
               ">Inspect item</strong>`);
       cta.on('click', function (d) {
-        window.open(d["questions.subject"].links[0].url, "_self")
+        window.open(d.value["questions.subject"].links[0].url, "_self")
       });
     }
   });
@@ -1266,7 +1277,7 @@ function visual() {
     .html(function(d, i) { return i + 1 });
     
   legendTypo.selectAll('foreignObject')
-    .data(dataJson.slice(0, 10))
+    .data(data_ready.slice(0, 10))
     .enter()
     .append('foreignObject')
     .attr('x', 0 )
@@ -1281,7 +1292,7 @@ function visual() {
     .style('-webkit-box-orient', 'vertical')
     .style('-webkit-line-clamp', '2')
     .style('display', '-webkit-box')
-    .html(function(d, i) { return d['questions.subject']['value'] });
+    .html(function(d, i) { return d.value['questions.subject']['value'] });
 
     //Learn more
     svg.append("svg:a")
@@ -1384,7 +1395,7 @@ function message() {
 }
 
 var responses = 20;
-if (responses > 19) {
+if (totlaRatingResponses > 19) {
     visual();
 } else {
     message();
