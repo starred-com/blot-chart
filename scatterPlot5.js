@@ -2,27 +2,12 @@ const visObject = {
   updateAsync: function (data, element, config, queryResponse, details, doneRendering) {
     element.innerHTML = "";
 
-    // this.clearErrors();
+    this.clearErrors();
 
-    // if (!queryResponse || !queryResponse.data || typeof queryResponse === undefined) {
-    //   this.addError({title: "No Data", message: "This chart requires data."});
-    //   return;
-    // }
-
-    // if (Object.keys(data).length === 0) {
-    //   this.addError({title: "No Data", message: "This chart requires data."});
-    //   return;
-    // }
-
-    // if ( Object.keys(queryResponse).length === 0 ) {
-    //   this.addError({title: "No Queries", message: "This chart requires query response."});
-    //   return;
-    // }
-
-    // if (queryResponse?.fields?.dimensions.length == 0 ) {
-    //   this.addError({title: "No Dimensions", message: "This chart requires dimensions."});
-    //   return;
-    // }
+    if (!data || typeof data === undefined) {
+      this.addError({title: "No Data", message: "This chart requires data."});
+      return;
+    }
     
     const questionSubject = queryResponse?.fields?.dimensions[0].name; //questions.subject
     const questionQuestion = queryResponse?.fields?.dimension_like[1].name; //questions.question
