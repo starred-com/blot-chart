@@ -1,3 +1,1009 @@
+var dataJson = [
+  {
+    "questions.subject": {
+      value: "Preparation of interview(s)",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q2",
+    },
+    "fact_table.ratings": {
+      value: 109,
+    },
+    "fact_table.priority_score": {
+      value: 2.339506578145407,
+      rendered: "2.34",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.7369917395871368,
+      rendered: "0.74",
+      html: "1.  Preparation of interview(s)  0.74 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 6.8256,
+      rendered: "6.83",
+      html: "6.8 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Proficiency interviewer",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q2",
+    },
+    "fact_table.ratings": {
+      value: 105,
+    },
+    "fact_table.priority_score": {
+      value: 1.6824157393369028,
+      rendered: "1.68",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.7269652764710293,
+      rendered: "0.73",
+      html: "7.  Proficiency interviewer  0.73 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7.6857,
+      rendered: "7.69",
+      html: "7.7 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Proficiency recruiter",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q2",
+    },
+    "fact_table.ratings": {
+      value: 105,
+    },
+    "fact_table.priority_score": {
+      value: 1.8604767847133983,
+      rendered: "1.86",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.7371436208698436,
+      rendered: "0.74",
+      html: "4.  Proficiency recruiter  0.74 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7.4761,
+      rendered: "7.48",
+      html: "7.5 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Quick response",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q2",
+    },
+    "fact_table.ratings": {
+      value: 104,
+    },
+    "fact_table.priority_score": {
+      value: 0.613142831810023,
+      rendered: "0.61",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.30805005617464987,
+      rendered: "0.31",
+      html: "27.  Quick response  0.31 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 8.0096,
+      rendered: "8.01",
+      html: "8.0 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Easy to find job online",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q2",
+    },
+    "fact_table.ratings": {
+      value: 98,
+    },
+    "fact_table.priority_score": {
+      value: 0.28290230542094635,
+      rendered: "0.28",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.298105695912483,
+      rendered: "0.30",
+      html: "35.  Easy to find job online  0.30 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 9.051,
+      rendered: "9.05",
+      html: "9.1 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Quick and easy application form",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q2",
+    },
+    "fact_table.ratings": {
+      value: 93,
+    },
+    "fact_table.priority_score": {
+      value: 0.1443440309784715,
+      rendered: "0.14",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.08337802159107642,
+      rendered: "0.08",
+      html: "39.  Quick and easy application form  0.08 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 8.2688,
+      rendered: "8.27",
+      html: "8.3 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Speed of the process",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q2",
+    },
+    "fact_table.ratings": {
+      value: 93,
+    },
+    "fact_table.priority_score": {
+      value: 1.213541756145845,
+      rendered: "1.21",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.4993588001587708,
+      rendered: "0.50",
+      html: "17.  Speed of the process  0.50 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7.5698,
+      rendered: "7.57",
+      html: "7.6 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Planning of interview(s)",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q2",
+    },
+    "fact_table.ratings": {
+      value: 92,
+    },
+    "fact_table.priority_score": {
+      value: 1.643920037214407,
+      rendered: "1.64",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.5794571861876654,
+      rendered: "0.58",
+      html: "9.  Planning of interview(s)  0.58 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7.163,
+      rendered: "7.16",
+      html: "7.2 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Useful job advertisement",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q2",
+    },
+    "fact_table.ratings": {
+      value: 80,
+    },
+    "fact_table.priority_score": {
+      value: 0.137334331266348,
+      rendered: "0.14",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.0998795136482531,
+      rendered: "0.10",
+      html: "40.  Useful job advertisement  0.10 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 8.625,
+      rendered: "8.63",
+      html: "8.6 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Amount of communication",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q2",
+    },
+    "fact_table.ratings": {
+      value: 77,
+    },
+    "fact_table.priority_score": {
+      value: 1.857697373095842,
+      rendered: "1.86",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.6684047685013643,
+      rendered: "0.67",
+      html: "5.  Amount of communication  0.67 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7.2207,
+      rendered: "7.22",
+      html: "7.2 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Proficiency interviewer",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q1",
+    },
+    "fact_table.ratings": {
+      value: 39,
+    },
+    "fact_table.priority_score": {
+      value: 1.577298251009654,
+      rendered: "1.58",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.6090424940187096,
+      rendered: "0.61",
+      html: "11.  Proficiency interviewer  0.61 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7.4102,
+      rendered: "7.41",
+      html: "7.4 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Proficiency recruiter",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q1",
+    },
+    "fact_table.ratings": {
+      value: 39,
+    },
+    "fact_table.priority_score": {
+      value: 1.142935219141584,
+      rendered: "1.14",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.47927840782554787,
+      rendered: "0.48",
+      html: "18.  Proficiency recruiter  0.48 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7.6153,
+      rendered: "7.62",
+      html: "7.6 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Quick response",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q1",
+    },
+    "fact_table.ratings": {
+      value: 35,
+    },
+    "fact_table.priority_score": {
+      value: 0.9315005544084278,
+      rendered: "0.93",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.267227194448456,
+      rendered: "0.27",
+      html: "22.  Quick response  0.27 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 6.5142,
+      rendered: "6.51",
+      html: "6.5 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Quick and easy application form",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q1",
+    },
+    "fact_table.ratings": {
+      value: 33,
+    },
+    "fact_table.priority_score": {
+      value: 0.5046776154909192,
+      rendered: "0.50",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.22205104518255858,
+      rendered: "0.22",
+      html: "31.  Quick and easy application form  0.22 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7.7272,
+      rendered: "7.73",
+      html: "7.7 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Planning of interview(s)",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q1",
+    },
+    "fact_table.ratings": {
+      value: 32,
+    },
+    "fact_table.priority_score": {
+      value: 1.2483978999649317,
+      rendered: "1.25",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.4161326333216439,
+      rendered: "0.42",
+      html: "16.  Planning of interview(s)  0.42 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7,
+      rendered: "7.00",
+      filterable_value: "7.0",
+      html: "7.0 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Preparation of interview(s)",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q1",
+    },
+    "fact_table.ratings": {
+      value: 31,
+    },
+    "fact_table.priority_score": {
+      value: 1.050132169394292,
+      rendered: "1.05",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.29594526248289144,
+      rendered: "0.30",
+      html: "19.  Preparation of interview(s)  0.30 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 6.4516,
+      rendered: "6.45",
+      html: "6.5 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Preparation of interview(s)",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q3",
+    },
+    "fact_table.ratings": {
+      value: 28,
+    },
+    "fact_table.priority_score": {
+      value: 1.9278041899180234,
+      rendered: "1.93",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.8433827062376513,
+      rendered: "0.84",
+      html: "3.  Preparation of interview(s)  0.84 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7.7142,
+      rendered: "7.71",
+      html: "7.7 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Speed of the process",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q1",
+    },
+    "fact_table.ratings": {
+      value: 28,
+    },
+    "fact_table.priority_score": {
+      value: 0.28802788200974055,
+      rendered: "0.29",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.08765837300192968,
+      rendered: "0.09",
+      html: "34.  Speed of the process  0.09 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 6.7142,
+      rendered: "6.71",
+      html: "6.7 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Quick and easy application form",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q4",
+    },
+    "fact_table.ratings": {
+      value: 28,
+    },
+    "fact_table.priority_score": {
+      value: 0.36550291025063514,
+      rendered: "0.37",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.1599015269273931,
+      rendered: "0.16",
+      html: "32.  Quick and easy application form  0.16 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7.7142,
+      rendered: "7.71",
+      html: "7.7 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Easy to find job online",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q1",
+    },
+    "fact_table.ratings": {
+      value: 27,
+    },
+    "fact_table.priority_score": {
+      value: 0.545673280936959,
+      rendered: "0.55",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.19909270320233471,
+      rendered: "0.20",
+      html: "29.  Easy to find job online  0.20 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7.2592,
+      rendered: "7.26",
+      html: "7.3 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Preparation of interview(s)",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q4",
+    },
+    "fact_table.ratings": {
+      value: 27,
+    },
+    "fact_table.priority_score": {
+      value: 0.9620744458218445,
+      rendered: "0.96",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.17551298838307847,
+      rendered: "0.18",
+      html: "21.  Preparation of interview(s)  0.18 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 4.5185,
+      rendered: "4.52",
+      html: "4.5 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Quick response",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q4",
+    },
+    "fact_table.ratings": {
+      value: 26,
+    },
+    "fact_table.priority_score": {
+      value: 0.6042190356527085,
+      rendered: "0.60",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.17263401018648813,
+      rendered: "0.17",
+      html: "28.  Quick response  0.17 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 6.5,
+      rendered: "6.50",
+      html: "6.5 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Speed of the process",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q4",
+    },
+    "fact_table.ratings": {
+      value: 26,
+    },
+    "fact_table.priority_score": {
+      value: 0.803349445279761,
+      rendered: "0.80",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.22703107115437643,
+      rendered: "0.23",
+      html: "24.  Speed of the process  0.23 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 6.4615,
+      rendered: "6.46",
+      html: "6.5 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Useful job advertisement",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q1",
+    },
+    "fact_table.ratings": {
+      value: 26,
+    },
+    "fact_table.priority_score": {
+      value: 0.2182696895630358,
+      rendered: "0.22",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.08106881947817404,
+      rendered: "0.08",
+      html: "37.  Useful job advertisement  0.08 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7.3076,
+      rendered: "7.31",
+      html: "7.3 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Planning of interview(s)",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q4",
+    },
+    "fact_table.ratings": {
+      value: 24,
+    },
+    "fact_table.priority_score": {
+      value: 0.7101377480506776,
+      rendered: "0.71",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.24347301678289765,
+      rendered: "0.24",
+      html: "26.  Planning of interview(s)  0.24 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7.0833,
+      rendered: "7.08",
+      html: "7.1 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Easy to find job online",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q4",
+    },
+    "fact_table.ratings": {
+      value: 24,
+    },
+    "fact_table.priority_score": {
+      value: 1.4284076633220322,
+      rendered: "1.43",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.5910570874837722,
+      rendered: "0.59",
+      html: "13.  Easy to find job online  0.59 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7.5833,
+      rendered: "7.58",
+      html: "7.6 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Proficiency interviewer",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q4",
+    },
+    "fact_table.ratings": {
+      value: 24,
+    },
+    "fact_table.priority_score": {
+      value: 1.6707279387027105,
+      rendered: "1.67",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.549274398758165,
+      rendered: "0.55",
+      html: "8.  Proficiency interviewer  0.55 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 6.9583,
+      rendered: "6.96",
+      html: "7.0 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Useful job advertisement",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q4",
+    },
+    "fact_table.ratings": {
+      value: 23,
+    },
+    "fact_table.priority_score": {
+      value: 0.5135852813991472,
+      rendered: "0.51",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.17119509379971573,
+      rendered: "0.17",
+      html: "30.  Useful job advertisement  0.17 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7,
+      rendered: "7.00",
+      filterable_value: "7.0",
+      html: "7.0 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Proficiency recruiter",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q4",
+    },
+    "fact_table.ratings": {
+      value: 23,
+    },
+    "fact_table.priority_score": {
+      value: 1.288062296728277,
+      rendered: "1.29",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.45577378604022406,
+      rendered: "0.46",
+      html: "15.  Proficiency recruiter  0.46 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7.1739,
+      rendered: "7.17",
+      html: "7.2 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Proficiency recruiter",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q3",
+    },
+    "fact_table.ratings": {
+      value: 23,
+    },
+    "fact_table.priority_score": {
+      value: 1.4601577102284575,
+      rendered: "1.46",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.6458302933470996,
+      rendered: "0.65",
+      html: "12.  Proficiency recruiter  0.65 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7.7391,
+      rendered: "7.74",
+      html: "7.7 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Proficiency interviewer",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q3",
+    },
+    "fact_table.ratings": {
+      value: 23,
+    },
+    "fact_table.priority_score": {
+      value: 1.5951581499667271,
+      rendered: "1.60",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.7487247828991913,
+      rendered: "0.75",
+      html: "10.  Proficiency interviewer  0.75 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7.8695,
+      rendered: "7.87",
+      html: "7.9 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Easy to find job online",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q3",
+    },
+    "fact_table.ratings": {
+      value: 23,
+    },
+    "fact_table.priority_score": {
+      value: 0.34903230767856225,
+      rendered: "0.35",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.25084972522535737,
+      rendered: "0.25",
+      html: "33.  Easy to find job online  0.25 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 8.6086,
+      rendered: "8.61",
+      html: "8.6 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Quick response",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q3",
+    },
+    "fact_table.ratings": {
+      value: 20,
+    },
+    "fact_table.priority_score": {
+      value: 1.7109360475921593,
+      rendered: "1.71",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.6221585627607852,
+      rendered: "0.62",
+      html: "6.  Quick response  0.62 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7.25,
+      rendered: "7.25",
+      html: "7.3 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Amount of communication",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q1",
+    },
+    "fact_table.ratings": {
+      value: 18,
+    },
+    "fact_table.priority_score": {
+      value: 0.7119639932224674,
+      rendered: "0.71",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.27858976100425237,
+      rendered: "0.28",
+      html: "25.  Amount of communication  0.28 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7.4444,
+      rendered: "7.44",
+      html: "7.4 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Useful job advertisement",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q3",
+    },
+    "fact_table.ratings": {
+      value: 18,
+    },
+    "fact_table.priority_score": {
+      value: 0.8268318608887242,
+      rendered: "0.83",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.33824171032469796,
+      rendered: "0.34",
+      html: "23.  Useful job advertisement  0.34 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7.5555,
+      rendered: "7.56",
+      html: "7.6 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Amount of communication",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q4",
+    },
+    "fact_table.ratings": {
+      value: 18,
+    },
+    "fact_table.priority_score": {
+      value: 0.16580791662929406,
+      rendered: "0.17",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.05426361978966293,
+      rendered: "0.05",
+      html: "38.  Amount of communication  0.05 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 6.9444,
+      rendered: "6.94",
+      html: "6.9 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Quick and easy application form",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q3",
+    },
+    "fact_table.ratings": {
+      value: 18,
+    },
+    "fact_table.priority_score": {
+      value: 0.9633930120391303,
+      rendered: "0.96",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.3689464660076326,
+      rendered: "0.37",
+      html: "20.  Quick and easy application form  0.37 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7.3888,
+      rendered: "7.39",
+      html: "7.4 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Speed of the process",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q3",
+    },
+    "fact_table.ratings": {
+      value: 14,
+    },
+    "fact_table.priority_score": {
+      value: 1.3781628437629856,
+      rendered: "1.38",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.44869374695197317,
+      rendered: "0.45",
+      html: "14.  Speed of the process  0.45 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 6.9285,
+      rendered: "6.93",
+      html: "6.9 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Planning of interview(s)",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q3",
+    },
+    "fact_table.ratings": {
+      value: 14,
+    },
+    "fact_table.priority_score": {
+      value: 0.21918630068765743,
+      rendered: "0.22",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.08075242260901795,
+      rendered: "0.08",
+      html: "36.  Planning of interview(s)  0.08 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 7.2857,
+      rendered: "7.29",
+      html: "7.3 ",
+    },
+  },
+  {
+    "questions.subject": {
+      value: "Amount of communication",
+    },
+    "fact_table.filterdate_quarter_of_year": {
+      value: "Q3",
+    },
+    "fact_table.ratings": {
+      value: 8,
+    },
+    "fact_table.priority_score": {
+      value: 1.9403870715523999,
+      rendered: "1.94",
+    },
+    "fact_table.abs_correlation_coefficient": {
+      value: 0.5749295026821926,
+      rendered: "0.57",
+      html: "2.  Amount of communication  0.57 ",
+    },
+    "fact_table.avg_star_rating": {
+      value: 6.625,
+      rendered: "6.63",
+      html: "6.6 ",
+    },
+  },
+];
+
+var emptyData = false
 function visual() {
   // set the dimensions and margins of the graph
   var margin = {top: 10, right: 30, bottom: 30, left: 60},
@@ -31,1010 +1037,6 @@ function visual() {
   var legendTypo = svg.append("g")
                   .attr("transform", "translate(" + 860 + "," + margin.top + ")");
 
-  var dataJson = [
-    {
-      "questions.subject": {
-        value: "Preparation of interview(s)",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q2",
-      },
-      "fact_table.ratings": {
-        value: 109,
-      },
-      "fact_table.priority_score": {
-        value: 2.339506578145407,
-        rendered: "2.34",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.7369917395871368,
-        rendered: "0.74",
-        html: "1.  Preparation of interview(s)  0.74 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 6.8256,
-        rendered: "6.83",
-        html: "6.8 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Proficiency interviewer",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q2",
-      },
-      "fact_table.ratings": {
-        value: 105,
-      },
-      "fact_table.priority_score": {
-        value: 1.6824157393369028,
-        rendered: "1.68",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.7269652764710293,
-        rendered: "0.73",
-        html: "7.  Proficiency interviewer  0.73 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7.6857,
-        rendered: "7.69",
-        html: "7.7 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Proficiency recruiter",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q2",
-      },
-      "fact_table.ratings": {
-        value: 105,
-      },
-      "fact_table.priority_score": {
-        value: 1.8604767847133983,
-        rendered: "1.86",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.7371436208698436,
-        rendered: "0.74",
-        html: "4.  Proficiency recruiter  0.74 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7.4761,
-        rendered: "7.48",
-        html: "7.5 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Quick response",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q2",
-      },
-      "fact_table.ratings": {
-        value: 104,
-      },
-      "fact_table.priority_score": {
-        value: 0.613142831810023,
-        rendered: "0.61",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.30805005617464987,
-        rendered: "0.31",
-        html: "27.  Quick response  0.31 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 8.0096,
-        rendered: "8.01",
-        html: "8.0 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Easy to find job online",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q2",
-      },
-      "fact_table.ratings": {
-        value: 98,
-      },
-      "fact_table.priority_score": {
-        value: 0.28290230542094635,
-        rendered: "0.28",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.298105695912483,
-        rendered: "0.30",
-        html: "35.  Easy to find job online  0.30 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 9.051,
-        rendered: "9.05",
-        html: "9.1 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Quick and easy application form",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q2",
-      },
-      "fact_table.ratings": {
-        value: 93,
-      },
-      "fact_table.priority_score": {
-        value: 0.1443440309784715,
-        rendered: "0.14",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.08337802159107642,
-        rendered: "0.08",
-        html: "39.  Quick and easy application form  0.08 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 8.2688,
-        rendered: "8.27",
-        html: "8.3 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Speed of the process",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q2",
-      },
-      "fact_table.ratings": {
-        value: 93,
-      },
-      "fact_table.priority_score": {
-        value: 1.213541756145845,
-        rendered: "1.21",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.4993588001587708,
-        rendered: "0.50",
-        html: "17.  Speed of the process  0.50 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7.5698,
-        rendered: "7.57",
-        html: "7.6 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Planning of interview(s)",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q2",
-      },
-      "fact_table.ratings": {
-        value: 92,
-      },
-      "fact_table.priority_score": {
-        value: 1.643920037214407,
-        rendered: "1.64",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.5794571861876654,
-        rendered: "0.58",
-        html: "9.  Planning of interview(s)  0.58 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7.163,
-        rendered: "7.16",
-        html: "7.2 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Useful job advertisement",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q2",
-      },
-      "fact_table.ratings": {
-        value: 80,
-      },
-      "fact_table.priority_score": {
-        value: 0.137334331266348,
-        rendered: "0.14",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.0998795136482531,
-        rendered: "0.10",
-        html: "40.  Useful job advertisement  0.10 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 8.625,
-        rendered: "8.63",
-        html: "8.6 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Amount of communication",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q2",
-      },
-      "fact_table.ratings": {
-        value: 77,
-      },
-      "fact_table.priority_score": {
-        value: 1.857697373095842,
-        rendered: "1.86",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.6684047685013643,
-        rendered: "0.67",
-        html: "5.  Amount of communication  0.67 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7.2207,
-        rendered: "7.22",
-        html: "7.2 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Proficiency interviewer",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q1",
-      },
-      "fact_table.ratings": {
-        value: 39,
-      },
-      "fact_table.priority_score": {
-        value: 1.577298251009654,
-        rendered: "1.58",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.6090424940187096,
-        rendered: "0.61",
-        html: "11.  Proficiency interviewer  0.61 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7.4102,
-        rendered: "7.41",
-        html: "7.4 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Proficiency recruiter",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q1",
-      },
-      "fact_table.ratings": {
-        value: 39,
-      },
-      "fact_table.priority_score": {
-        value: 1.142935219141584,
-        rendered: "1.14",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.47927840782554787,
-        rendered: "0.48",
-        html: "18.  Proficiency recruiter  0.48 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7.6153,
-        rendered: "7.62",
-        html: "7.6 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Quick response",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q1",
-      },
-      "fact_table.ratings": {
-        value: 35,
-      },
-      "fact_table.priority_score": {
-        value: 0.9315005544084278,
-        rendered: "0.93",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.267227194448456,
-        rendered: "0.27",
-        html: "22.  Quick response  0.27 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 6.5142,
-        rendered: "6.51",
-        html: "6.5 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Quick and easy application form",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q1",
-      },
-      "fact_table.ratings": {
-        value: 33,
-      },
-      "fact_table.priority_score": {
-        value: 0.5046776154909192,
-        rendered: "0.50",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.22205104518255858,
-        rendered: "0.22",
-        html: "31.  Quick and easy application form  0.22 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7.7272,
-        rendered: "7.73",
-        html: "7.7 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Planning of interview(s)",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q1",
-      },
-      "fact_table.ratings": {
-        value: 32,
-      },
-      "fact_table.priority_score": {
-        value: 1.2483978999649317,
-        rendered: "1.25",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.4161326333216439,
-        rendered: "0.42",
-        html: "16.  Planning of interview(s)  0.42 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7,
-        rendered: "7.00",
-        filterable_value: "7.0",
-        html: "7.0 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Preparation of interview(s)",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q1",
-      },
-      "fact_table.ratings": {
-        value: 31,
-      },
-      "fact_table.priority_score": {
-        value: 1.050132169394292,
-        rendered: "1.05",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.29594526248289144,
-        rendered: "0.30",
-        html: "19.  Preparation of interview(s)  0.30 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 6.4516,
-        rendered: "6.45",
-        html: "6.5 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Preparation of interview(s)",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q3",
-      },
-      "fact_table.ratings": {
-        value: 28,
-      },
-      "fact_table.priority_score": {
-        value: 1.9278041899180234,
-        rendered: "1.93",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.8433827062376513,
-        rendered: "0.84",
-        html: "3.  Preparation of interview(s)  0.84 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7.7142,
-        rendered: "7.71",
-        html: "7.7 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Speed of the process",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q1",
-      },
-      "fact_table.ratings": {
-        value: 28,
-      },
-      "fact_table.priority_score": {
-        value: 0.28802788200974055,
-        rendered: "0.29",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.08765837300192968,
-        rendered: "0.09",
-        html: "34.  Speed of the process  0.09 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 6.7142,
-        rendered: "6.71",
-        html: "6.7 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Quick and easy application form",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q4",
-      },
-      "fact_table.ratings": {
-        value: 28,
-      },
-      "fact_table.priority_score": {
-        value: 0.36550291025063514,
-        rendered: "0.37",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.1599015269273931,
-        rendered: "0.16",
-        html: "32.  Quick and easy application form  0.16 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7.7142,
-        rendered: "7.71",
-        html: "7.7 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Easy to find job online",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q1",
-      },
-      "fact_table.ratings": {
-        value: 27,
-      },
-      "fact_table.priority_score": {
-        value: 0.545673280936959,
-        rendered: "0.55",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.19909270320233471,
-        rendered: "0.20",
-        html: "29.  Easy to find job online  0.20 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7.2592,
-        rendered: "7.26",
-        html: "7.3 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Preparation of interview(s)",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q4",
-      },
-      "fact_table.ratings": {
-        value: 27,
-      },
-      "fact_table.priority_score": {
-        value: 0.9620744458218445,
-        rendered: "0.96",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.17551298838307847,
-        rendered: "0.18",
-        html: "21.  Preparation of interview(s)  0.18 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 4.5185,
-        rendered: "4.52",
-        html: "4.5 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Quick response",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q4",
-      },
-      "fact_table.ratings": {
-        value: 26,
-      },
-      "fact_table.priority_score": {
-        value: 0.6042190356527085,
-        rendered: "0.60",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.17263401018648813,
-        rendered: "0.17",
-        html: "28.  Quick response  0.17 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 6.5,
-        rendered: "6.50",
-        html: "6.5 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Speed of the process",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q4",
-      },
-      "fact_table.ratings": {
-        value: 26,
-      },
-      "fact_table.priority_score": {
-        value: 0.803349445279761,
-        rendered: "0.80",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.22703107115437643,
-        rendered: "0.23",
-        html: "24.  Speed of the process  0.23 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 6.4615,
-        rendered: "6.46",
-        html: "6.5 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Useful job advertisement",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q1",
-      },
-      "fact_table.ratings": {
-        value: 26,
-      },
-      "fact_table.priority_score": {
-        value: 0.2182696895630358,
-        rendered: "0.22",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.08106881947817404,
-        rendered: "0.08",
-        html: "37.  Useful job advertisement  0.08 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7.3076,
-        rendered: "7.31",
-        html: "7.3 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Planning of interview(s)",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q4",
-      },
-      "fact_table.ratings": {
-        value: 24,
-      },
-      "fact_table.priority_score": {
-        value: 0.7101377480506776,
-        rendered: "0.71",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.24347301678289765,
-        rendered: "0.24",
-        html: "26.  Planning of interview(s)  0.24 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7.0833,
-        rendered: "7.08",
-        html: "7.1 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Easy to find job online",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q4",
-      },
-      "fact_table.ratings": {
-        value: 24,
-      },
-      "fact_table.priority_score": {
-        value: 1.4284076633220322,
-        rendered: "1.43",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.5910570874837722,
-        rendered: "0.59",
-        html: "13.  Easy to find job online  0.59 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7.5833,
-        rendered: "7.58",
-        html: "7.6 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Proficiency interviewer",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q4",
-      },
-      "fact_table.ratings": {
-        value: 24,
-      },
-      "fact_table.priority_score": {
-        value: 1.6707279387027105,
-        rendered: "1.67",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.549274398758165,
-        rendered: "0.55",
-        html: "8.  Proficiency interviewer  0.55 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 6.9583,
-        rendered: "6.96",
-        html: "7.0 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Useful job advertisement",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q4",
-      },
-      "fact_table.ratings": {
-        value: 23,
-      },
-      "fact_table.priority_score": {
-        value: 0.5135852813991472,
-        rendered: "0.51",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.17119509379971573,
-        rendered: "0.17",
-        html: "30.  Useful job advertisement  0.17 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7,
-        rendered: "7.00",
-        filterable_value: "7.0",
-        html: "7.0 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Proficiency recruiter",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q4",
-      },
-      "fact_table.ratings": {
-        value: 23,
-      },
-      "fact_table.priority_score": {
-        value: 1.288062296728277,
-        rendered: "1.29",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.45577378604022406,
-        rendered: "0.46",
-        html: "15.  Proficiency recruiter  0.46 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7.1739,
-        rendered: "7.17",
-        html: "7.2 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Proficiency recruiter",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q3",
-      },
-      "fact_table.ratings": {
-        value: 23,
-      },
-      "fact_table.priority_score": {
-        value: 1.4601577102284575,
-        rendered: "1.46",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.6458302933470996,
-        rendered: "0.65",
-        html: "12.  Proficiency recruiter  0.65 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7.7391,
-        rendered: "7.74",
-        html: "7.7 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Proficiency interviewer",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q3",
-      },
-      "fact_table.ratings": {
-        value: 23,
-      },
-      "fact_table.priority_score": {
-        value: 1.5951581499667271,
-        rendered: "1.60",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.7487247828991913,
-        rendered: "0.75",
-        html: "10.  Proficiency interviewer  0.75 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7.8695,
-        rendered: "7.87",
-        html: "7.9 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Easy to find job online",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q3",
-      },
-      "fact_table.ratings": {
-        value: 23,
-      },
-      "fact_table.priority_score": {
-        value: 0.34903230767856225,
-        rendered: "0.35",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.25084972522535737,
-        rendered: "0.25",
-        html: "33.  Easy to find job online  0.25 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 8.6086,
-        rendered: "8.61",
-        html: "8.6 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Quick response",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q3",
-      },
-      "fact_table.ratings": {
-        value: 20,
-      },
-      "fact_table.priority_score": {
-        value: 1.7109360475921593,
-        rendered: "1.71",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.6221585627607852,
-        rendered: "0.62",
-        html: "6.  Quick response  0.62 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7.25,
-        rendered: "7.25",
-        html: "7.3 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Amount of communication",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q1",
-      },
-      "fact_table.ratings": {
-        value: 18,
-      },
-      "fact_table.priority_score": {
-        value: 0.7119639932224674,
-        rendered: "0.71",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.27858976100425237,
-        rendered: "0.28",
-        html: "25.  Amount of communication  0.28 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7.4444,
-        rendered: "7.44",
-        html: "7.4 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Useful job advertisement",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q3",
-      },
-      "fact_table.ratings": {
-        value: 18,
-      },
-      "fact_table.priority_score": {
-        value: 0.8268318608887242,
-        rendered: "0.83",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.33824171032469796,
-        rendered: "0.34",
-        html: "23.  Useful job advertisement  0.34 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7.5555,
-        rendered: "7.56",
-        html: "7.6 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Amount of communication",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q4",
-      },
-      "fact_table.ratings": {
-        value: 18,
-      },
-      "fact_table.priority_score": {
-        value: 0.16580791662929406,
-        rendered: "0.17",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.05426361978966293,
-        rendered: "0.05",
-        html: "38.  Amount of communication  0.05 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 6.9444,
-        rendered: "6.94",
-        html: "6.9 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Quick and easy application form",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q3",
-      },
-      "fact_table.ratings": {
-        value: 18,
-      },
-      "fact_table.priority_score": {
-        value: 0.9633930120391303,
-        rendered: "0.96",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.3689464660076326,
-        rendered: "0.37",
-        html: "20.  Quick and easy application form  0.37 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7.3888,
-        rendered: "7.39",
-        html: "7.4 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Speed of the process",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q3",
-      },
-      "fact_table.ratings": {
-        value: 14,
-      },
-      "fact_table.priority_score": {
-        value: 1.3781628437629856,
-        rendered: "1.38",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.44869374695197317,
-        rendered: "0.45",
-        html: "14.  Speed of the process  0.45 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 6.9285,
-        rendered: "6.93",
-        html: "6.9 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Planning of interview(s)",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q3",
-      },
-      "fact_table.ratings": {
-        value: 14,
-      },
-      "fact_table.priority_score": {
-        value: 0.21918630068765743,
-        rendered: "0.22",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.08075242260901795,
-        rendered: "0.08",
-        html: "36.  Planning of interview(s)  0.08 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 7.2857,
-        rendered: "7.29",
-        html: "7.3 ",
-      },
-    },
-    {
-      "questions.subject": {
-        value: "Amount of communication",
-      },
-      "fact_table.filterdate_quarter_of_year": {
-        value: "Q3",
-      },
-      "fact_table.ratings": {
-        value: 8,
-      },
-      "fact_table.priority_score": {
-        value: 1.9403870715523999,
-        rendered: "1.94",
-      },
-      "fact_table.abs_correlation_coefficient": {
-        value: 0.5749295026821926,
-        rendered: "0.57",
-        html: "2.  Amount of communication  0.57 ",
-      },
-      "fact_table.avg_star_rating": {
-        value: 6.625,
-        rendered: "6.63",
-        html: "6.6 ",
-      },
-    },
-  ];
   var queryResponse = {
     "parent_id": "fcccf7d0e346e5eb1cc577902c2b4260",
     "sql_changed": true,
@@ -2871,9 +2873,7 @@ function visual() {
     },
     "sorts": []
 }
-  var data_ready = d3.entries(dataJson)
-  var query_ready = d3.entries(queryResponse)
-
+  
   const minX = d3.min(dataJson, d => d['fact_table.avg_star_rating']['rendered'])
   const maxX = d3.max(dataJson, d => d['fact_table.avg_star_rating']['rendered'])
   // var sum = 0
@@ -3229,7 +3229,7 @@ function message() {
 }
 
 var responses = 30;
-if (responses > 19) {
+if (responses > 19 || dataJson.length < 1) {
     visual();
 } else {
     message();
