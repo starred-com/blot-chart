@@ -1,19 +1,20 @@
 const visObject = {
-  updateAsync: function (
-    data,
-    element,
-    config,
-    queryResponse,
-    details,
-    doneRendering
-  ) {
+  updateAsync: function (queryResponse, data, element, config, details, doneRendering) {
     element.innerHTML = "";
 
- 
     this.clearErrors();
 
-    if (Object.keys(data).length === 0 && Object.keys(queryResponse).length === 0 ) {
+    if (!queryResponse || !queryResponse.data) {
       this.addError({title: "No Data", message: "This chart requires data."});
+    }
+
+    if (Object.keys(data).length === 0) {
+      this.addError({title: "No Data", message: "This chart requires data."});
+      return;
+    }
+
+    if ( Object.keys(queryResponse).length === 0 ) {
+      this.addError({title: "No Queries", message: "This chart requires query response."});
       return;
     }
 
@@ -22,8 +23,6 @@ const visObject = {
       return;
     }
 
-    var data_ready = d3.entries(data)
-    console.log('data_ready', data_ready)
     console.log('queryResponse', queryResponse);
     
     const questionSubject = queryResponse.fields.dimensions[0] ? queryResponse.fields.dimensions[0].name : ''; //questions.subject
@@ -37,7 +36,7 @@ const visObject = {
 
     var meas = queryResponse["fields"]["measure_like"];
     var mesID = meas[3] ? meas[3]["name"] : null;
-    var mesData = data_ready[0]['value'][mesID];
+    var mesData = data[0][mesID];
     var mesLink = mesData ? mesData.links : null;
 
     // set the dimensions and margins of the graph
@@ -69,8 +68,8 @@ const visObject = {
   
       var legendTypo = svg.append("g").attr("transform", "translate(" + 860 + "," + margin.top + ")");
   
-      const minX = d3.min(data_ready, (d) => d.value[averageRating]["rendered"]);
-      const maxX = d3.max(data_ready, (d) => d.value[averageRating]["rendered"]);
+      const minX = d3.min(data, (d) => d[averageRating]["rendered"]);
+      const maxX = d3.max(data, (d) => d[averageRating]["rendered"]);
 
       //   Add X axis
       var x = d3.scaleLinear().domain([minX, maxX]).range([0, width]).nice();
@@ -89,17 +88,17 @@ const visObject = {
 
       var colors = []
       function colorMatcher() {
-        data_ready.map(d => {
-          if(d.value['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d.value['fact_table.avg_star_rating']['rendered'] <= totalAvgStarRating) {
+        data.forEach(d => {
+          if(d[absCorrelation]['rendered'] >= 0.5 && d[averageRating]['rendered'] <= totalAvgStarRating) {
             return colors.push("#f29696") // red
           }
-          if(d.value['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d.value['fact_table.avg_star_rating']['rendered'] <= totalAvgStarRating) {
+          if(d[absCorrelation]['rendered'] <= 0.5 && d[averageRating]['rendered'] <= totalAvgStarRating) {
               return colors.push("#f7e39c") // yellow
           }
-          if (d.value['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d.value['fact_table.avg_star_rating']['rendered'] >= totalAvgStarRating) {
+          if (d[absCorrelation]['rendered'] >= 0.5 && d[averageRating]['rendered'] >= totalAvgStarRating) {
               return colors.push("#bddaa5") // green
           }
-          if (d.value['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d.value['fact_table.avg_star_rating']['rendered'] >= totalAvgStarRating) {
+          if (d[absCorrelation]['rendered'] <= 0.5 && d[averageRating]['rendered'] >= totalAvgStarRating) {
               return colors.push("#d5e8ff") // blue
           }
         })
@@ -111,7 +110,7 @@ const visObject = {
       function widthCalc() {
         const containerWidth = width
         const leftWidthCont = (totalAvgStarRating - arryOfAvg[0]) / (arryOfAvg[arryOfAvg.length -1] - arryOfAvg[0]) * containerWidth
-        arryOfAvg.map(element => {
+        arryOfAvg.forEach(element => {
           if (parseInt(totalAvgStarRating) === element) {
             seqWidth = {
               leftWidth: leftWidthCont,
@@ -185,7 +184,7 @@ const visObject = {
 
       var tooltip = d3
         .select("#chart")
-        .data(data_ready.slice(0, 25))
+        .data(data.slice(0, 25))
         .append("foreignObject")
         .style("visibility", "hidden")
         .style("font-size", "12px")
@@ -201,25 +200,25 @@ const visObject = {
       var elemEnter = visual
         .append("g")
         .selectAll("g myCircleText")
-        .data(data_ready.slice(0, 25))
+        .data(data.slice(0, 25))
         .enter()
         .append("g")
         .style("cursor", "default")
-        .attr("transform", function (d) { return ("translate(" + x(d.value[averageRating]["rendered"]) + "," + y(d.value[absCorrelation]["rendered"]) +")"); });
+        .attr("transform", function (d) { return ("translate(" + x(d[averageRating]["rendered"]) + "," + y(d[absCorrelation]["rendered"]) +")"); });
   
       elemEnter.on("click", function(d) {
-        const subjectElement = questionSubject ? `<strong style="font-size: 13px; line-height: 18px">${d.value[questionSubject]["value"]}</strong><br>` : ''
-        const questionElement = questionQuestion ? `<strong style="font-size: 11px; display: block; margin: 5px 0;">${d.value[questionQuestion]["value"]} ?</strong>` : ''
+        const subjectElement = questionSubject ? `<strong style="font-size: 13px; line-height: 18px">${d[questionSubject]["value"]}</strong><br>` : ''
+        const questionElement = questionQuestion ? `<strong style="font-size: 11px; display: block; margin: 5px 0;">${d[questionQuestion]["value"]} ?</strong>` : ''
         tooltip.style("visibility", "visible")
         tooltip.html(
           subjectElement + 
           questionElement +
             `<span style="line-height: 26px">Ratings: </span>` + 
-            `<strong style="font-size: 13px; font-family: Arial, Helvetica, sans-serif;">${d.value[ratings]["value"]}</strong>` + 
+            `<strong style="font-size: 13px; font-family: Arial, Helvetica, sans-serif;">${d[ratings]["value"]}</strong>` + 
             `<br> <span style="line-height: 26px">Satisfaction: </span>` + 
-            `<strong style="font-size: 13px; font-family: Arial, Helvetica, sans-serif">${d.value[averageRating]["rendered"]}</strong>` +
+            `<strong style="font-size: 13px; font-family: Arial, Helvetica, sans-serif">${d[averageRating]["rendered"]}</strong>` +
             `<br> <span style="line-height: 26px">Correlation (NPS): </span>` + 
-            `<strong style="font-size: 13px; font-family: Arial, Helvetica, sans-serif;">${d.value[absCorrelation]["rendered"]}</strong><br><br>` 
+            `<strong style="font-size: 13px; font-family: Arial, Helvetica, sans-serif;">${d[absCorrelation]["rendered"]}</strong><br><br>` 
         )
         .style("left", (d3.event.pageX) + "px")
         .style("top", (d3.event.pageY) + "px")
@@ -297,7 +296,7 @@ const visObject = {
   
       legendTypo
         .selectAll("foreignObject")
-        .data(data_ready.slice(0, 10))
+        .data(data.slice(0, 10))
         .enter()
         .append("foreignObject")
         .attr("x", 0)
@@ -317,7 +316,7 @@ const visObject = {
         .style('height', '40px')
         .style('line-height', '20px')
         .html(function (d, i) {
-          return d.value[questionSubject]["value"];
+          return d[questionSubject]["value"];
         });
       
       //Learn more
@@ -417,18 +416,18 @@ const visObject = {
           <span style="line-height: 46px">Please invite more candidates.</span>
       `);
     }
-    const totlaRatingResponses = data_ready.reduce((acc, d) => acc + d.value[ratings].value, 0)
+    const totlaRatingResponses = data.reduce((acc, d) => acc + d[ratings].value, 0)
     console.log('totlaRatingResponses', totlaRatingResponses)
 
 
-    if (totalResponse !== null && totalResponse > 19) {
+    if (totlaRatingResponses !== null && totlaRatingResponses > 19) {
       visual();
     } else {
       message();
     }
 
     doneRendering();
-  },
-};
+  }
+}
 
 looker.plugins.visualizations.add(visObject);

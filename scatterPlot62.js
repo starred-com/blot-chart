@@ -1,13 +1,28 @@
 const visObject = {
-  updateAsync: function (
-    data,
-    element,
-    config,
-    queryResponse,
-    details,
-    doneRendering
-  ) {
+  updateAsync: function (queryResponse, data, element, config, details, doneRendering) {
     element.innerHTML = "";
+
+    this.clearErrors();
+
+    if (!queryResponse || !queryResponse.data || typeof queryResponse === undefined) {
+      this.addError({title: "No Data", message: "This chart requires data."});
+    }
+
+    if (Object.keys(data).length === 0) {
+      this.addError({title: "No Data", message: "This chart requires data."});
+      return;
+    }
+
+    if ( Object.keys(queryResponse).length === 0 ) {
+      this.addError({title: "No Queries", message: "This chart requires query response."});
+      return;
+    }
+
+    if (queryResponse.fields.dimensions.length == 0 ) {
+      this.addError({title: "No Dimensions", message: "This chart requires dimensions."});
+      return;
+    }
+
     console.log('queryResponse', queryResponse);
     
     const questionSubject = queryResponse.fields.dimensions[0] ? queryResponse.fields.dimensions[0].name : ''; //questions.subject
@@ -55,7 +70,7 @@ const visObject = {
   
       const minX = d3.min(data, (d) => d[averageRating]["rendered"]);
       const maxX = d3.max(data, (d) => d[averageRating]["rendered"]);
-  
+
       //   Add X axis
       var x = d3.scaleLinear().domain([minX, maxX]).range([0, width]).nice();
   
@@ -73,30 +88,29 @@ const visObject = {
 
       var colors = []
       function colorMatcher() {
-        dataJson.map(d => {
-          if(d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['rendered'] <= avg_satisfaction) {
+        data.forEach(d => {
+          if(d[absCorrelation]['rendered'] >= 0.5 && d[averageRating]['rendered'] <= totalAvgStarRating) {
             return colors.push("#f29696") // red
           }
-          if(d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['rendered'] <= avg_satisfaction) {
+          if(d[absCorrelation]['rendered'] <= 0.5 && d[averageRating]['rendered'] <= totalAvgStarRating) {
               return colors.push("#f7e39c") // yellow
           }
-          if (d['fact_table.abs_correlation_coefficient']['rendered'] >= 0.5 && d['fact_table.avg_star_rating']['rendered'] >= avg_satisfaction) {
+          if (d[absCorrelation]['rendered'] >= 0.5 && d[averageRating]['rendered'] >= totalAvgStarRating) {
               return colors.push("#bddaa5") // green
           }
-          if (d['fact_table.abs_correlation_coefficient']['rendered'] <= 0.5 && d['fact_table.avg_star_rating']['rendered'] >= avg_satisfaction) {
+          if (d[absCorrelation]['rendered'] <= 0.5 && d[averageRating]['rendered'] >= totalAvgStarRating) {
               return colors.push("#d5e8ff") // blue
           }
         })
         return colors
       }
       const colorMatchs = colorMatcher();
-      console.log('Colors :', colorMatchs)
 
       var seqWidth = []
       function widthCalc() {
         const containerWidth = width
         const leftWidthCont = (totalAvgStarRating - arryOfAvg[0]) / (arryOfAvg[arryOfAvg.length -1] - arryOfAvg[0]) * containerWidth
-        arryOfAvg.map(element => {
+        arryOfAvg.forEach(element => {
           if (parseInt(totalAvgStarRating) === element) {
             seqWidth = {
               leftWidth: leftWidthCont,
@@ -402,15 +416,18 @@ const visObject = {
           <span style="line-height: 46px">Please invite more candidates.</span>
       `);
     }
+    const totlaRatingResponses = data.reduce((acc, d) => acc + d[ratings].value, 0)
+    console.log('totlaRatingResponses', totlaRatingResponses)
 
-    if (totalResponse !== null && totalResponse > 19) {
+
+    if (totlaRatingResponses !== null && totlaRatingResponses > 19) {
       visual();
     } else {
       message();
     }
 
     doneRendering();
-  },
-};
+  }
+}
 
 looker.plugins.visualizations.add(visObject);
