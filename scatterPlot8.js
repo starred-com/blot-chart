@@ -394,8 +394,6 @@ const visObject = {
       `);
     }
     const totlaRatingResponses = data && data.reduce((acc, d) => acc + d[ratings].value, 0)
-    console.log(totlaRatingResponses);
-    console.log(data);
 
     if (data && totlaRatingResponses !== null && totlaRatingResponses > 19) {
       visual();
