@@ -14,28 +14,26 @@ const visObject = {
     //   return;
     // }
 
-    if ( Object.keys(queryResponse).length === 0 ) {
-      this.addError({title: "No Queries", message: "This chart requires query response."});
-      return;
-    }
+    // if ( Object.keys(queryResponse).length === 0 ) {
+    //   this.addError({title: "No Queries", message: "This chart requires query response."});
+    //   return;
+    // }
 
-    if (queryResponse?.fields?.dimensions.length == 0 ) {
-      this.addError({title: "No Dimensions", message: "This chart requires dimensions."});
-      return;
-    }
-
-    console.log('queryResponse', queryResponse);
+    // if (queryResponse?.fields?.dimensions.length == 0 ) {
+    //   this.addError({title: "No Dimensions", message: "This chart requires dimensions."});
+    //   return;
+    // }
     
-    const questionSubject = queryResponse.fields.dimensions[0] ? queryResponse.fields.dimensions[0].name : ''; //questions.subject
-    const questionQuestion = queryResponse.fields.dimension_like[1] ? queryResponse.fields.dimension_like[1].name : ''; //questions.question
-    const ratings = queryResponse.fields.measures[0].name; //fact_table.ratings
+    const questionSubject = queryResponse?.fields.dimensions[0] ? queryResponse.fields.dimensions[0].name : ''; //questions.subject
+    const questionQuestion = queryResponse?.fields.dimension_like[1] ? queryResponse.fields.dimension_like[1].name : ''; //questions.question
+    const ratings = queryResponse?.fields.measures[0].name; //fact_table.ratings
     // const priorityScore = queryResponse.fields.measures[1].name; //fact_table.priority_score
-    const absCorrelation = queryResponse.fields.measures[2].name; //fact_table.abs_correlation_coefficient
-    const averageRating = queryResponse.fields.measures[3].name; //fact_table.avg_star_rating
-    const totalResponse = queryResponse.totals_data[ratings] !== null ? queryResponse.totals_data[ratings].value : null; //total_response
-    const totalAvgStarRating = queryResponse.totals_data[averageRating] !== null ? queryResponse.totals_data[averageRating].html : null; //total_data_avg_star_rating
+    const absCorrelation = queryResponse?.fields.measures[2].name; //fact_table.abs_correlation_coefficient
+    const averageRating = queryResponse?.fields.measures[3].name; //fact_table.avg_star_rating
+    const totalResponse = queryResponse?.totals_data[ratings] !== null ? queryResponse.totals_data[ratings].value : null; //total_response
+    const totalAvgStarRating = queryResponse?.totals_data[averageRating] !== null ? queryResponse.totals_data[averageRating].html : null; //total_data_avg_star_rating
 
-    var meas = queryResponse["fields"]["measure_like"];
+    var meas = queryResponse?.["fields"]["measure_like"];
     var mesID = meas[3] ? meas[3]["name"] : null;
     var mesData = data[0][mesID];
     var mesLink = mesData ? mesData.links : null;
