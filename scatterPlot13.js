@@ -1,6 +1,11 @@
 const visObject = {
-  update: function (data, element, config, queryResponse, details, doneRendering) {
-    element.innerHTML = "";
+  create(element, config) {
+
+    this.elementRef = element;
+
+  },
+  update: function (data, element, queryResponse, doneRendering) {
+    // element.innerHTML = "";
 
     const questionSubject = queryResponse?.fields?.dimensions[0].name; //questions.subject
     const questionQuestion = queryResponse?.fields?.dimension_like[1].name; //questions.question
@@ -12,6 +17,7 @@ const visObject = {
     const totalAvgStarRating = queryResponse?.totals_data?.[averageRating]?.html; //total_data_avg_star_rating
 
     function visual() {
+  
       var meas = queryResponse?.["fields"]?.["measure_like"];
       var mesID = meas[3] ? meas[3]["name"] : null;
       var mesData = data ? data[0][mesID] : null;
@@ -22,20 +28,21 @@ const visObject = {
         width = 850 - margin.left - margin.right,
         height = 550 - margin.top - margin.bottom;
       // append the svg object to the body of the page
-      var svg = d3.select("#vis")
-      .style("font-family", "Open Sans, sans-serif")
-      .style("color", "rgb(105, 105, 105)")
-      .append("div")
-      .attr("id", "chart")
-      .style("display", "inline-block")
-      .style("position", "relative")
-      .append("svg")
-      .style("position", "fixed")
-      .attr("overflow", "visible")
-      .attr("width", "100%")
-      .attr("height", "100vh")
-      .attr("max-height", "950px")
-      .attr("viewBox", "0 0 1100 600");
+      var svg = d3
+        .select("#vis")
+        .style("font-family", "Open Sans, sans-serif")
+        .style("color", "rgb(105, 105, 105)")
+        .append("div")
+        .attr("id", "chart")
+        .style("display", "inline-block")
+        .style("position", "relative")
+        .append("svg")
+        .style("position", "fixed")
+        .attr("overflow", "visible")
+        .attr("width", "100%")
+        .attr("height", "100vh")
+        .attr("max-height", "950px")
+        .attr("viewBox", "0 0 1100 600");
   
       var visual = svg.append("g").attr("transform", "translate(" + 30 + "," + margin.top + ")");
   
@@ -399,7 +406,7 @@ const visObject = {
       message();
     }
 
-    doneRendering();
+    // doneRendering();
   }
 }
 
