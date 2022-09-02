@@ -1,11 +1,7 @@
 const visObject = {
-  create: function (config, details) {
-    console.log('config', config);
-    console.log('details', details);
-  },
-  updateAsync: function (data, element, queryResponse, doneRendering) {
+  updateAsync: function (data, element, config, queryResponse, details, doneRendering) {
     element.innerHTML = "";
-    console.log('data', data);
+
     const questionSubject = queryResponse?.fields?.dimensions[0].name; //questions.subject
     const questionQuestion = queryResponse?.fields?.dimension_like[1].name; //questions.question
     const ratings = queryResponse?.fields?.measures[0].name; //fact_table.ratings
