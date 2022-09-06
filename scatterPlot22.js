@@ -4,8 +4,8 @@ const visObject = {
   },
   updateAsync: function (data, element, config, queryResponse, details, doneRendering) {
     element.innerHTML = ""
-    const questionSubject = queryResponse.fields.dimensions[0] ? queryResponse.fields.dimensions[0].name : ''; //questions.subject
-    const questionQuestion = queryResponse.fields.dimension_like[1] ? queryResponse.fields.dimension_like[1].name : ''; //questions.question
+    const questionSubject = queryResponse.fields.dimensions[0] ? (queryResponse.fields.dimensions[0].name ? queryResponse.fields.dimensions[0].name : '') : ''; //questions.subject
+    const questionQuestion = queryResponse.fields.dimension_like[1] ? (queryResponse.fields.dimension_like[1].name ? queryResponse.fields.dimension_like[1].name : '') : ''; //questions.question
     const ratings = queryResponse?.fields?.measures[0].name; //fact_table.ratings
     // const priorityScore = queryResponse.fields.measures[1].name; //fact_table.priority_score
     const absCorrelation = queryResponse?.fields?.measures[2].name; //fact_table.abs_correlation_coefficient
