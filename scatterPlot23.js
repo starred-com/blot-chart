@@ -1,18 +1,19 @@
 const visObject = {
+  create: function (element, config) {
+    element.innerHTML = ""
+  },
   updateAsync: function (data, element, config, queryResponse, details, doneRendering) {
-    element.innerHTML = "";
-
-    const questionSubject = queryResponse?.fields?.dimensions[0].name; //questions.subject
-    const questionQuestion = queryResponse?.fields?.dimension_like[1].name; //questions.question
+    element.innerHTML = ""
+    const questionSubject = queryResponse.fields.dimensions[0] ? (queryResponse.fields.dimensions[0].name ? queryResponse.fields.dimensions[0].name : '') : ''; //questions.subject
+    const questionQuestion = queryResponse.fields.dimension_like[1] ? (queryResponse.fields.dimension_like[1].name ? queryResponse.fields.dimension_like[1].name : '') : ''; //questions.question
     const ratings = queryResponse?.fields?.measures[0].name; //fact_table.ratings
     // const priorityScore = queryResponse.fields.measures[1].name; //fact_table.priority_score
     const absCorrelation = queryResponse?.fields?.measures[2].name; //fact_table.abs_correlation_coefficient
     const averageRating = queryResponse?.fields?.measures[3].name; //fact_table.avg_star_rating
     // const totalResponse = queryResponse?.totals_data[ratings] !== null ? queryResponse.totals_data[ratings].value : null; //total_response
-    const totalAvgStarRating = queryResponse?.totals_data?.[averageRating]?.html; //total_data_avg_star_rating
+    const totalAvgStarRating = queryResponse?.totals_data[averageRating] ? (queryResponse.totals_data[averageRating].html ? queryResponse.totals_data[averageRating].html : '') : ''; //total_data_avg_star_rating
 
     function visual() {
-  
       var meas = queryResponse?.["fields"]?.["measure_like"];
       var mesID = meas[3] ? meas[3]["name"] : null;
       var mesData = data ? data[0][mesID] : null;
@@ -87,14 +88,10 @@ const visObject = {
       function widthCalc() {
         const containerWidth = width
         const leftWidthCont = (totalAvgStarRating - arryOfAvg[0]) / (arryOfAvg[arryOfAvg.length -1] - arryOfAvg[0]) * containerWidth
-        arryOfAvg.forEach(element => {
-          if (parseInt(totalAvgStarRating) === element) {
-            seqWidth = {
-              leftWidth: leftWidthCont,
-              rightWidth: containerWidth - leftWidthCont
-            }
-          } 
-        })
+        seqWidth = {
+          leftWidth: leftWidthCont,
+          rightWidth: containerWidth - leftWidthCont
+        }
         return seqWidth
       }
       const widthCalculator = widthCalc();

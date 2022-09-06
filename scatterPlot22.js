@@ -11,10 +11,9 @@ const visObject = {
     const absCorrelation = queryResponse?.fields?.measures[2].name; //fact_table.abs_correlation_coefficient
     const averageRating = queryResponse?.fields?.measures[3].name; //fact_table.avg_star_rating
     // const totalResponse = queryResponse?.totals_data[ratings] !== null ? queryResponse.totals_data[ratings].value : null; //total_response
-    const totalAvgStarRating = queryResponse?.totals_data?.[averageRating]?.html; //total_data_avg_star_rating
+    const totalAvgStarRating = queryResponse?.totals_data[averageRating] ? (queryResponse.totals_data[averageRating].html ? queryResponse.totals_data[averageRating].html : '') : ''; //total_data_avg_star_rating
 
     function visual() {
-  
       var meas = queryResponse?.["fields"]?.["measure_like"];
       var mesID = meas[3] ? meas[3]["name"] : null;
       var mesData = data ? data[0][mesID] : null;
