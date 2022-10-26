@@ -18,17 +18,6 @@ const visObject = {
       var mesID = meas[3] ? meas[3]["name"] : null;
       var mesData = data ? data[0][mesID] : null;
       var mesLink = mesData ? mesData.links : null;
-      function getLinks(i) {
-        var measureDataField = data ? data[i][mesID] : null
-        if (measureDataField) {
-          return measureDataField.links
-        } else {
-          return null
-        }
-      }
-      console.log('mesData', mesData)
-      console.log('mesLink', mesLink)
-      console.log('getLinks(i)', getLinks(2))
       // set the dimensions and margins of the graph
       var margin = { top: 10, right: 30, bottom: 30, left: 60 },
         width = 850 - margin.left - margin.right,
@@ -193,6 +182,7 @@ const visObject = {
       elemEnter.on("click", function(d, i) {
         const subjectElement = questionSubject ? `<strong style="font-size: 13px; line-height: 18px">${d[questionSubject]["value"]}</strong><br>` : ''
         const questionElement = questionQuestion ? `<strong style="font-size: 11px; display: block; margin: 5px 0;">${d[questionQuestion]["value"]} ?</strong>` : ''
+        const drillDownLink = data[i][mesID].links
         tooltip.style("visibility", "visible")
         tooltip.html(
           subjectElement + 
@@ -207,7 +197,7 @@ const visObject = {
         .style("left", (d3.event.pageX) + "px")
         .style("top", (d3.event.pageY) + "px")
         
-        if (mesLink && mesLink !== null) {
+        if (drillDownLink && drillDownLink !== null) {
           var cta = tooltip.append('a')
               .style('cursor', 'pointer')
               .html(`<strong 
@@ -222,9 +212,8 @@ const visObject = {
                   font-family: Arial, Helvetica, sans-serif;
                   ">Inspect item</strong>`)
               .on("click", function (d) {
-                console.log('drillfunction', d, i)
                 LookerCharts.Utils.openDrillMenu({
-                    links: data[i][mesID].links,
+                    links: drillDownLink,
                     event: event,
                 })
               });
