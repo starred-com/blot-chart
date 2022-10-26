@@ -16,7 +16,7 @@ const visObject = {
     function visual() {
       var meas = queryResponse?.["fields"]?.["measure_like"];
       var mesID = meas[3] ? meas[3]["name"] : null;
-      var mesData = data ? data[1][mesID] : null;
+      var mesData = data ? data[0][mesID] : null;
       var mesLink = mesData ? mesData.links : null;
       function getLinks(i) {
         var measureDataField = data ? data[i][mesID] : null
@@ -190,7 +190,7 @@ const visObject = {
         .style("cursor", "default")
         .attr("transform", function (d) { return ("translate(" + x(d[averageRating]["rendered"]) + "," + y(d[absCorrelation]["rendered"]) +")"); });
   
-      elemEnter.on("click", function(d) {
+      elemEnter.on("click", function(d, i) {
         const subjectElement = questionSubject ? `<strong style="font-size: 13px; line-height: 18px">${d[questionSubject]["value"]}</strong><br>` : ''
         const questionElement = questionQuestion ? `<strong style="font-size: 11px; display: block; margin: 5px 0;">${d[questionQuestion]["value"]} ?</strong>` : ''
         tooltip.style("visibility", "visible")
@@ -221,8 +221,8 @@ const visObject = {
                   text-align: center;
                   font-family: Arial, Helvetica, sans-serif;
                   ">Inspect item</strong>`)
-              .on("click", function (d, i) {
-                console.log('drillfunction', d)
+              .on("click", function (d) {
+                console.log('drillfunction', d, i)
                 LookerCharts.Utils.openDrillMenu({
                     links: data[i][mesID].links,
                     event: event,
