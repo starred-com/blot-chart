@@ -1665,78 +1665,86 @@ function message() {
   .attr('overflow', 'visible')
   .attr("width", '100%' )
   .attr("height", '100vh')
+  .attr("position", "fixed")
   .attr("max-height", '950px').attr('viewBox', '0 0 1110 600');
 
   svg.append("image")
-  .attr('xlink:href', 'https://cdn.starred.com/downloads/looker/priority-matrix-screenshot.png')
+  .attr('xlink:href', 'https://cdn.starred.com/downloads/looker/not-found.png')
   .attr("width", "100%")
   .attr("height", "100%");
+  // .style("backdrop-filter", "blur(3rem)")
+  // .style("filter", "blur(4px)");
 
-  svg.append("foreignObject")
-  .style("width", "100%")
-  .style("height", "100%")
-  .style("background", "rgba(255, 255, 255, 0.2)")
-  .style("backdrop-filter", "blur(6px)");
+  // svg.append("foreignObject")
+  // .style("width", "100%")
+  // .style("height", "100%")
+  // .style("background", "rgba(255, 255, 255, 0.2)");
 
-  var container = svg.append("foreignObject")
-  .style("width", '50%')
-  .style("height", "300px")
-  .style("border", '1px solid')
-  .style("padding-top", "120px")
-  .style("transform", "translate(290px, 150px)")
-  .style("border-radius", "5px")
-  .style("background-color", "white");
+  // var container = svg.append("foreignObject")
+  // .style("width", '50%')
+  // .style("height", "300px")
+  // .style("border", '1px solid')
+  // .style("padding-top", "120px")
+  // .style("transform", "translate(290px, 150px)")
+  // .style("border-radius", "5px")
+  // .style("background-color", "white");
 
-  var emoji = svg.append("g")
+  // var emoji = svg.append("g")
   
-  var main = emoji.append("circle")
-  .attr('r', 23)
-  .attr('cx', 560)
-  .attr('cy', 225)
-  .attr('fill', 'white')
-  .attr('stroke', 'rgb(226,135,67)')
-  .attr("stroke-width", 3);
+  // var main = emoji.append("circle")
+  // .attr('r', 23)
+  // .attr('cx', 560)
+  // .attr('cy', 225)
+  // .attr('fill', 'white')
+  // .attr('stroke', 'rgb(226,135,67)')
+  // .attr("stroke-width", 3);
 
-  var leftEye = emoji.append("circle")
-  .attr('r', 3)
-  .attr('cx', 550)
-  .attr('cy', 220)
-  .attr('fill', 'rgb(226,135,67)')
-  .attr('stroke', 'rgb(226,135,67)');
+  // var leftEye = emoji.append("circle")
+  // .attr('r', 3)
+  // .attr('cx', 550)
+  // .attr('cy', 220)
+  // .attr('fill', 'rgb(226,135,67)')
+  // .attr('stroke', 'rgb(226,135,67)');
 
-  var rightEye = emoji.append("circle")
-  .attr('r', 3)
-  .attr('cx', 570)
-  .attr('cy', 220)
-  .attr('fill', 'rgb(226,135,67)')
-  .attr('stroke', 'rgb(226,135,67)');
+  // var rightEye = emoji.append("circle")
+  // .attr('r', 3)
+  // .attr('cx', 570)
+  // .attr('cy', 220)
+  // .attr('fill', 'rgb(226,135,67)')
+  // .attr('stroke', 'rgb(226,135,67)');
 
-  var mouth = emoji.append("path")
-  .attr('transform', 'translate(555, 240)')
-  .attr('stroke', 'rgb(226,135,67)')
-  .attr('fill', 'rgb(226,135,67)')
-  .attr('d', d3.arc()({     
-      innerRadius: 7,
-      outerRadius: 5, 
-      startAngle: Math.PI * 2.5, 
-      endAngle: Math.PI * 3/2
-  }));
+  // var mouth = emoji.append("path")
+  // .attr('transform', 'translate(555, 240)')
+  // .attr('stroke', 'rgb(226,135,67)')
+  // .attr('fill', 'rgb(226,135,67)')
+  // .attr('d', d3.arc()({     
+  //     innerRadius: 7,
+  //     outerRadius: 5, 
+  //     startAngle: Math.PI * 2.5, 
+  //     endAngle: Math.PI * 3/2
+  // }));
 
-  container.append("xhtml:div")
-  .style("display", 'flex')
-  .style("justify-content", "center")
-  .style("align-items", "center")
-  .style("flex-direction", "column")
-  .html(`
-      <strong style="font-size: 32px; text-align: center; line-height: 64px;">
-          Priority matrix not available
-      </strong>
-      <span>You received few responses to provide a priority matrix.</span>
-      <span style="line-height: 46px">Please invite more clients.</span>
-  `);
+  // container.append("xhtml:div")
+  // .style("display", 'flex')
+  // .style("justify-content", "center")
+  // .style("align-items", "center")
+  // .style("flex-direction", "column")
+
+  // .style("height", "249px")
+  // .style("border", '1px solid')
+  // .style("padding-top", "48px")
+  // .style("border-radius", "5px")
+  // .style("background-color", "white")
+  // .html(`
+  //     <strong style="font-size: 32px; text-align: center; line-height: 64px;">
+  //         Priority matrix not available
+  //     </strong>
+  //     <span>You received few responses to provide a priority matrix.</span>
+  //     <span style="line-height: 46px">Please invite more clients.</span>
+  // `);
 }
 
-var responses = 30;
+var responses = 18;
 if (responses > 19 || fakedata.length < 1) {
     visual();
 } else {
