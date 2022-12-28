@@ -330,7 +330,7 @@ const visObject = {
     }
     const totlaRatingResponses = data && data.reduce((acc, d) => acc + d[ratings].value, 0)
     console.log('total response and ratings', totalResponse, totlaRatingResponses)
-    if (data && totalResponse !== null && totalResponse > 19) {
+    if (data && data.length > 19) {
       visual();
     } else {
       message();

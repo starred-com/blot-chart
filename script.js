@@ -1350,6 +1350,200 @@ var fakedata = [
       }
   }
 ]
+
+var anotherFake = [
+  {
+      "questions.subject": {
+          "value": "Feedback"
+      },
+      "questions.question": {
+          "value": "I was provided with a clear explanation of why %company chose not to move forward with me",
+          "filterable_value": "\"I was provided with a clear explanation of why %company chose not to move forward with me\""
+      },
+      "fact_table.ratings": {
+          "value": 24
+      },
+      "fact_table.priority_score": {
+          "value": 2.7343387699722137,
+          "rendered": "2.73"
+      },
+      "fact_table.abs_correlation_coefficient": {
+          "value": 0.6628700048417487,
+          "rendered": "0.66",
+          "html": "1.  Feedback  0.66 "
+      },
+      "fact_table.avg_star_rating_with_link": {
+          "value": 5.875,
+          "rendered": "5.88",
+          "links": [
+              {
+                  "label": "Question Drill Down Dashboard",
+                  "url": "/dashboards/2708?uniqueformid=44215&subject=Feedback&languageid=&filterdate=&npscategory=&tagvalue1=&tagvalue2=&tagvalue3=&tagvalue4=&tagvalue5=&tagvalue6=&tagvalue7=&tagvalue8=&tagvalue9=&tagvalue10=&tagvalue11=&tagvalue12=&tagvalue13=&tagvalue14=&tagvalue15=&tagvalue16=&tagvalue17=&tagvalue18=&tagvalue19=&tagvalue20=&tagvalue21=&tagvalue22=&tagvalue23=&tagvalue24=&tagvalue25=&tagvalue26=&tagvalue27=&tagvalue28=&tagvalue29=&tagvalue30=&tagvalue31=&tagvalue32=&tagvalue33=&tagvalue34=&tagvalue35=&tagvalue36=&tagvalue37=&tagvalue38=&tagvalue39=&tagvalue40=&tagvalue41=&tagvalue42=&tagvalue43=&tagvalue44=&tagvalue45=&tagvalue46=&tagvalue47=&tagvalue48=&tagvalue49=&tagvalue50=&source=&recruiter=&department=&sourcer=&hiringmanager=&coordinator=&location=&country=&region=&application_id=&time_to_process=&office=&job_name=&rejection_stage=",
+                  "type": "dashboard"
+              }
+          ]
+      }
+  },
+  {
+      "questions.subject": {
+          "value": "Job Scope"
+      },
+      "questions.question": {
+          "value": "The position was clearly explained to me"
+      },
+      "fact_table.ratings": {
+          "value": 25
+      },
+      "fact_table.priority_score": {
+          "value": 2.651871783880904,
+          "rendered": "2.65"
+      },
+      "fact_table.abs_correlation_coefficient": {
+          "value": 0.839199931607881,
+          "rendered": "0.84",
+          "html": "2.  Job Scope  0.84 "
+      },
+      "fact_table.avg_star_rating_with_link": {
+          "value": 6.84,
+          "rendered": "6.84",
+          "links": [
+              {
+                  "label": "Question Drill Down Dashboard",
+                  "url": "/dashboards/2708?uniqueformid=44215&subject=Job+Scope&languageid=&filterdate=&npscategory=&tagvalue1=&tagvalue2=&tagvalue3=&tagvalue4=&tagvalue5=&tagvalue6=&tagvalue7=&tagvalue8=&tagvalue9=&tagvalue10=&tagvalue11=&tagvalue12=&tagvalue13=&tagvalue14=&tagvalue15=&tagvalue16=&tagvalue17=&tagvalue18=&tagvalue19=&tagvalue20=&tagvalue21=&tagvalue22=&tagvalue23=&tagvalue24=&tagvalue25=&tagvalue26=&tagvalue27=&tagvalue28=&tagvalue29=&tagvalue30=&tagvalue31=&tagvalue32=&tagvalue33=&tagvalue34=&tagvalue35=&tagvalue36=&tagvalue37=&tagvalue38=&tagvalue39=&tagvalue40=&tagvalue41=&tagvalue42=&tagvalue43=&tagvalue44=&tagvalue45=&tagvalue46=&tagvalue47=&tagvalue48=&tagvalue49=&tagvalue50=&source=&recruiter=&department=&sourcer=&hiringmanager=&coordinator=&location=&country=&region=&application_id=&time_to_process=&office=&job_name=&rejection_stage=",
+                  "type": "dashboard"
+              }
+          ]
+      }
+  },
+  {
+      "questions.subject": {
+          "value": "Screening"
+      },
+      "questions.question": {
+          "value": "The recruiter asked questions that allowed me to highlight my skills and experience"
+      },
+      "fact_table.ratings": {
+          "value": 25
+      },
+      "fact_table.priority_score": {
+          "value": 2.25341560475603,
+          "rendered": "2.25"
+      },
+      "fact_table.abs_correlation_coefficient": {
+          "value": 0.7412551331434309,
+          "rendered": "0.74",
+          "html": "3.  Screening  0.74 "
+      },
+      "fact_table.avg_star_rating_with_link": {
+          "value": 6.96,
+          "rendered": "6.96",
+          "links": [
+              {
+                  "label": "Question Drill Down Dashboard",
+                  "url": "/dashboards/2708?uniqueformid=44215&subject=Screening&languageid=&filterdate=&npscategory=&tagvalue1=&tagvalue2=&tagvalue3=&tagvalue4=&tagvalue5=&tagvalue6=&tagvalue7=&tagvalue8=&tagvalue9=&tagvalue10=&tagvalue11=&tagvalue12=&tagvalue13=&tagvalue14=&tagvalue15=&tagvalue16=&tagvalue17=&tagvalue18=&tagvalue19=&tagvalue20=&tagvalue21=&tagvalue22=&tagvalue23=&tagvalue24=&tagvalue25=&tagvalue26=&tagvalue27=&tagvalue28=&tagvalue29=&tagvalue30=&tagvalue31=&tagvalue32=&tagvalue33=&tagvalue34=&tagvalue35=&tagvalue36=&tagvalue37=&tagvalue38=&tagvalue39=&tagvalue40=&tagvalue41=&tagvalue42=&tagvalue43=&tagvalue44=&tagvalue45=&tagvalue46=&tagvalue47=&tagvalue48=&tagvalue49=&tagvalue50=&source=&recruiter=&department=&sourcer=&hiringmanager=&coordinator=&location=&country=&region=&application_id=&time_to_process=&office=&job_name=&rejection_stage=",
+                  "type": "dashboard"
+              }
+          ]
+      }
+  },
+  {
+      "questions.subject": {
+          "value": "Quick Response"
+      },
+      "questions.question": {
+          "value": "We quickly responded to your application"
+      },
+      "fact_table.ratings": {
+          "value": 27
+      },
+      "fact_table.priority_score": {
+          "value": 1.9465618946003702,
+          "rendered": "1.95"
+      },
+      "fact_table.abs_correlation_coefficient": {
+          "value": 0.7299607104751389,
+          "rendered": "0.73",
+          "html": "4.  Quick Response  0.73 "
+      },
+      "fact_table.avg_star_rating_with_link": {
+          "value": 7.333333333333333,
+          "rendered": "7.33",
+          "filterable_value": "7.33333333333333333333",
+          "links": [
+              {
+                  "label": "Question Drill Down Dashboard",
+                  "url": "/dashboards/2708?uniqueformid=44215&subject=Quick+Response&languageid=&filterdate=&npscategory=&tagvalue1=&tagvalue2=&tagvalue3=&tagvalue4=&tagvalue5=&tagvalue6=&tagvalue7=&tagvalue8=&tagvalue9=&tagvalue10=&tagvalue11=&tagvalue12=&tagvalue13=&tagvalue14=&tagvalue15=&tagvalue16=&tagvalue17=&tagvalue18=&tagvalue19=&tagvalue20=&tagvalue21=&tagvalue22=&tagvalue23=&tagvalue24=&tagvalue25=&tagvalue26=&tagvalue27=&tagvalue28=&tagvalue29=&tagvalue30=&tagvalue31=&tagvalue32=&tagvalue33=&tagvalue34=&tagvalue35=&tagvalue36=&tagvalue37=&tagvalue38=&tagvalue39=&tagvalue40=&tagvalue41=&tagvalue42=&tagvalue43=&tagvalue44=&tagvalue45=&tagvalue46=&tagvalue47=&tagvalue48=&tagvalue49=&tagvalue50=&source=&recruiter=&department=&sourcer=&hiringmanager=&coordinator=&location=&country=&region=&application_id=&time_to_process=&office=&job_name=&rejection_stage=",
+                  "type": "dashboard"
+              }
+          ]
+      }
+  },
+  {
+      "questions.subject": {
+          "value": "Job Description"
+      },
+      "questions.question": {
+          "value": "The responsibilities and expectations of the role were clear and complete"
+      },
+      "fact_table.ratings": {
+          "value": 24
+      },
+      "fact_table.priority_score": {
+          "value": 1.5106928344602668,
+          "rendered": "1.51"
+      },
+      "fact_table.abs_correlation_coefficient": {
+          "value": 0.5943709512630558,
+          "rendered": "0.59",
+          "html": "5.  Job Description  0.59 "
+      },
+      "fact_table.avg_star_rating_with_link": {
+          "value": 7.458333333333333,
+          "rendered": "7.46",
+          "filterable_value": "7.4583333333333333",
+          "links": [
+              {
+                  "label": "Question Drill Down Dashboard",
+                  "url": "/dashboards/2708?uniqueformid=44215&subject=Job+Description&languageid=&filterdate=&npscategory=&tagvalue1=&tagvalue2=&tagvalue3=&tagvalue4=&tagvalue5=&tagvalue6=&tagvalue7=&tagvalue8=&tagvalue9=&tagvalue10=&tagvalue11=&tagvalue12=&tagvalue13=&tagvalue14=&tagvalue15=&tagvalue16=&tagvalue17=&tagvalue18=&tagvalue19=&tagvalue20=&tagvalue21=&tagvalue22=&tagvalue23=&tagvalue24=&tagvalue25=&tagvalue26=&tagvalue27=&tagvalue28=&tagvalue29=&tagvalue30=&tagvalue31=&tagvalue32=&tagvalue33=&tagvalue34=&tagvalue35=&tagvalue36=&tagvalue37=&tagvalue38=&tagvalue39=&tagvalue40=&tagvalue41=&tagvalue42=&tagvalue43=&tagvalue44=&tagvalue45=&tagvalue46=&tagvalue47=&tagvalue48=&tagvalue49=&tagvalue50=&source=&recruiter=&department=&sourcer=&hiringmanager=&coordinator=&location=&country=&region=&application_id=&time_to_process=&office=&job_name=&rejection_stage=",
+                  "type": "dashboard"
+              }
+          ]
+      }
+  },
+  {
+      "questions.subject": {
+          "value": "Careers Site"
+      },
+      "questions.question": {
+          "value": "It was easy to apply"
+      },
+      "fact_table.ratings": {
+          "value": 24
+      },
+      "fact_table.priority_score": {
+          "value": 0.6797011966382027,
+          "rendered": "0.68"
+      },
+      "fact_table.abs_correlation_coefficient": {
+          "value": 0.32625657438633726,
+          "rendered": "0.33",
+          "html": "6.  Careers Site  0.33 "
+      },
+      "fact_table.avg_star_rating_with_link": {
+          "value": 7.916666666666667,
+          "rendered": "7.92",
+          "filterable_value": "7.91666666666666666667",
+          "links": [
+              {
+                  "label": "Question Drill Down Dashboard",
+                  "url": "/dashboards/2708?uniqueformid=44215&subject=Careers+Site&languageid=&filterdate=&npscategory=&tagvalue1=&tagvalue2=&tagvalue3=&tagvalue4=&tagvalue5=&tagvalue6=&tagvalue7=&tagvalue8=&tagvalue9=&tagvalue10=&tagvalue11=&tagvalue12=&tagvalue13=&tagvalue14=&tagvalue15=&tagvalue16=&tagvalue17=&tagvalue18=&tagvalue19=&tagvalue20=&tagvalue21=&tagvalue22=&tagvalue23=&tagvalue24=&tagvalue25=&tagvalue26=&tagvalue27=&tagvalue28=&tagvalue29=&tagvalue30=&tagvalue31=&tagvalue32=&tagvalue33=&tagvalue34=&tagvalue35=&tagvalue36=&tagvalue37=&tagvalue38=&tagvalue39=&tagvalue40=&tagvalue41=&tagvalue42=&tagvalue43=&tagvalue44=&tagvalue45=&tagvalue46=&tagvalue47=&tagvalue48=&tagvalue49=&tagvalue50=&source=&recruiter=&department=&sourcer=&hiringmanager=&coordinator=&location=&country=&region=&application_id=&time_to_process=&office=&job_name=&rejection_stage=",
+                  "type": "dashboard"
+              }
+          ]
+      }
+  }
+]
+console.log('anotherFake', anotherFake.length)
 var emptyData = false
 function visual() {
   // set the dimensions and margins of the graph
