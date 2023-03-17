@@ -1010,7 +1010,7 @@ var fakedata = [
           "filterable_value": "\"Communication & Managing Expectations\""
       },
       "questions.question": {
-          "value": "The talent team managed my expectations around the process and its timeline"
+          "value": "The talent team managed my expectations around the process and its timeline ?"
       },
       "fact_table.ratings": {
           "value": 215
@@ -1041,7 +1041,7 @@ var fakedata = [
           "value": "Preparation for Interview(s)"
       },
       "questions.question": {
-          "value": "I felt that the recruiter prepared me well for my interview(s)"
+          "value": "I felt that the recruiter prepared me well for my interview(s) ?"
       },
       "fact_table.ratings": {
           "value": 208
@@ -1072,7 +1072,7 @@ var fakedata = [
           "value": "Scheduling of Interview(s)"
       },
       "questions.question": {
-          "value": "The scheduling of the interview(s) went smoothly"
+          "value": "The scheduling of the interview(s) went smoothly ?"
       },
       "fact_table.ratings": {
           "value": 213
@@ -1103,7 +1103,7 @@ var fakedata = [
           "value": "Screening"
       },
       "questions.question": {
-          "value": "The recruiter asked questions that allowed me to highlight my skills and experience"
+          "value": "The recruiter asked questions that allowed me to highlight my skills and experience ?"
       },
       "fact_table.ratings": {
           "value": 216
@@ -1135,7 +1135,7 @@ var fakedata = [
           "filterable_value": "\"Role Expectations & Team\""
       },
       "questions.question": {
-          "value": "The interviewer(s) gave me a thorough understanding of expectations in the role and the culture of the team"
+          "value": "The interviewer(s) gave me a thorough understanding of expectations in the role and the culture of the team ?"
       },
       "fact_table.ratings": {
           "value": 214
@@ -1166,7 +1166,7 @@ var fakedata = [
           "value": "Interview Preparation"
       },
       "questions.question": {
-          "value": "I could tell that the interviewer(s) I spoke with was/were well prepared"
+          "value": "I could tell that the interviewer(s) I spoke with was/were well prepared ?"
       },
       "fact_table.ratings": {
           "value": 213
@@ -1197,7 +1197,7 @@ var fakedata = [
           "value": "Asking Questions"
       },
       "questions.question": {
-          "value": "You had the opportunity to learn about the team and the challenges in the role"
+          "value": "You had the opportunity to learn about the team and the challenges in the role ?"
       },
       "fact_table.ratings": {
           "value": 213
@@ -1228,7 +1228,7 @@ var fakedata = [
           "value": "Engagement"
       },
       "questions.question": {
-          "value": "The interviewer(s) were engaged and interested in my profile"
+          "value": "The interviewer(s) were engaged and interested in my profile ?"
       },
       "fact_table.ratings": {
           "value": 214
@@ -1292,7 +1292,7 @@ var fakedata = [
           "value": "Interview Atmosphere"
       },
       "questions.question": {
-          "value": "The interviewer(s) provided a safe environment to openly express myself and ask questions"
+          "value": "The interviewer(s) provided a safe environment to openly express myself and ask questions ?"
       },
       "fact_table.ratings": {
           "value": 213
@@ -1323,7 +1323,7 @@ var fakedata = [
           "value": "Respectful Hiring"
       },
       "questions.question": {
-          "value": "I feel I could be my authentic self during the interviews and was treated respectfully by my interviewer(s)"
+          "value": "I feel I could be my authentic self during the interviews and was treated respectfully by my interviewer(s) ?"
       },
       "fact_table.ratings": {
           "value": 211
@@ -1357,7 +1357,7 @@ var anotherFake = [
           "value": "Feedback"
       },
       "questions.question": {
-          "value": "I was provided with a clear explanation of why %company chose not to move forward with me",
+          "value": "I was provided with a clear explanation of why %company chose not to move forward with me ?",
           "filterable_value": "\"I was provided with a clear explanation of why %company chose not to move forward with me\""
       },
       "fact_table.ratings": {
@@ -1737,7 +1737,7 @@ console.log(widthCalculator.leftWidth)
   elemEnter.on("click", function(d) {
     const subject = d['questions.subject'] ? d['questions.subject']['value'] : '';
     const subjectElement = subject ? `<strong style="font-size: 13px; line-height: 24px">${subject}</strong> <br>` : '';
-    const question = d['survey_question.question'] ? d['survey_question.question']['value'] + '?' : '';
+    const question = d['survey_question.question'] ? d['survey_question.question']['value'] : '';
     const questionElement = question ? `<strong style="font-size: 11px; display: block; margin: 5px 0;">${question}</strong>` : '';
     tooltip.style("visibility", "visible")
     tooltip.html(
@@ -1938,7 +1938,7 @@ function message() {
   // `);
 }
 
-var responses = 18;
+var responses = 20;
 if (responses > 19 || fakedata.length < 1) {
     visual();
 } else {

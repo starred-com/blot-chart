@@ -7,11 +7,13 @@ const visObject = {
     const questionSubject = queryResponse.fields.dimensions[0] ? (queryResponse.fields.dimensions[0].name ? queryResponse.fields.dimensions[0].name : '') : ''; //questions.subject
     const questionQuestion = queryResponse.fields.dimension_like[1] ? (queryResponse.fields.dimension_like[1].name ? queryResponse.fields.dimension_like[1].name : '') : ''; //questions.question
     const ratings = queryResponse?.fields?.measures[0].name; //fact_table.ratings
+    const uniqueRatings = queryResponse?.fields?.measures[4].name; //fact_table.unique_ratings
     // const priorityScore = queryResponse.fields.measures[1].name; //fact_table.priority_score
     const absCorrelation = queryResponse?.fields?.measures[2].name; //fact_table.abs_correlation_coefficient
     const averageRating = queryResponse?.fields?.measures[3].name; //fact_table.avg_star_rating
-    // const totalResponse = queryResponse?.totals_data[ratings] !== null ? queryResponse.totals_data[ratings].value : null; //total_response
-    const totalAvgStarRating = queryResponse?.totals_data[averageRating] ? (queryResponse.totals_data[averageRating].html ? queryResponse.totals_data[averageRating].html : '') : ''; //total_data_avg_star_rating
+    const totalResponse = queryResponse?.totals_data[ratings] !== null ? queryResponse.totals_data[ratings].value : null; //total_response
+    const newTotalResponse = queryResponse?.totals_data[uniqueRatings] !== null ? queryResponse.totals_data[uniqueRatings].value : null; //total_response
+    const totalAvgStarRating = queryResponse?.totals_data[averageRating] ? queryResponse.totals_data[averageRating].html : ''; //total_data_avg_star_rating
 
     function visual() {
       var meas = queryResponse?.["fields"]?.["measure_like"];
@@ -181,7 +183,7 @@ const visObject = {
   
       elemEnter.on("click", function(d, i) {
         const subjectElement = questionSubject ? `<strong style="font-size: 13px; line-height: 18px">${d[questionSubject]["value"]}</strong><br>` : ''
-        const questionElement = questionQuestion ? `<strong style="font-size: 11px; display: block; margin: 5px 0;">${d[questionQuestion]["value"]} ?</strong>` : ''
+        const questionElement = questionQuestion ? `<strong style="font-size: 11px; display: block; margin: 5px 0;">${d[questionQuestion]["value"]}</strong>` : ''
         const drillDownLink = data[i][mesID].links
         tooltip.style("visibility", "visible")
         tooltip.html(
@@ -323,76 +325,12 @@ const visObject = {
       .attr("max-height", '950px').attr('viewBox', '0 0 1110 600');
 
       svg.append("image")
-      .attr('xlink:href', 'https://cdn.starred.com/downloads/looker/priority-matrix-screenshot.png')
+      .attr('xlink:href', 'https://cdn.starred.com/downloads/looker/not-found.png')
       .attr("width", "100%")
       .attr("height", "100%");
-
-      svg.append("foreignObject")
-      .style("width", "100%")
-      .style("height", "100%")
-      .style("background", "rgba(255, 255, 255, 0.2)")
-      .style("backdrop-filter", "blur(6px)");
-
-      var container = svg.append("foreignObject")
-      .style("width", '50%')
-      .style("height", "300px")
-      .style("border", '1px solid')
-      .style("padding-top", "120px")
-      .style("transform", "translate(290px, 150px)")
-      .style("border-radius", "5px")
-      .style("background-color", "white");
-
-      var emoji = svg.append("g")
-      
-      var main = emoji.append("circle")
-      .attr('r', 23)
-      .attr('cx', 560)
-      .attr('cy', 225)
-      .attr('fill', 'white')
-      .attr('stroke', 'rgb(226,135,67)')
-      .attr("stroke-width", 3);
-
-      var leftEye = emoji.append("circle")
-      .attr('r', 3)
-      .attr('cx', 550)
-      .attr('cy', 220)
-      .attr('fill', 'rgb(226,135,67)')
-      .attr('stroke', 'rgb(226,135,67)');
-
-      var rightEye = emoji.append("circle")
-      .attr('r', 3)
-      .attr('cx', 570)
-      .attr('cy', 220)
-      .attr('fill', 'rgb(226,135,67)')
-      .attr('stroke', 'rgb(226,135,67)');
-
-      var mouth = emoji.append("path")
-      .attr('transform', 'translate(555, 240)')
-      .attr('stroke', 'rgb(226,135,67)')
-      .attr('fill', 'rgb(226,135,67)')
-      .attr('d', d3.arc()({     
-          innerRadius: 7,
-          outerRadius: 5, 
-          startAngle: Math.PI * 2.5, 
-          endAngle: Math.PI * 3/2
-      }));
-
-      container.append("xhtml:div")
-      .style("display", 'flex')
-      .style("justify-content", "center")
-      .style("align-items", "center")
-      .style("flex-direction", "column")
-      .html(`
-          <strong style="font-size: 32px; text-align: center; line-height: 64px;">
-              Priority matrix not available
-          </strong>
-          <span>You received few responses to provide a priority matrix.</span>
-          <span style="line-height: 46px">Please invite more candidates.</span>
-      `);
     }
-    const totlaRatingResponses = data && data.reduce((acc, d) => acc + d[ratings].value, 0)
-
-    if (data && totlaRatingResponses !== null && totlaRatingResponses > 19) {
+    // const totlaRatingResponses = data && data.reduce((acc, d) => acc + d[ratings].value, 0)
+    if (newTotalResponse > 19) {
       visual();
     } else {
       message();

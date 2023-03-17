@@ -7,11 +7,13 @@ const visObject = {
     const questionSubject = queryResponse.fields.dimensions[0] ? (queryResponse.fields.dimensions[0].name ? queryResponse.fields.dimensions[0].name : '') : ''; //questions.subject
     const questionQuestion = queryResponse.fields.dimension_like[1] ? (queryResponse.fields.dimension_like[1].name ? queryResponse.fields.dimension_like[1].name : '') : ''; //questions.question
     const ratings = queryResponse?.fields?.measures[0].name; //fact_table.ratings
+    const uniqueRatings = queryResponse.fields.measures[4].name; //fact_table.unique_ratings
     // const priorityScore = queryResponse.fields.measures[1].name; //fact_table.priority_score
     const absCorrelation = queryResponse?.fields?.measures[2].name; //fact_table.abs_correlation_coefficient
     const averageRating = queryResponse?.fields?.measures[3].name; //fact_table.avg_star_rating
     // const totalResponse = queryResponse?.totals_data[ratings] !== null ? queryResponse.totals_data[ratings].value : null; //total_response
-    const totalAvgStarRating = queryResponse?.totals_data[averageRating] ? (queryResponse.totals_data[averageRating].html ? queryResponse.totals_data[averageRating].html : '') : ''; //total_data_avg_star_rating
+    const newTotalResponse = queryResponse?.totals_data[uniqueRatings] !== null ? queryResponse.totals_data[uniqueRatings].value : null; //total_response
+    const totalAvgStarRating = queryResponse?.totals_data[averageRating] ? queryResponse.totals_data[averageRating].html : ''; //total_data_avg_star_rating
 
     function visual() {
       var meas = queryResponse?.["fields"]?.["measure_like"];
@@ -181,7 +183,7 @@ const visObject = {
   
       elemEnter.on("click", function(d, i) {
         const subjectElement = questionSubject ? `<strong style="font-size: 13px; line-height: 18px">${d[questionSubject]["value"]}</strong><br>` : ''
-        const questionElement = questionQuestion ? `<strong style="font-size: 11px; display: block; margin: 5px 0;">${d[questionQuestion]["value"]} ?</strong>` : ''
+        const questionElement = questionQuestion ? `<strong style="font-size: 11px; display: block; margin: 5px 0;">${d[questionQuestion]["value"]}</strong>` : ''
         const drillDownLink = data[i][mesID].links
         tooltip.style("visibility", "visible")
         tooltip.html(
@@ -327,9 +329,8 @@ const visObject = {
       .attr("width", "100%")
       .attr("height", "100%");
     }
-    const totlaRatingResponses = data && data.reduce((acc, d) => acc + d[ratings].value, 0)
-
-    if (data && totlaRatingResponses !== null && totlaRatingResponses > 19) {
+    // const totlaRatingResponses = data && data.reduce((acc, d) => acc + d[ratings].value, 0)
+    if (newTotalResponse > 19) {
       visual();
     } else {
       message();
