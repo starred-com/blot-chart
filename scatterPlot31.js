@@ -323,7 +323,7 @@ const visObject = {
       .attr("max-height", '950px').attr('viewBox', '0 0 1110 600');
 
       svg.append("image")
-      .attr('xlink:href', 'https://cdn.starred.com/downloads/looker/not-found.png')
+      .attr('xlink:href', 'https://cdn.starred.com/downloads/looker/respondents-not-found.png')
       .attr("width", "100%")
       .attr("height", "100%");
     }

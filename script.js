@@ -1863,7 +1863,7 @@ function message() {
   .attr("max-height", '950px').attr('viewBox', '0 0 1110 600');
 
   svg.append("image")
-  .attr('xlink:href', 'https://cdn.starred.com/downloads/looker/not-found.png')
+  .attr('xlink:href', 'https://cdn.starred.com/downloads/looker/respondents-not-found.png')
   .attr("width", "100%")
   .attr("height", "100%");
   // .style("backdrop-filter", "blur(3rem)")
@@ -1938,7 +1938,7 @@ function message() {
   // `);
 }
 
-var responses = 20;
+var responses = 18;
 if (responses > 19 || fakedata.length < 1) {
     visual();
 } else {
